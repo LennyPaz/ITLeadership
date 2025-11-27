@@ -1,0 +1,163 @@
+import type { Config } from 'tailwindcss'
+
+const config: Config = {
+  content: [
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          DEFAULT: '#C4532A',
+          dark: '#A3421F',
+          light: '#D4744D',
+          50: '#FDF5F2',
+          100: '#FAEAE4',
+          200: '#F3D0C4',
+          300: '#E9AE99',
+          400: '#D97F5C',
+          500: '#C4532A',
+          600: '#A3421F',
+          700: '#833518',
+          800: '#652914',
+          900: '#4A1E0F',
+        },
+        secondary: {
+          DEFAULT: '#1A4D3E',
+          dark: '#0F3329',
+          light: '#2A7A63',
+          50: '#F0F7F5',
+          100: '#DCEEE9',
+          200: '#B5DCD1',
+          300: '#85C5B3',
+          400: '#4EA78E',
+          500: '#2A7A63',
+          600: '#1A4D3E',
+          700: '#143D31',
+          800: '#0F3329',
+          900: '#0A2219',
+        },
+        accent: {
+          honey: '#D4A547',
+          'honey-dark': '#B8892E',
+          'honey-light': '#E5C171',
+          sky: '#5BA4C9',
+          'sky-dark': '#3D89B0',
+          'sky-light': '#8AC2DB',
+          sage: '#7FA68D',
+          'sage-dark': '#5E8A6D',
+          'sage-light': '#A8C4B2',
+        },
+        neutral: {
+          cream: '#F8F5EF',
+          'cream-dark': '#EDE8DE',
+          offwhite: '#FDFCFA',
+          charcoal: '#2D2D2D',
+          gray: '#5C5C5C',
+          'gray-light': '#8A8A8A',
+          light: '#E8E4DD',
+          border: '#D9D4CA',
+        },
+      },
+      fontFamily: {
+        heading: ['var(--font-dm-sans)', 'system-ui', 'sans-serif'],
+        body: ['var(--font-source-sans)', 'system-ui', 'sans-serif'],
+        accent: ['var(--font-lora)', 'Georgia', 'serif'],
+      },
+      fontSize: {
+        'display-1': ['4rem', { lineHeight: '1.1', letterSpacing: '-0.02em', fontWeight: '700' }],
+        'display-2': ['3rem', { lineHeight: '1.15', letterSpacing: '-0.02em', fontWeight: '700' }],
+        'heading-1': ['2.5rem', { lineHeight: '1.2', letterSpacing: '-0.01em', fontWeight: '700' }],
+        'heading-2': ['2rem', { lineHeight: '1.25', letterSpacing: '-0.01em', fontWeight: '600' }],
+        'heading-3': ['1.5rem', { lineHeight: '1.3', fontWeight: '600' }],
+        'heading-4': ['1.25rem', { lineHeight: '1.4', fontWeight: '600' }],
+        'body-lg': ['1.125rem', { lineHeight: '1.7' }],
+        'body': ['1rem', { lineHeight: '1.7' }],
+        'body-sm': ['0.875rem', { lineHeight: '1.6' }],
+        'caption': ['0.75rem', { lineHeight: '1.5', letterSpacing: '0.02em' }],
+      },
+      spacing: {
+        '18': '4.5rem',
+        '22': '5.5rem',
+        '30': '7.5rem',
+        '128': '32rem',
+        '144': '36rem',
+      },
+      borderRadius: {
+        'sm': '4px',
+        'DEFAULT': '6px',
+        'md': '6px',
+        'lg': '8px',
+        'xl': '12px',
+        '2xl': '16px',
+      },
+      boxShadow: {
+        'subtle': '0 1px 2px rgba(0, 0, 0, 0.04)',
+        'sm': '0 1px 3px rgba(0, 0, 0, 0.06)',
+        'DEFAULT': '0 2px 8px rgba(0, 0, 0, 0.08)',
+        'md': '0 4px 12px rgba(0, 0, 0, 0.08)',
+        'lg': '0 8px 24px rgba(0, 0, 0, 0.1)',
+        'xl': '0 16px 40px rgba(0, 0, 0, 0.12)',
+        'inner-sm': 'inset 0 1px 2px rgba(0, 0, 0, 0.06)',
+        'glow': '0 0 20px rgba(196, 83, 42, 0.15)',
+      },
+      animation: {
+        'fade-in': 'fadeIn 0.6s ease-out',
+        'fade-up': 'fadeUp 0.6s ease-out',
+        'slide-in-left': 'slideInLeft 0.6s ease-out',
+        'slide-in-right': 'slideInRight 0.6s ease-out',
+        'scale-in': 'scaleIn 0.4s ease-out',
+        'float': 'float 6s ease-in-out infinite',
+        'marquee': 'marquee 30s linear infinite',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        fadeUp: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        slideInLeft: {
+          '0%': { opacity: '0', transform: 'translateX(-30px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
+        },
+        slideInRight: {
+          '0%': { opacity: '0', transform: 'translateX(30px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
+        },
+        scaleIn: {
+          '0%': { opacity: '0', transform: 'scale(0.95)' },
+          '100%': { opacity: '1', transform: 'scale(1)' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' },
+        },
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+      },
+      backgroundImage: {
+        'gradient-warm': 'linear-gradient(135deg, #F8F5EF 0%, #FDFCFA 100%)',
+        'gradient-primary': 'linear-gradient(135deg, #C4532A 0%, #D4744D 100%)',
+        'gradient-dark': 'linear-gradient(180deg, #1A4D3E 0%, #0F3329 100%)',
+        'texture-dots': 'radial-gradient(circle, #E8E4DD 1px, transparent 1px)',
+      },
+      backgroundSize: {
+        'dots': '24px 24px',
+      },
+      transitionTimingFunction: {
+        'smooth': 'cubic-bezier(0.4, 0, 0.2, 1)',
+        'bounce-soft': 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+      },
+    },
+  },
+  plugins: [],
+}
+
+export default config
