@@ -6,7 +6,7 @@ import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Phone, ChevronRight } from 'lucide-react'
-import { cn, getImagePath } from '@/lib/utils'
+import { cn, getImagePath, BASE_PATH } from '@/lib/utils'
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -20,7 +20,17 @@ const navLinks = [
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
-  const pathname = usePathname()
+  const rawPathname = usePathname()
+  // Normalize pathname by removing basePath for active state comparison
+  // Handle both production (with basePath) and development (without basePath)
+  let pathname = rawPathname
+  if (rawPathname.startsWith(BASE_PATH)) {
+    pathname = rawPathname.slice(BASE_PATH.length) || '/'
+  }
+  // Ensure we have a clean pathname (remove trailing slash except for root)
+  if (pathname !== '/' && pathname.endsWith('/')) {
+    pathname = pathname.slice(0, -1)
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,7 +43,7 @@ export default function Navigation() {
 
   useEffect(() => {
     setIsOpen(false)
-  }, [pathname])
+  }, [rawPathname])
 
   useEffect(() => {
     if (isOpen) {
@@ -142,11 +152,7 @@ export default function Navigation() {
                 >
                   {link.label}
                   {isActive && (
-                    <motion.div
-                      layoutId="activeNav"
-                      className="absolute bottom-0 left-4 right-4 h-0.5 bg-primary"
-                      transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                    />
+                    <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-primary" />
                   )}
                 </Link>
               )

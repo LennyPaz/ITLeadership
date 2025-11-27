@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install)",
+      "Bash(npm run build:*)",
+      "Bash(cat:*)",
+      "Bash(git remote add:*)",
+      "Bash(git remote set-url:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nComplete redesign: Professional Next.js site for Project Annie\n\n- Built with Next.js 14, Tailwind CSS, Framer Motion\n- 7 pages: Home, About, Programs, Volunteer, Donate, Gallery, Contact\n- Custom design system with Project Annie branding\n- Mobile-responsive with accessibility features\n- Static export for GitHub Pages deployment\n- GitHub Actions workflow for automatic deployment\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git config:*)",
+      "Bash(git push:*)",
+      "Bash(git commit:*)",
+      "Bash(find:*)",
+      "Bash(npm run dev:*)",
+      "Bash(xxd:*)",
+      "Bash(powershell -Command:*)",
+      "WebSearch",
+      "Bash(npm install:*)",
+      "Bash(git rm:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

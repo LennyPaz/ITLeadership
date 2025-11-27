@@ -21,6 +21,7 @@ import {
   Quote,
 } from 'lucide-react'
 import { getImagePath } from '@/lib/utils'
+import ImageCarousel from '@/components/ImageCarousel'
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -108,12 +109,12 @@ const benefits = [
 ]
 
 const volunteerGallery = [
-  { src: '/images/Donate_Volunteer/V1.webp', alt: 'Volunteers at Project Annie' },
-  { src: '/images/Donate_Volunteer/V2.webp', alt: 'Student volunteers' },
-  { src: '/images/Donate_Volunteer/V3.webp', alt: 'Community service event' },
-  { src: '/images/Donate_Volunteer/V4.webp', alt: 'Thanksgiving volunteers' },
-  { src: '/images/Donate_Volunteer/V5.webp', alt: 'Volunteer meal service' },
-  { src: '/images/Donate_Volunteer/V6.webp', alt: 'Team of volunteers' },
+  { src: getImagePath('/images/Donate_Volunteer/V1.webp'), alt: 'Volunteers at Project Annie' },
+  { src: getImagePath('/images/Donate_Volunteer/V2.webp'), alt: 'Student volunteers' },
+  { src: getImagePath('/images/Donate_Volunteer/V3.webp'), alt: 'Community service event' },
+  { src: getImagePath('/images/Donate_Volunteer/V4.webp'), alt: 'Thanksgiving volunteers' },
+  { src: getImagePath('/images/Donate_Volunteer/V5.webp'), alt: 'Volunteer meal service' },
+  { src: getImagePath('/images/Donate_Volunteer/V6.webp'), alt: 'Team of volunteers' },
 ]
 
 const testimonials = [
@@ -129,6 +130,13 @@ const testimonials = [
   },
 ]
 
+// Extended gallery for carousel
+const extendedGallery = [
+  ...volunteerGallery,
+  { src: getImagePath('/images/Donate_Volunteer/V7.webp'), alt: 'Volunteers working' },
+  { src: getImagePath('/images/Donate_Volunteer/V8.webp'), alt: 'Community service' },
+]
+
 export default function VolunteerPage() {
   return (
     <>
@@ -136,7 +144,7 @@ export default function VolunteerPage() {
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 bg-secondary-dark overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src={getImagePath('/images/Nursery/V1.webp')}
+            src={getImagePath('/images/Donate_Volunteer/V1.webp')}
             alt="Volunteers at Project Annie"
             fill
             className="object-cover opacity-20"
@@ -391,32 +399,8 @@ export default function VolunteerPage() {
           </AnimatedSection>
         </div>
 
-        {/* Full-width scrolling gallery */}
-        <div className="relative">
-          <div className="flex gap-4 overflow-x-auto scrollbar-hide px-4 md:px-8 pb-4">
-            {[
-              ...volunteerGallery,
-              { src: '/images/Donate_Volunteer/V7.webp', alt: 'Volunteers working' },
-              { src: '/images/Donate_Volunteer/V8.webp', alt: 'Community service' },
-            ].map((image, index) => (
-              <motion.div
-                key={image.src}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="relative shrink-0 w-72 md:w-80 aspect-[4/3] rounded-lg overflow-hidden group"
-              >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </motion.div>
-            ))}
-          </div>
-        </div>
+        {/* Embla Carousel */}
+        <ImageCarousel images={extendedGallery} autoplayDelay={5000} />
       </section>
 
       {/* How to Apply */}

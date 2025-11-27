@@ -379,7 +379,7 @@ export default function AboutPage() {
               <div className="bg-white rounded-lg overflow-hidden border border-neutral-light h-full">
                 <div className="relative aspect-[16/10]">
                   <Image
-                    src={getImagePath('/images/Nursery/V1.webp')}
+                    src={getImagePath('/images/Donate_Volunteer/V1.webp')}
                     alt="Volunteers at Project Annie"
                     fill
                     className="object-cover"
@@ -423,19 +423,26 @@ export default function AboutPage() {
           <div className="max-w-3xl mx-auto">
             {timeline.map((item, index) => (
               <AnimatedSection key={item.year} delay={index * 0.1}>
-                <div className="relative pl-8 pb-10 last:pb-0 border-l-2 border-neutral-light last:border-transparent">
-                  {/* Timeline dot */}
-                  <div className="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] bg-primary rounded-full" />
+                <div className="relative pl-8 pb-10 last:pb-0">
+                  {/* Timeline line */}
+                  {index < timeline.length - 1 && (
+                    <div className="absolute left-[5px] top-8 bottom-0 w-0.5 bg-primary/20" />
+                  )}
+
+                  {/* Timeline dot - centered with title text (top-[0.4rem] aligns with text baseline) */}
+                  <div className="absolute left-0 top-[0.4rem] w-3 h-3 bg-primary rounded-full ring-4 ring-white" />
 
                   {/* Content */}
-                  <div className="ml-6">
-                    <span className="inline-block px-3 py-1 bg-primary/10 text-primary rounded text-sm font-semibold mb-2">
-                      {item.year}
-                    </span>
-                    <h3 className="font-heading font-bold text-xl text-neutral-charcoal mb-2">
-                      {item.title}
-                    </h3>
-                    <p className="text-neutral-gray">
+                  <div>
+                    <div className="flex flex-wrap items-center gap-3 mb-2">
+                      <h3 className="font-heading font-bold text-xl text-neutral-charcoal leading-none">
+                        {item.title}
+                      </h3>
+                      <span className="inline-block px-3 py-1 bg-primary/10 text-primary rounded text-sm font-semibold">
+                        {item.year}
+                      </span>
+                    </div>
+                    <p className="text-neutral-gray leading-relaxed">
                       {item.description}
                     </p>
                   </div>

@@ -17,6 +17,7 @@ import {
   ChevronRight,
 } from 'lucide-react'
 import { cn, getImagePath } from '@/lib/utils'
+import ImageCarousel from '@/components/ImageCarousel'
 
 // Animation variants
 const fadeInUp = {
@@ -57,7 +58,7 @@ const pathways = [
     description: 'Join FSU and TCC students making a difference in Frenchtown.',
     href: '/volunteer',
     icon: HandHeart,
-    image: getImagePath('/images/Nursery/V1.webp'),
+    image: getImagePath('/images/Donate_Volunteer/V1.webp'),
     color: 'secondary',
   },
   {
@@ -149,7 +150,7 @@ export default function HomePage() {
                 Strengthening Our Community
               </h1>
 
-              <p className="text-white/80 text-lg md:text-xl leading-relaxed mb-8 max-w-xl">
+              <p className="text-white/90 text-lg md:text-xl leading-relaxed mb-8 max-w-xl">
                 Project Annie provides quality, affordable childcare and serves
                 thousands through our annual Thanksgiving meal program. Together,
                 we&apos;re building a stronger Frenchtown.
@@ -470,7 +471,7 @@ export default function HomePage() {
       {/* Current Campaign Section */}
       <section className="py-20 lg:py-28 bg-white">
         <div className="container-base">
-          <div className="relative bg-secondary rounded-2xl overflow-hidden">
+          <div className="relative bg-secondary-dark rounded-2xl overflow-hidden">
             {/* Background pattern */}
             <div className="absolute inset-0 opacity-10">
               <div className="absolute top-0 right-0 w-96 h-96 bg-accent-honey rounded-full blur-3xl" />
@@ -480,16 +481,16 @@ export default function HomePage() {
             <div className="relative grid lg:grid-cols-2 gap-8 p-8 lg:p-12">
               {/* Content */}
               <div className="text-white">
-                <span className="inline-flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded text-sm font-medium mb-6">
+                <span className="inline-flex items-center gap-2 bg-white/20 px-3 py-1.5 rounded text-sm font-medium mb-6">
                   <Utensils className="w-4 h-4 text-accent-honey" />
                   Annual Campaign
                 </span>
 
-                <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
+                <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 text-white">
                   Thanksgiving Meal Program 2025
                 </h2>
 
-                <p className="text-white/80 text-lg mb-8">
+                <p className="text-white text-lg mb-8">
                   Every year, Project Annie serves over 2,000 meals to families
                   in need during Thanksgiving. Help us continue this tradition
                   of community care and connection.
@@ -509,7 +510,7 @@ export default function HomePage() {
                       style={{ width: '62.5%' }}
                     />
                   </div>
-                  <p className="text-white/60 text-sm mt-2">
+                  <p className="text-white/80 text-sm mt-2">
                     62% of our goal reached  thank you to all our donors!
                   </p>
                 </div>
@@ -585,29 +586,8 @@ export default function HomePage() {
           </AnimatedSection>
         </div>
 
-        {/* Full-width scrolling gallery */}
-        <div className="relative">
-          <div className="flex gap-4 overflow-x-auto scrollbar-hide px-4 md:px-8 pb-4">
-            {galleryImages.map((image, index) => (
-              <motion.div
-                key={image.src}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="relative shrink-0 w-72 md:w-80 lg:w-96 aspect-[4/3] rounded-lg overflow-hidden group"
-              >
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-neutral-charcoal/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              </motion.div>
-            ))}
-          </div>
-        </div>
+        {/* Embla Carousel */}
+        <ImageCarousel images={galleryImages} autoplayDelay={5000} />
       </section>
 
       {/* Testimonials Section */}
@@ -639,12 +619,14 @@ export default function HomePage() {
               },
             ].map((testimonial, index) => (
               <AnimatedSection key={testimonial.author} delay={index * 0.1}>
-                <div className="h-full bg-neutral-cream rounded-lg p-6 lg:p-8">
-                  <Quote className="w-10 h-10 text-accent-honey/50 mb-4" />
-                  <p className="text-neutral-charcoal text-lg leading-relaxed mb-6">
-                    &ldquo;{testimonial.quote}&rdquo;
-                  </p>
-                  <div className="flex items-center gap-3">
+                <div className="h-full bg-neutral-cream rounded-lg p-6 lg:p-8 flex flex-col">
+                  <div>
+                    <Quote className="w-10 h-10 text-accent-honey/50 mb-4" />
+                    <p className="text-neutral-charcoal text-lg leading-relaxed">
+                      &ldquo;{testimonial.quote}&rdquo;
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-3 mt-auto pt-6">
                     <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
                       <span className="font-heading font-bold text-primary">
                         {testimonial.author[0]}

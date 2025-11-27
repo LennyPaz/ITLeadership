@@ -49,7 +49,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-heading font-semibold text-lg mb-5">
+            <h3 className="font-heading font-semibold text-lg mb-5 text-white">
               Quick Links
             </h3>
             <ul className="space-y-3">
@@ -70,7 +70,7 @@ export default function Footer() {
 
           {/* Support Us */}
           <div>
-            <h3 className="font-heading font-semibold text-lg mb-5">
+            <h3 className="font-heading font-semibold text-lg mb-5 text-white">
               Support Us
             </h3>
             <ul className="space-y-3">
@@ -100,7 +100,7 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h3 className="font-heading font-semibold text-lg mb-5">
+            <h3 className="font-heading font-semibold text-lg mb-5 text-white">
               Contact Us
             </h3>
             <ul className="space-y-4">
@@ -154,7 +154,7 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-white/10">
         <div className="container-base py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/60">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/80">
             <p>
               &copy; {currentYear} Project Annie, Inc. All rights reserved.
             </p>
@@ -165,7 +165,7 @@ export default function Footer() {
               >
                 Privacy Policy
               </Link>
-              <span className="text-white/30">|</span>
+              <span className="text-white/50">|</span>
               <span>EIN: 26-0638919</span>
             </div>
           </div>

@@ -44,16 +44,16 @@ const galleryImages = [
   { src: getImagePath('/images/Home/IMG12.webp'), alt: 'Thanksgiving event', category: 'thanksgiving' },
 
   // Volunteer images
-  { src: getImagePath('/images/Nursery/V1.webp'), alt: 'Volunteers at Project Annie', category: 'volunteers' },
-  { src: getImagePath('/images/Nursery/V2.webp'), alt: 'Student volunteers', category: 'volunteers' },
-  { src: getImagePath('/images/Nursery/V3.webp'), alt: 'FSU volunteers', category: 'volunteers' },
-  { src: getImagePath('/images/Nursery/V4.webp'), alt: 'Community volunteers', category: 'volunteers' },
-  { src: getImagePath('/images/Nursery/V5.webp'), alt: 'Volunteer team', category: 'volunteers' },
-  { src: getImagePath('/images/Nursery/V6.webp'), alt: 'Volunteers helping', category: 'volunteers' },
-  { src: getImagePath('/images/Nursery/V7.webp'), alt: 'TCC student volunteers', category: 'volunteers' },
-  { src: getImagePath('/images/Nursery/V8.webp'), alt: 'Volunteer service', category: 'volunteers' },
-  { src: getImagePath('/images/Nursery/VW1.webp'), alt: 'Volunteers at work', category: 'volunteers' },
-  { src: getImagePath('/images/Nursery/VW2.webp'), alt: 'Volunteer activities', category: 'volunteers' },
+  { src: getImagePath('/images/Donate_Volunteer/V1.webp'), alt: 'Volunteers at Project Annie', category: 'volunteers' },
+  { src: getImagePath('/images/Donate_Volunteer/V2.webp'), alt: 'Student volunteers', category: 'volunteers' },
+  { src: getImagePath('/images/Donate_Volunteer/V3.webp'), alt: 'FSU volunteers', category: 'volunteers' },
+  { src: getImagePath('/images/Donate_Volunteer/V4.webp'), alt: 'Community volunteers', category: 'volunteers' },
+  { src: getImagePath('/images/Donate_Volunteer/V5.webp'), alt: 'Volunteer team', category: 'volunteers' },
+  { src: getImagePath('/images/Donate_Volunteer/V6.webp'), alt: 'Volunteers helping', category: 'volunteers' },
+  { src: getImagePath('/images/Donate_Volunteer/V7.webp'), alt: 'TCC student volunteers', category: 'volunteers' },
+  { src: getImagePath('/images/Donate_Volunteer/V8.webp'), alt: 'Volunteer service', category: 'volunteers' },
+  { src: getImagePath('/images/Donate_Volunteer/VW1.webp'), alt: 'Volunteers at work', category: 'volunteers' },
+  { src: getImagePath('/images/Donate_Volunteer/VW2.webp'), alt: 'Volunteer activities', category: 'volunteers' },
 ]
 
 export default function GalleryPage() {
@@ -133,14 +133,14 @@ export default function GalleryPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center max-w-2xl mx-auto"
+            className="max-w-3xl"
           >
             <span className="badge bg-white/10 text-white mb-6">Photo Gallery</span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6">
               Our Community{' '}
               <span className="text-accent-honey">in Action</span>
             </h1>
-            <p className="text-white/80 text-lg md:text-xl leading-relaxed">
+            <p className="text-white/80 text-lg md:text-xl leading-relaxed max-w-2xl">
               Explore photos from our nursery school, Thanksgiving meals, volunteer
               events, and community celebrations. These moments capture the heart
               of Project Annie.
