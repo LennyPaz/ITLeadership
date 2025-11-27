@@ -16,7 +16,7 @@ import {
   Quote,
   ChevronRight,
 } from 'lucide-react'
-import { cn } from '@/lib/utils'
+import { cn, getImagePath } from '@/lib/utils'
 
 // Animation variants
 const fadeInUp = {
@@ -49,7 +49,7 @@ const pathways = [
     description: 'Quality, affordable childcare for ages 1-3 in a nurturing environment.',
     href: '/programs',
     icon: GraduationCap,
-    image: '/images/About/EarlyChildcare.webp',
+    image: getImagePath('/images/About/EarlyChildcare.webp'),
     color: 'primary',
   },
   {
@@ -57,7 +57,7 @@ const pathways = [
     description: 'Join FSU and TCC students making a difference in Frenchtown.',
     href: '/volunteer',
     icon: HandHeart,
-    image: '/images/Donate_Volunteer/V1.webp',
+    image: getImagePath('/images/Nursery/V1.webp'),
     color: 'secondary',
   },
   {
@@ -65,19 +65,19 @@ const pathways = [
     description: 'Your gift provides meals, education, and hope to families in need.',
     href: '/donate',
     icon: Heart,
-    image: '/images/Donate_Volunteer/Charity1.webp',
+    image: getImagePath('/images/Donate_Volunteer/Charity1.webp'),
     color: 'honey',
   },
 ]
 
 // Gallery images for carousel
 const galleryImages = [
-  { src: '/images/Home/IMG1.webp', alt: 'Community volunteers at Project Annie' },
-  { src: '/images/Home/IMG4.webp', alt: 'Children at Annie\'s Nursery School' },
-  { src: '/images/Home/IMG5.webp', alt: 'Thanksgiving community meal' },
-  { src: '/images/Home/IMG6.webp', alt: 'Volunteers serving meals' },
-  { src: '/images/Home/IMG7.webp', alt: 'Community event' },
-  { src: '/images/Home/IMG8.webp', alt: 'Children learning at nursery' },
+  { src: getImagePath('/images/Home/IMG1.webp'), alt: 'Community volunteers at Project Annie' },
+  { src: getImagePath('/images/Home/IMG4.webp'), alt: 'Children at Annie\'s Nursery School' },
+  { src: getImagePath('/images/Home/IMG5.webp'), alt: 'Thanksgiving community meal' },
+  { src: getImagePath('/images/Home/IMG6.webp'), alt: 'Volunteers serving meals' },
+  { src: getImagePath('/images/Home/IMG7.webp'), alt: 'Community event' },
+  { src: getImagePath('/images/Home/IMG8.webp'), alt: 'Children learning at nursery' },
 ]
 
 function AnimatedSection({
@@ -114,7 +114,7 @@ export default function HomePage() {
         {/* Background image with overlay */}
         <div className="absolute inset-0">
           <Image
-            src="/images/Home/IMG1.webp"
+            src={getImagePath('/images/Home/IMG1.webp')}
             alt="Project Annie community gathering"
             fill
             className="object-cover opacity-30"
@@ -201,7 +201,7 @@ export default function HomePage() {
                 {/* Main image */}
                 <div className="relative aspect-[4/5] rounded-lg overflow-hidden shadow-2xl">
                   <Image
-                    src="/images/ms-annie.webp"
+                    src={getImagePath('/images/ms-annie.webp')}
                     alt="Ms. Annie Johnson, Founder of Project Annie"
                     fill
                     className="object-cover"
@@ -296,7 +296,7 @@ export default function HomePage() {
                 <div className="space-y-4">
                   <div className="aspect-[3/4] rounded-lg overflow-hidden">
                     <Image
-                      src="/images/About/A1.webp"
+                      src={getImagePath('/images/About/A1.webp')}
                       alt="Children at Project Annie"
                       width={400}
                       height={533}
@@ -305,7 +305,7 @@ export default function HomePage() {
                   </div>
                   <div className="aspect-square rounded-lg overflow-hidden">
                     <Image
-                      src="/images/Home/IMG8.webp"
+                      src={getImagePath('/images/Home/IMG8.webp')}
                       alt="Community volunteers"
                       width={400}
                       height={400}
@@ -316,7 +316,7 @@ export default function HomePage() {
                 <div className="space-y-4 pt-8">
                   <div className="aspect-square rounded-lg overflow-hidden">
                     <Image
-                      src="/images/About/C1.webp"
+                      src={getImagePath('/images/About/C1.webp')}
                       alt="Learning activities"
                       width={400}
                       height={400}
@@ -325,7 +325,7 @@ export default function HomePage() {
                   </div>
                   <div className="aspect-[3/4] rounded-lg overflow-hidden">
                     <Image
-                      src="/images/Donate_Volunteer/Charity2.webp"
+                      src={getImagePath('/images/Donate_Volunteer/Charity2.webp')}
                       alt="Thanksgiving meal service"
                       width={400}
                       height={533}
@@ -385,7 +385,7 @@ export default function HomePage() {
                 <footer className="mt-4 flex items-center gap-3">
                   <div className="w-12 h-12 rounded-full overflow-hidden">
                     <Image
-                      src="/images/ms-annie.webp"
+                      src={getImagePath('/images/ms-annie.webp')}
                       alt="Ms. Annie Johnson"
                       width={48}
                       height={48}
@@ -535,7 +535,7 @@ export default function HomePage() {
               <div className="relative hidden lg:block">
                 <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
                   <Image
-                    src="/images/Donate_Volunteer/Charity3.webp"
+                    src={getImagePath('/images/Donate_Volunteer/Charity3.webp')}
                     alt="Thanksgiving meal service"
                     fill
                     className="object-cover"
@@ -671,7 +671,7 @@ export default function HomePage() {
         {/* Background image */}
         <div className="absolute inset-0">
           <Image
-            src="/images/Home/IMG12.webp"
+            src={getImagePath('/images/Home/IMG12.webp')}
             alt="Community gathering"
             fill
             className="object-cover opacity-20"

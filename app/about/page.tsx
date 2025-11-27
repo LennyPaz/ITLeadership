@@ -19,6 +19,7 @@ import {
   Home,
   Utensils,
 } from 'lucide-react'
+import { getImagePath } from '@/lib/utils'
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -109,7 +110,7 @@ export default function AboutPage() {
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 bg-secondary-dark overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/Home/IMG7.webp"
+            src={getImagePath('/images/Home/IMG7.webp')}
             alt="Project Annie community"
             fill
             className="object-cover opacity-20"
@@ -150,7 +151,7 @@ export default function AboutPage() {
               <div className="relative">
                 <div className="relative aspect-[4/5] rounded-lg overflow-hidden">
                   <Image
-                    src="/images/ms-annie.webp"
+                    src={getImagePath('/images/ms-annie.webp')}
                     alt="Ms. Annie Johnson, Founder of Project Annie"
                     fill
                     className="object-cover"
@@ -310,7 +311,7 @@ export default function AboutPage() {
               <div className="bg-white rounded-lg overflow-hidden border border-neutral-light h-full">
                 <div className="relative aspect-[16/10]">
                   <Image
-                    src="/images/About/EarlyChildcare.webp"
+                    src={getImagePath('/images/About/EarlyChildcare.webp')}
                     alt="Children at Annie's Nursery School"
                     fill
                     className="object-cover"
@@ -344,7 +345,7 @@ export default function AboutPage() {
               <div className="bg-white rounded-lg overflow-hidden border border-neutral-light h-full">
                 <div className="relative aspect-[16/10]">
                   <Image
-                    src="/images/Donate_Volunteer/Charity2.webp"
+                    src={getImagePath('/images/Donate_Volunteer/Charity2.webp')}
                     alt="Thanksgiving meal service"
                     fill
                     className="object-cover"
@@ -378,7 +379,7 @@ export default function AboutPage() {
               <div className="bg-white rounded-lg overflow-hidden border border-neutral-light h-full">
                 <div className="relative aspect-[16/10]">
                   <Image
-                    src="/images/Donate_Volunteer/V1.webp"
+                    src={getImagePath('/images/Nursery/V1.webp')}
                     alt="Volunteers at Project Annie"
                     fill
                     className="object-cover"

@@ -20,6 +20,7 @@ import {
   Star,
   Sparkles,
 } from 'lucide-react'
+import { getImagePath } from '@/lib/utils'
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -128,7 +129,7 @@ export default function ProgramsPage() {
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 bg-secondary-dark overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/About/EarlyChildcare.webp"
+            src={getImagePath('/images/About/EarlyChildcare.webp')}
             alt="Children learning at Annie's Nursery School"
             fill
             className="object-cover opacity-20"
@@ -209,7 +210,7 @@ export default function ProgramsPage() {
                   <div className="space-y-4">
                     <div className="aspect-square rounded-lg overflow-hidden">
                       <Image
-                        src="/images/About/C1.webp"
+                        src={getImagePath('/images/About/C1.webp')}
                         alt="Children playing"
                         width={400}
                         height={400}
@@ -218,7 +219,7 @@ export default function ProgramsPage() {
                     </div>
                     <div className="aspect-[4/3] rounded-lg overflow-hidden">
                       <Image
-                        src="/images/About/C3.webp"
+                        src={getImagePath('/images/About/C3.webp')}
                         alt="Learning activities"
                         width={400}
                         height={300}
@@ -229,7 +230,7 @@ export default function ProgramsPage() {
                   <div className="space-y-4 pt-8">
                     <div className="aspect-[4/3] rounded-lg overflow-hidden">
                       <Image
-                        src="/images/About/C2.webp"
+                        src={getImagePath('/images/About/C2.webp')}
                         alt="Nursery classroom"
                         width={400}
                         height={300}
@@ -238,7 +239,7 @@ export default function ProgramsPage() {
                     </div>
                     <div className="aspect-square rounded-lg overflow-hidden">
                       <Image
-                        src="/images/About/Toddler Care.webp"
+                        src={getImagePath('/images/About/Toddler Care.webp')}
                         alt="Toddler care"
                         width={400}
                         height={400}
@@ -515,7 +516,7 @@ export default function ProgramsPage() {
             <AnimatedSection delay={0.2} className="hidden lg:block">
               <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
                 <Image
-                  src="/images/Nursery/ELC.webp"
+                  src={getImagePath('/images/Nursery/ELC.webp')}
                   alt="Annie's Nursery School"
                   fill
                   className="object-cover"

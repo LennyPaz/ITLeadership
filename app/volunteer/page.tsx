@@ -20,6 +20,7 @@ import {
   FileEdit,
   Quote,
 } from 'lucide-react'
+import { getImagePath } from '@/lib/utils'
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -135,7 +136,7 @@ export default function VolunteerPage() {
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 bg-secondary-dark overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/Donate_Volunteer/V1.webp"
+            src={getImagePath('/images/Nursery/V1.webp')}
             alt="Volunteers at Project Annie"
             fill
             className="object-cover opacity-20"

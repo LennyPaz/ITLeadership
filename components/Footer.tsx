@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { MapPin, Phone, Mail, Clock, Heart, ExternalLink } from 'lucide-react'
+import { getImagePath } from '@/lib/utils'
 
 const quickLinks = [
   { href: '/about', label: 'About Us' },
@@ -29,7 +30,7 @@ export default function Footer() {
             <Link href="/" className="inline-flex items-center gap-3 group">
               <div className="relative w-16 h-16 bg-white rounded-lg p-1 transition-transform duration-200 group-hover:scale-105">
                 <Image
-                  src="/images/logo.webp"
+                  src={getImagePath('/images/logo.webp')}
                   alt="Project Annie Logo"
                   fill
                   className="object-contain"

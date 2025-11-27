@@ -6,7 +6,7 @@ import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Phone, ChevronRight } from 'lucide-react'
-import { cn } from '@/lib/utils'
+import { cn, getImagePath } from '@/lib/utils'
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -100,7 +100,7 @@ export default function Navigation() {
           >
             <div className="relative w-14 h-14 lg:w-16 lg:h-16 transition-transform duration-200 group-hover:scale-105">
               <Image
-                src="/images/logo.webp"
+                src={getImagePath('/images/logo.webp')}
                 alt="Project Annie Logo"
                 fill
                 className="object-contain"

@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { Home, ArrowLeft, Search } from 'lucide-react'
+import { getImagePath } from '@/lib/utils'
 
 export default function NotFound() {
   return (
@@ -9,7 +10,7 @@ export default function NotFound() {
         {/* Logo */}
         <div className="relative w-24 h-24 mx-auto mb-8">
           <Image
-            src="/images/logo.webp"
+            src={getImagePath('/images/logo.webp')}
             alt="Project Annie Logo"
             fill
             className="object-contain"

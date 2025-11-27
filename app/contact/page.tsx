@@ -16,7 +16,7 @@ import {
   CheckCircle2,
   ExternalLink,
 } from 'lucide-react'
-import { cn } from '@/lib/utils'
+import { cn, getImagePath } from '@/lib/utils'
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -115,7 +115,7 @@ export default function ContactPage() {
       <section className="relative pt-32 pb-16 lg:pt-40 lg:pb-20 bg-secondary-dark overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/Home/IMG7.webp"
+            src={getImagePath('/images/Home/IMG7.webp')}
             alt="Project Annie community"
             fill
             className="object-cover opacity-20"

@@ -1,8 +1,20 @@
 import { clsx, type ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 
+// Base path for GitHub Pages deployment
+export const BASE_PATH = '/ITLeadership'
+
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
+}
+
+// Helper to get correct image path with basePath for static export
+export function getImagePath(path: string): string {
+  // Only add basePath if the path starts with /
+  if (path.startsWith('/')) {
+    return `${BASE_PATH}${path}`
+  }
+  return path
 }
 
 export function formatNumber(num: number): string {
