@@ -6,11 +6,6 @@ import { motion, useInView } from 'framer-motion'
 import {
   Baby,
   Clock,
-  Shield,
-  Apple,
-  BookOpen,
-  Heart,
-  Users,
   CheckCircle2,
   ArrowRight,
   Phone,
@@ -20,6 +15,10 @@ import {
   Sparkles,
 } from 'lucide-react'
 import FocalImage from '@/components/FocalImage'
+import { getIcon } from '@/lib/icons'
+
+// Import content from JSON file
+import programsData from '@/content/programs.json'
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -52,74 +51,15 @@ function AnimatedSection({
   )
 }
 
-const features = [
-  {
-    icon: Shield,
-    title: 'Safe & Licensed',
-    description: 'State-licensed facility with comprehensive safety protocols and background-checked staff.',
-  },
-  {
-    icon: Apple,
-    title: 'Nutritious Meals',
-    description: 'Healthy breakfast, lunch, and snacks provided daily to support growing bodies and minds.',
-  },
-  {
-    icon: BookOpen,
-    title: 'Early Learning',
-    description: 'Age-appropriate curriculum focusing on social, emotional, and cognitive development.',
-  },
-  {
-    icon: Heart,
-    title: 'Nurturing Care',
-    description: 'Small class sizes ensure each child receives individual attention and loving care.',
-  },
-  {
-    icon: Users,
-    title: 'Family Partnership',
-    description: 'Open communication and collaboration with parents to support each child\'s growth.',
-  },
-  {
-    icon: Clock,
-    title: 'Flexible Hours',
-    description: 'Full-day care from 7 AM to 6 PM to accommodate working families\' schedules.',
-  },
-]
+// Map features from JSON with dynamic icons
+const features = programsData.features.map((feature) => ({
+  ...feature,
+  icon: getIcon(feature.icon),
+}))
 
-const dailySchedule = [
-  { time: '7:00 AM', activity: 'Arrival & Free Play' },
-  { time: '8:30 AM', activity: 'Breakfast' },
-  { time: '9:00 AM', activity: 'Circle Time & Morning Activities' },
-  { time: '10:30 AM', activity: 'Outdoor Play' },
-  { time: '11:30 AM', activity: 'Lunch' },
-  { time: '12:00 PM', activity: 'Nap Time' },
-  { time: '2:30 PM', activity: 'Afternoon Snack' },
-  { time: '3:00 PM', activity: 'Learning Activities & Creative Play' },
-  { time: '4:30 PM', activity: 'Outdoor Play' },
-  { time: '5:30 PM', activity: 'Quiet Play & Pickup' },
-]
-
-const enrollmentSteps = [
-  {
-    step: 1,
-    title: 'Schedule a Tour',
-    description: 'Visit our facility, meet Ms. Annie, and see our program in action.',
-  },
-  {
-    step: 2,
-    title: 'Complete Application',
-    description: 'Fill out our enrollment application with your child\'s information.',
-  },
-  {
-    step: 3,
-    title: 'Submit Documents',
-    description: 'Provide immunization records and emergency contact information.',
-  },
-  {
-    step: 4,
-    title: 'Welcome to the Family',
-    description: 'Complete orientation and start your child\'s journey with us.',
-  },
-]
+// Data from JSON
+const { dailySchedule, enrollmentSteps, learningAreas, keyPoints, requiredDocuments } = programsData
+const { ageRange, hours, days, status } = programsData
 
 export default function ProgramsPage() {
   return (
@@ -181,10 +121,10 @@ export default function ProgramsPage() {
         <div className="container-base">
           <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-neutral-light">
             {[
-              { icon: Baby, label: 'Ages', value: '1-3 Years' },
-              { icon: Clock, label: 'Hours', value: '7 AM - 6 PM' },
-              { icon: Calendar, label: 'Days', value: 'Mon - Fri' },
-              { icon: Star, label: 'Status', value: 'Now Enrolling' },
+              { icon: Baby, label: 'Ages', value: ageRange },
+              { icon: Clock, label: 'Hours', value: hours },
+              { icon: Calendar, label: 'Days', value: days },
+              { icon: Star, label: 'Status', value: status },
             ].map((item) => (
               <div key={item.label} className="py-5 px-4 text-center">
                 <item.icon className="w-6 h-6 text-primary mx-auto mb-2" />
@@ -276,13 +216,7 @@ export default function ProgramsPage() {
 
               {/* Key points */}
               <div className="mt-8 space-y-3">
-                {[
-                  'Licensed by the Florida Department of Children and Families',
-                  'Low student-to-teacher ratios for personalized attention',
-                  'Nutritious meals and snacks included',
-                  'Safe, clean, and child-friendly environment',
-                  'Affordable rates with flexible payment options',
-                ].map((point) => (
+                {keyPoints.map((point) => (
                   <div key={point} className="flex items-start gap-3">
                     <CheckCircle2 className="w-5 h-5 text-accent-sage mt-0.5 shrink-0" />
                     <span className="text-neutral-charcoal">{point}</span>
@@ -379,14 +313,7 @@ export default function ProgramsPage() {
                     Our Learning Areas:
                   </h3>
                   <div className="grid grid-cols-2 gap-3">
-                    {[
-                      'Language & Literacy',
-                      'Math & Numbers',
-                      'Art & Creativity',
-                      'Music & Movement',
-                      'Science & Nature',
-                      'Social Skills',
-                    ].map((area) => (
+                    {learningAreas.map((area) => (
                       <div key={area} className="flex items-center gap-2">
                         <Sparkles className="w-4 h-4 text-accent-honey" />
                         <span className="text-neutral-charcoal text-sm">{area}</span>
@@ -456,22 +383,12 @@ export default function ProgramsPage() {
                     Documents Required
                   </h3>
                   <ul className="space-y-2 text-neutral-gray">
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-accent-sage" />
-                      Completed enrollment application
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-accent-sage" />
-                      Child&apos;s immunization records
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-accent-sage" />
-                      Birth certificate copy
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-accent-sage" />
-                      Emergency contact information
-                    </li>
+                    {requiredDocuments.map((doc) => (
+                      <li key={doc} className="flex items-center gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-accent-sage" />
+                        {doc}
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>

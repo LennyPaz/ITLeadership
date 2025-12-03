@@ -32,6 +32,10 @@ yarn-error.log*
 # vercel
 .vercel
 
+# TinaCMS
+/tina/__generated__
+/public/admin
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
@@ -56,3 +60,5 @@ next-env.d.ts
 # Documentation files
 /mdFiles/
 *.md
+
+node_modules

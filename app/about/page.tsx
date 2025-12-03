@@ -10,15 +10,17 @@ import {
   MapPin,
   Target,
   Eye,
-  Star,
   ArrowRight,
   Quote,
-  Award,
-  BookOpen,
   Home,
   Utensils,
 } from 'lucide-react'
 import FocalImage from '@/components/FocalImage'
+import { getIcon } from '@/lib/icons'
+
+// Import content from JSON files
+import valuesData from '@/content/values.json'
+import timelineData from '@/content/timeline.json'
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -51,56 +53,14 @@ function AnimatedSection({
   )
 }
 
-const values = [
-  {
-    icon: Heart,
-    title: 'Compassion',
-    description: 'We treat every child and family with love, dignity, and respect.',
-  },
-  {
-    icon: Users,
-    title: 'Community',
-    description: 'We believe in the power of neighbors helping neighbors.',
-  },
-  {
-    icon: BookOpen,
-    title: 'Education',
-    description: 'We invest in early learning to build stronger futures.',
-  },
-  {
-    icon: Star,
-    title: 'Excellence',
-    description: 'We strive for quality in everything we do.',
-  },
-]
+// Map values from JSON with dynamic icons
+const values = valuesData.values.map((value) => ({
+  ...value,
+  icon: getIcon(value.icon),
+}))
 
-const timeline = [
-  {
-    year: '2008',
-    title: 'Project Annie Founded',
-    description: 'Ms. Annie Johnson opens Annie\'s Nursery School to serve Frenchtown families.',
-  },
-  {
-    year: '2010',
-    title: 'First Thanksgiving Meal',
-    description: 'The annual community meal tradition begins, serving 200 families.',
-  },
-  {
-    year: '2015',
-    title: 'FSU Partnership',
-    description: 'Florida State University students begin volunteering regularly.',
-  },
-  {
-    year: '2020',
-    title: '2,000+ Meals Served',
-    description: 'Despite challenges, the Thanksgiving program reaches a new milestone.',
-  },
-  {
-    year: '2024',
-    title: 'Expanding Our Impact',
-    description: 'New programs and partnerships to serve even more families.',
-  },
-]
+// Timeline from JSON
+const timeline = timelineData.items
 
 export default function AboutPage() {
   return (
