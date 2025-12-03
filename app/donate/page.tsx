@@ -5,22 +5,19 @@ import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
 import {
   Heart,
-  Gift,
-  Utensils,
-  BookOpen,
-  Home,
-  Shield,
   CheckCircle2,
   ArrowRight,
-  Mail,
   Phone,
-  CreditCard,
-  Building,
-  HandHeart,
   Quote,
+  Shield,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import FocalImage from '@/components/FocalImage'
+import { getIcon } from '@/lib/icons'
+
+// Import content from JSON files
+import donationData from '@/content/donation-tiers.json'
+import statsData from '@/content/stats.json'
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -53,74 +50,23 @@ function AnimatedSection({
   )
 }
 
-const donationTiers = [
-  {
-    amount: 25,
-    impact: 'Provides a week of nutritious snacks for one child',
-    icon: Gift,
-    popular: false,
-  },
-  {
-    amount: 50,
-    impact: 'Supplies educational materials for a classroom',
-    icon: BookOpen,
-    popular: false,
-  },
-  {
-    amount: 100,
-    impact: 'Serves 10 families at our Thanksgiving meal',
-    icon: Utensils,
-    popular: true,
-  },
-  {
-    amount: 250,
-    impact: 'Sponsors a child for one month of care',
-    icon: Heart,
-    popular: false,
-  },
-  {
-    amount: 500,
-    impact: 'Supports facility improvements and safety upgrades',
-    icon: Home,
-    popular: false,
-  },
-  {
-    amount: 1000,
-    impact: 'Champions our mission as a Major Donor',
-    icon: Shield,
-    popular: false,
-  },
-]
+// Map donation tiers from JSON with dynamic icons
+const donationTiers = donationData.items.map((tier) => ({
+  ...tier,
+  icon: getIcon(tier.icon),
+}))
 
-const impactStats = [
-  { number: '100%', label: 'Goes to programs' },
-  { number: '$25', label: 'Feeds a family' },
-  { number: '2,000+', label: 'Meals served' },
-  { number: '15+', label: 'Years of impact' },
-]
+// Map ways to give from JSON with dynamic icons
+const waysToGive = donationData.waysToGive.map((way) => ({
+  ...way,
+  icon: getIcon(way.icon),
+}))
 
-const waysToGive = [
-  {
-    icon: CreditCard,
-    title: 'Online Donation',
-    description: 'Make a secure one-time or recurring donation through our online form.',
-  },
-  {
-    icon: Mail,
-    title: 'Mail a Check',
-    description: 'Send a check to: Project Annie, Inc., 625 W. 4th Ave., Tallahassee, FL 32303',
-  },
-  {
-    icon: Building,
-    title: 'Corporate Giving',
-    description: 'Partner with us for corporate sponsorship, matching gifts, or workplace giving.',
-  },
-  {
-    icon: HandHeart,
-    title: 'In-Kind Donations',
-    description: 'Donate supplies, food, or services directly to support our programs.',
-  },
-]
+// Fund allocation from JSON
+const fundAllocation = donationData.fundAllocation
+
+// Impact stats from JSON
+const impactStats = statsData.donateStats
 
 export default function DonatePage() {
   const [selectedAmount, setSelectedAmount] = useState<number | null>(100)
@@ -425,11 +371,7 @@ export default function DonatePage() {
 
               {/* Breakdown */}
               <div className="space-y-4">
-                {[
-                  { label: 'Programs & Services', percent: 85, color: 'bg-primary' },
-                  { label: 'Thanksgiving Meals', percent: 10, color: 'bg-accent-honey' },
-                  { label: 'Administrative', percent: 5, color: 'bg-secondary' },
-                ].map((item) => (
+                {fundAllocation.map((item) => (
                   <div key={item.label}>
                     <div className="flex justify-between text-sm mb-1">
                       <span className="text-neutral-charcoal font-medium">{item.label}</span>

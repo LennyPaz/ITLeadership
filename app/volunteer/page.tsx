@@ -4,23 +4,19 @@ import { useRef } from 'react'
 import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
 import {
-  Heart,
-  Users,
-  Calendar,
-  GraduationCap,
   Clock,
-  Award,
-  CheckCircle2,
   ArrowRight,
   Mail,
-  Briefcase,
-  Utensils,
-  BookOpen,
-  FileEdit,
   Quote,
 } from 'lucide-react'
 import ImageCarousel from '@/components/ImageCarousel'
 import FocalImage from '@/components/FocalImage'
+import { getIcon } from '@/lib/icons'
+
+// Import content from JSON files
+import volunteerData from '@/content/volunteer-opportunities.json'
+import testimonialsData from '@/content/testimonials.json'
+import statsData from '@/content/stats.json'
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -53,59 +49,27 @@ function AnimatedSection({
   )
 }
 
-const opportunities = [
-  {
-    icon: BookOpen,
-    title: 'Classroom Assistant',
-    description: 'Help our teachers with daily activities, reading to children, and facilitating play-based learning.',
-    commitment: '2-4 hours/week',
-    skills: ['Patient', 'Reliable', 'Good with children'],
-  },
-  {
-    icon: Utensils,
-    title: 'Thanksgiving Meal Service',
-    description: 'Join hundreds of volunteers preparing and serving meals to families during our annual event.',
-    commitment: 'Annual event (Nov)',
-    skills: ['Team player', 'Food handling', 'Physical stamina'],
-  },
-  {
-    icon: FileEdit,
-    title: 'Administrative Support',
-    description: 'Assist with office tasks, data entry, organizing materials, and communication.',
-    commitment: 'Flexible',
-    skills: ['Organized', 'Computer literate', 'Detail-oriented'],
-  },
-  {
-    icon: Heart,
-    title: 'Special Events',
-    description: 'Help plan and execute fundraising events, community gatherings, and celebrations.',
-    commitment: 'Varies',
-    skills: ['Creative', 'Social', 'Event planning'],
-  },
-]
+// Map opportunities and benefits from JSON with dynamic icons
+const opportunities = volunteerData.items.map((opp) => ({
+  ...opp,
+  icon: getIcon(opp.icon),
+}))
 
-const benefits = [
-  {
-    icon: GraduationCap,
-    title: 'Service-Learning Hours',
-    description: 'Earn credit for community service requirements at FSU, TCC, and other institutions.',
-  },
-  {
-    icon: Briefcase,
-    title: 'Resume Building',
-    description: 'Gain valuable experience working with children, nonprofits, and community organizations.',
-  },
-  {
-    icon: Users,
-    title: 'Community Connection',
-    description: 'Build meaningful relationships and make a real difference in Frenchtown.',
-  },
-  {
-    icon: Award,
-    title: 'Personal Growth',
-    description: 'Develop leadership skills, empathy, and a deeper understanding of community needs.',
-  },
-]
+const benefits = volunteerData.benefits.map((benefit) => ({
+  ...benefit,
+  icon: getIcon(benefit.icon),
+}))
+
+// Application steps from JSON
+const applicationSteps = volunteerData.applicationSteps
+
+// Filter testimonials for volunteer page
+const testimonials = testimonialsData.items.filter((t) =>
+  t.showOn.includes('volunteer')
+)
+
+// Volunteer stats from JSON
+const volunteerStats = statsData.volunteerStats
 
 const volunteerGallery = [
   { src: '/images/Donate_Volunteer/V1.webp', alt: 'Volunteers at Project Annie' },
@@ -114,19 +78,6 @@ const volunteerGallery = [
   { src: '/images/Donate_Volunteer/V4.webp', alt: 'Thanksgiving volunteers' },
   { src: '/images/Donate_Volunteer/V5.webp', alt: 'Volunteer meal service' },
   { src: '/images/Donate_Volunteer/V6.webp', alt: 'Team of volunteers' },
-]
-
-const testimonials = [
-  {
-    quote: "Volunteering at Project Annie was one of the most rewarding experiences of my college years. The children's smiles make every moment worthwhile.",
-    author: 'Jessica M.',
-    role: 'FSU Student Volunteer',
-  },
-  {
-    quote: "The Thanksgiving meal event showed me what community really means. Hundreds of people coming together to feed their neighborsit was incredible.",
-    author: 'Marcus T.',
-    role: 'TCC Volunteer',
-  },
 ]
 
 // Extended gallery for carousel
@@ -197,12 +148,7 @@ export default function VolunteerPage() {
       <section className="bg-neutral-cream py-12 border-b border-neutral-light">
         <div className="container-base">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { number: '200+', label: 'Active Volunteers' },
-              { number: '5,000+', label: 'Hours Donated' },
-              { number: '15+', label: 'Partner Schools' },
-              { number: '2,000+', label: 'Meals Served' },
-            ].map((stat) => (
+            {volunteerStats.map((stat) => (
               <div key={stat.label} className="text-center">
                 <div className="text-3xl md:text-4xl font-heading font-bold text-primary">
                   {stat.number}
@@ -229,7 +175,7 @@ export default function VolunteerPage() {
                 <p>
                   At Project Annie, volunteers are the heartbeat of our organization.
                   Whether you&apos;re a college student seeking service hours, a professional
-                  looking to give back, or a retiree with time to sharewe have a place
+                  looking to give back, or a retiree with time to share—we have a place
                   for you.
                 </p>
                 <p>
@@ -418,33 +364,7 @@ export default function VolunteerPage() {
 
             <AnimatedSection delay={0.1}>
               <div className="space-y-6">
-                {[
-                  {
-                    step: 1,
-                    title: 'Contact Us',
-                    description: 'Reach out via email or phone to express your interest. Tell us about yourself and what you\'d like to do.',
-                  },
-                  {
-                    step: 2,
-                    title: 'Complete Application',
-                    description: 'Fill out a brief volunteer application so we can learn more about your skills and availability.',
-                  },
-                  {
-                    step: 3,
-                    title: 'Background Check',
-                    description: 'For positions working with children, we require a simple background check for everyone\'s safety.',
-                  },
-                  {
-                    step: 4,
-                    title: 'Orientation & Training',
-                    description: 'Attend a brief orientation to learn about our programs, policies, and your specific role.',
-                  },
-                  {
-                    step: 5,
-                    title: 'Start Making Impact',
-                    description: 'Begin volunteering and become part of the Project Annie family!',
-                  },
-                ].map((item, index) => (
+                {applicationSteps.map((item) => (
                   <div
                     key={item.step}
                     className="flex items-start gap-4 p-6 bg-neutral-cream rounded-lg"

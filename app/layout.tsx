@@ -84,8 +84,6 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#C4532A" />
-        {/* Netlify Identity Widget for CMS authentication */}
-        <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" async />
       </head>
       <body className="min-h-screen flex flex-col">
         <a
@@ -99,22 +97,6 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-        {/* Netlify Identity redirect script */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              if (window.netlifyIdentity) {
-                window.netlifyIdentity.on("init", user => {
-                  if (!user) {
-                    window.netlifyIdentity.on("login", () => {
-                      document.location.href = "/admin/";
-                    });
-                  }
-                });
-              }
-            `,
-          }}
-        />
       </body>
     </html>
   )
