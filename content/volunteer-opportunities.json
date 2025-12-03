@@ -5,28 +5,44 @@
       "description": "Help our teachers with daily activities, reading to children, and facilitating play-based learning.",
       "commitment": "2-4 hours/week",
       "icon": "BookOpen",
-      "skills": ["Patient", "Reliable", "Good with children"]
+      "skills": [
+        "Patient",
+        "Good with children",
+        "Reliable"
+      ]
     },
     {
       "title": "Thanksgiving Meal Service",
       "description": "Join hundreds of volunteers preparing and serving meals to families during our annual event.",
       "commitment": "Annual event (Nov)",
       "icon": "Utensils",
-      "skills": ["Team player", "Food handling", "Physical stamina"]
+      "skills": [
+        "Team player",
+        "Food handling",
+        "Physical stamina"
+      ]
     },
     {
       "title": "Administrative Support",
       "description": "Assist with office tasks, data entry, organizing materials, and communication.",
       "commitment": "Flexible",
       "icon": "FileEdit",
-      "skills": ["Organized", "Computer literate", "Detail-oriented"]
+      "skills": [
+        "Organized",
+        "Computer literate",
+        "Detail-oriented"
+      ]
     },
     {
       "title": "Special Events",
       "description": "Help plan and execute fundraising events, community gatherings, and celebrations.",
       "commitment": "Varies",
       "icon": "Heart",
-      "skills": ["Creative", "Social", "Event planning"]
+      "skills": [
+        "Creative",
+        "Social",
+        "Event planning"
+      ]
     }
   ],
   "benefits": [
