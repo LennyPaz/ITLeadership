@@ -21,7 +21,17 @@
       "Bash(git branch:*)",
       "Bash(npm ls:*)",
       "Bash(git stash:*)",
-      "WebFetch(domain:decapcms.org)"
+      "WebFetch(domain:decapcms.org)",
+      "Bash(git pull:*)",
+      "Bash(git checkout:*)",
+      "Bash(npm --version:*)",
+      "Bash(powershell.exe -Command \"Remove-Item -Recurse -Force node_modules\")",
+      "Bash(npm cache verify:*)",
+      "Bash(git merge:*)",
+      "Bash(git fetch:*)",
+      "Bash(npx tinacms build:*)",
+      "Bash(npx tinacms audit)",
+      "Bash(python3:*)"
     ],
     "deny": [],
     "ask": []
