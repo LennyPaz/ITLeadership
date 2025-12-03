@@ -1,34 +1,44 @@
 {
   "items": [
     {
-      "quote": "Project Annie gave my children a safe, loving place to learn while I finished my degree. I couldn't have done it without Ms. Annie.",
+      "quote": "Project Annie gave my children a safe, loving place to learn while I finished my degree. I couldn't have done it without Ms. Annie!",
       "author": "Maria T.",
       "role": "Parent",
-      "showOn": ["home"]
+      "showOn": [
+        "home"
+      ]
     },
     {
       "quote": "Volunteering at the Thanksgiving meal service changed my perspective. The sense of community here is unlike anything I've experienced.",
       "author": "James K.",
       "role": "FSU Volunteer",
-      "showOn": ["home"]
+      "showOn": [
+        "home"
+      ]
     },
     {
       "quote": "The dedication Ms. Annie shows to every child and family is inspiring. This organization is the heart of Frenchtown.",
       "author": "Dr. Sarah M.",
       "role": "Community Partner",
-      "showOn": ["home"]
+      "showOn": [
+        "home"
+      ]
     },
     {
       "quote": "Volunteering at Project Annie was one of the most rewarding experiences of my college years. The children's smiles make every moment worthwhile.",
       "author": "Jessica M.",
       "role": "FSU Student Volunteer",
-      "showOn": ["volunteer"]
+      "showOn": [
+        "volunteer"
+      ]
     },
     {
       "quote": "The Thanksgiving meal event showed me what community really means. Hundreds of people coming together to feed their neighbors - it was incredible.",
       "author": "Marcus T.",
       "role": "TCC Volunteer",
-      "showOn": ["volunteer"]
+      "showOn": [
+        "volunteer"
+      ]
     }
   ]
 }
