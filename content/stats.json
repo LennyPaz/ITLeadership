@@ -1,0 +1,20 @@
+{
+  "homeStats": [
+    { "number": "2,000+", "label": "Meals Served Annually", "icon": "Utensils" },
+    { "number": "150+", "label": "Children Served", "icon": "Heart" },
+    { "number": "15+", "label": "Years of Service", "icon": "Calendar" },
+    { "number": "50+", "label": "Community Partners", "icon": "Users" }
+  ],
+  "volunteerStats": [
+    { "number": "200+", "label": "Active Volunteers" },
+    { "number": "5,000+", "label": "Hours Donated" },
+    { "number": "15+", "label": "Partner Schools" },
+    { "number": "2,000+", "label": "Meals Served" }
+  ],
+  "donateStats": [
+    { "number": "100%", "label": "Goes to programs" },
+    { "number": "$25", "label": "Feeds a family" },
+    { "number": "2,000+", "label": "Meals served" },
+    { "number": "15+", "label": "Years of impact" }
+  ]
+}

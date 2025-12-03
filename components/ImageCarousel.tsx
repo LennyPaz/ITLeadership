@@ -1,10 +1,10 @@
 'use client'
 
 import { useCallback, useEffect, useState } from 'react'
-import Image from 'next/image'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 import { cn } from '@/lib/utils'
+import FocalImage from './FocalImage'
 
 interface CarouselImage {
   src: string
@@ -76,7 +76,7 @@ export default function ImageCarousel({
               key={image.src}
               className="relative shrink-0 w-72 md:w-80 lg:w-96 aspect-[4/3] rounded-lg overflow-hidden group"
             >
-              <Image
+              <FocalImage
                 src={image.src}
                 alt={image.alt}
                 fill

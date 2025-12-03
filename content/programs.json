@@ -1,0 +1,93 @@
+{
+  "ageRange": "1-3 Years",
+  "hours": "7 AM - 6 PM",
+  "days": "Mon - Fri",
+  "status": "Now Enrolling",
+  "features": [
+    {
+      "title": "Safe & Licensed",
+      "description": "State-licensed facility with comprehensive safety protocols and background-checked staff.",
+      "icon": "Shield"
+    },
+    {
+      "title": "Nutritious Meals",
+      "description": "Healthy breakfast, lunch, and snacks provided daily to support growing bodies and minds.",
+      "icon": "Apple"
+    },
+    {
+      "title": "Early Learning",
+      "description": "Age-appropriate curriculum focusing on social, emotional, and cognitive development.",
+      "icon": "BookOpen"
+    },
+    {
+      "title": "Nurturing Care",
+      "description": "Small class sizes ensure each child receives individual attention and loving care.",
+      "icon": "Heart"
+    },
+    {
+      "title": "Family Partnership",
+      "description": "Open communication and collaboration with parents to support each child's growth.",
+      "icon": "Users"
+    },
+    {
+      "title": "Flexible Hours",
+      "description": "Full-day care from 7 AM to 6 PM to accommodate working families' schedules.",
+      "icon": "Clock"
+    }
+  ],
+  "dailySchedule": [
+    { "time": "7:00 AM", "activity": "Arrival & Free Play" },
+    { "time": "8:30 AM", "activity": "Breakfast" },
+    { "time": "9:00 AM", "activity": "Circle Time & Morning Activities" },
+    { "time": "10:30 AM", "activity": "Outdoor Play" },
+    { "time": "11:30 AM", "activity": "Lunch" },
+    { "time": "12:00 PM", "activity": "Nap Time" },
+    { "time": "2:30 PM", "activity": "Afternoon Snack" },
+    { "time": "3:00 PM", "activity": "Learning Activities & Creative Play" },
+    { "time": "4:30 PM", "activity": "Outdoor Play" },
+    { "time": "5:30 PM", "activity": "Quiet Play & Pickup" }
+  ],
+  "enrollmentSteps": [
+    {
+      "step": 1,
+      "title": "Schedule a Tour",
+      "description": "Visit our facility, meet Ms. Annie, and see our program in action."
+    },
+    {
+      "step": 2,
+      "title": "Complete Application",
+      "description": "Fill out our enrollment application with your child's information."
+    },
+    {
+      "step": 3,
+      "title": "Submit Documents",
+      "description": "Provide immunization records and emergency contact information."
+    },
+    {
+      "step": 4,
+      "title": "Welcome to the Family",
+      "description": "Complete orientation and start your child's journey with us."
+    }
+  ],
+  "requiredDocuments": [
+    "Completed enrollment application",
+    "Child's immunization records",
+    "Birth certificate copy",
+    "Emergency contact information"
+  ],
+  "learningAreas": [
+    "Language & Literacy",
+    "Math & Numbers",
+    "Art & Creativity",
+    "Music & Movement",
+    "Science & Nature",
+    "Social Skills"
+  ],
+  "keyPoints": [
+    "Licensed by the Florida Department of Children and Families",
+    "Low student-to-teacher ratios for personalized attention",
+    "Nutritious meals and snacks included",
+    "Safe, clean, and child-friendly environment",
+    "Affordable rates with flexible payment options"
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "items": [
+    {
+      "amount": 25,
+      "impact": "Provides a week of nutritious snacks for one child",
+      "icon": "Gift",
+      "popular": false
+    },
+    {
+      "amount": 50,
+      "impact": "Supplies educational materials for a classroom",
+      "icon": "BookOpen",
+      "popular": false
+    },
+    {
+      "amount": 100,
+      "impact": "Serves 10 families at our Thanksgiving meal",
+      "icon": "Utensils",
+      "popular": true
+    },
+    {
+      "amount": 250,
+      "impact": "Sponsors a child for one month of care",
+      "icon": "Heart",
+      "popular": false
+    },
+    {
+      "amount": 500,
+      "impact": "Supports facility improvements and safety upgrades",
+      "icon": "Home",
+      "popular": false
+    },
+    {
+      "amount": 1000,
+      "impact": "Champions our mission as a Major Donor",
+      "icon": "Shield",
+      "popular": false
+    }
+  ],
+  "waysToGive": [
+    {
+      "title": "Online Donation",
+      "description": "Make a secure one-time or recurring donation through our online form.",
+      "icon": "CreditCard"
+    },
+    {
+      "title": "Mail a Check",
+      "description": "Send a check to: Project Annie, Inc., 625 W. 4th Ave., Tallahassee, FL 32303",
+      "icon": "Mail"
+    },
+    {
+      "title": "Corporate Giving",
+      "description": "Partner with us for corporate sponsorship, matching gifts, or workplace giving.",
+      "icon": "Building"
+    },
+    {
+      "title": "In-Kind Donations",
+      "description": "Donate supplies, food, or services directly to support our programs.",
+      "icon": "HandHeart"
+    }
+  ],
+  "fundAllocation": [
+    { "label": "Programs & Services", "percent": 85, "color": "bg-primary" },
+    { "label": "Thanksgiving Meals", "percent": 10, "color": "bg-accent-honey" },
+    { "label": "Administrative", "percent": 5, "color": "bg-secondary" }
+  ]
+}

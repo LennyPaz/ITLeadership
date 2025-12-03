@@ -1,7 +1,6 @@
 'use client'
 
 import { useRef } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
 import {
@@ -16,8 +15,15 @@ import {
   Quote,
   ChevronRight,
 } from 'lucide-react'
-import { cn, getImagePath } from '@/lib/utils'
+import { cn } from '@/lib/utils'
 import ImageCarousel from '@/components/ImageCarousel'
+import FocalImage from '@/components/FocalImage'
+
+// Import content from JSON files
+import statsData from '@/content/stats.json'
+import testimonialsData from '@/content/testimonials.json'
+import campaignData from '@/content/campaign.json'
+import founderData from '@/content/founder.json'
 
 // Animation variants
 const fadeInUp = {
@@ -35,22 +41,22 @@ const staggerContainer = {
   },
 }
 
-// Stats data
-const stats = [
-  { number: '2,000+', label: 'Meals Served Annually', icon: Utensils },
-  { number: '150+', label: 'Children Served', icon: Heart },
-  { number: '15+', label: 'Years of Service', icon: Calendar },
-  { number: '50+', label: 'Community Partners', icon: Users },
-]
+// Icon mapping
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  Utensils,
+  Heart,
+  Calendar,
+  Users,
+}
 
-// Pathways data
+// Pathways data (static - not frequently updated)
 const pathways = [
   {
     title: 'For Parents',
     description: 'Quality, affordable childcare for ages 1-3 in a nurturing environment.',
     href: '/programs',
     icon: GraduationCap,
-    image: getImagePath('/images/About/EarlyChildcare.webp'),
+    image: '/images/About/EarlyChildcare.webp',
     color: 'primary',
   },
   {
@@ -58,7 +64,7 @@ const pathways = [
     description: 'Join FSU and TCC students making a difference in Frenchtown.',
     href: '/volunteer',
     icon: HandHeart,
-    image: getImagePath('/images/Donate_Volunteer/V1.webp'),
+    image: '/images/Donate_Volunteer/V1.webp',
     color: 'secondary',
   },
   {
@@ -66,19 +72,19 @@ const pathways = [
     description: 'Your gift provides meals, education, and hope to families in need.',
     href: '/donate',
     icon: Heart,
-    image: getImagePath('/images/Donate_Volunteer/Charity1.webp'),
+    image: '/images/Donate_Volunteer/Charity1.webp',
     color: 'honey',
   },
 ]
 
 // Gallery images for carousel
 const galleryImages = [
-  { src: getImagePath('/images/Home/IMG1.webp'), alt: 'Community volunteers at Project Annie' },
-  { src: getImagePath('/images/Home/IMG4.webp'), alt: 'Children at Annie\'s Nursery School' },
-  { src: getImagePath('/images/Home/IMG5.webp'), alt: 'Thanksgiving community meal' },
-  { src: getImagePath('/images/Home/IMG6.webp'), alt: 'Volunteers serving meals' },
-  { src: getImagePath('/images/Home/IMG7.webp'), alt: 'Community event' },
-  { src: getImagePath('/images/Home/IMG8.webp'), alt: 'Children learning at nursery' },
+  { src: '/images/Home/IMG1.webp', alt: 'Community volunteers at Project Annie' },
+  { src: '/images/Home/IMG4.webp', alt: 'Children at Annie\'s Nursery School' },
+  { src: '/images/Home/IMG5.webp', alt: 'Thanksgiving community meal' },
+  { src: '/images/Home/IMG6.webp', alt: 'Volunteers serving meals' },
+  { src: '/images/Home/IMG7.webp', alt: 'Community event' },
+  { src: '/images/Home/IMG8.webp', alt: 'Children learning at nursery' },
 ]
 
 function AnimatedSection({
@@ -108,14 +114,23 @@ function AnimatedSection({
 }
 
 export default function HomePage() {
+  // Get content from imported JSON
+  const stats = statsData.homeStats
+  const testimonials = testimonialsData.items.filter(t => t.showOn.includes('home'))
+  const campaign = campaignData
+  const founder = founderData
+
+  // Calculate campaign progress
+  const campaignProgress = Math.round((campaign.currentAmount / campaign.goalAmount) * 100)
+
   return (
     <>
       {/* Hero Section - Editorial Split Layout */}
       <section className="relative min-h-screen flex items-center bg-secondary-dark overflow-hidden">
         {/* Background image with overlay */}
         <div className="absolute inset-0">
-          <Image
-            src={getImagePath('/images/Home/IMG1.webp')}
+          <FocalImage
+            src="/images/Home/IMG1.webp"
             alt="Project Annie community gathering"
             fill
             className="object-cover opacity-30"
@@ -201,9 +216,9 @@ export default function HomePage() {
               <div className="relative">
                 {/* Main image */}
                 <div className="relative aspect-[4/5] rounded-lg overflow-hidden shadow-2xl">
-                  <Image
-                    src={getImagePath('/images/ms-annie.webp')}
-                    alt="Ms. Annie Johnson, Founder of Project Annie"
+                  <FocalImage
+                    src={founder.photo}
+                    alt={founder.name}
                     fill
                     className="object-cover"
                     priority
@@ -214,10 +229,10 @@ export default function HomePage() {
                 <div className="absolute -bottom-6 -left-6 bg-white p-5 rounded-lg shadow-xl max-w-[240px]">
                   <Quote className="w-8 h-8 text-accent-honey mb-2" />
                   <p className="text-neutral-charcoal font-accent italic text-sm leading-relaxed">
-                    &ldquo;Every child deserves a chance to learn and grow.&rdquo;
+                    &ldquo;{founder.quotes[0]}&rdquo;
                   </p>
                   <p className="mt-2 text-primary font-heading font-semibold text-sm">
-                     Ms. Annie Johnson
+                     {founder.name}
                   </p>
                 </div>
 
@@ -267,22 +282,25 @@ export default function HomePage() {
             variants={staggerContainer}
             className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
           >
-            {stats.map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                variants={fadeInUp}
-                transition={{ duration: 0.5 }}
-                className="relative group"
-              >
-                <div className="bg-white rounded-lg p-6 lg:p-8 text-center border border-neutral-light hover:border-primary/20 transition-colors">
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary mb-4 group-hover:scale-110 transition-transform">
-                    <stat.icon className="w-6 h-6" />
+            {stats.map((stat) => {
+              const IconComponent = iconMap[stat.icon || 'Heart'] || Heart
+              return (
+                <motion.div
+                  key={stat.label}
+                  variants={fadeInUp}
+                  transition={{ duration: 0.5 }}
+                  className="relative group"
+                >
+                  <div className="bg-white rounded-lg p-6 lg:p-8 text-center border border-neutral-light hover:border-primary/20 transition-colors">
+                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary mb-4 group-hover:scale-110 transition-transform">
+                      <IconComponent className="w-6 h-6" />
+                    </div>
+                    <div className="stat-number mb-2">{stat.number}</div>
+                    <div className="text-neutral-gray text-sm">{stat.label}</div>
                   </div>
-                  <div className="stat-number mb-2">{stat.number}</div>
-                  <div className="text-neutral-gray text-sm">{stat.label}</div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              )
+            })}
           </motion.div>
         </div>
       </section>
@@ -296,8 +314,8 @@ export default function HomePage() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4">
                   <div className="aspect-[3/4] rounded-lg overflow-hidden">
-                    <Image
-                      src={getImagePath('/images/About/A1.webp')}
+                    <FocalImage
+                      src="/images/About/A1.webp"
                       alt="Children at Project Annie"
                       width={400}
                       height={533}
@@ -305,8 +323,8 @@ export default function HomePage() {
                     />
                   </div>
                   <div className="aspect-square rounded-lg overflow-hidden">
-                    <Image
-                      src={getImagePath('/images/Home/IMG8.webp')}
+                    <FocalImage
+                      src="/images/Home/IMG8.webp"
                       alt="Community volunteers"
                       width={400}
                       height={400}
@@ -316,8 +334,8 @@ export default function HomePage() {
                 </div>
                 <div className="space-y-4 pt-8">
                   <div className="aspect-square rounded-lg overflow-hidden">
-                    <Image
-                      src={getImagePath('/images/About/C1.webp')}
+                    <FocalImage
+                      src="/images/About/C1.webp"
                       alt="Learning activities"
                       width={400}
                       height={400}
@@ -325,8 +343,8 @@ export default function HomePage() {
                     />
                   </div>
                   <div className="aspect-[3/4] rounded-lg overflow-hidden">
-                    <Image
-                      src={getImagePath('/images/Donate_Volunteer/Charity2.webp')}
+                    <FocalImage
+                      src="/images/Donate_Volunteer/Charity2.webp"
                       alt="Thanksgiving meal service"
                       width={400}
                       height={533}
@@ -350,7 +368,7 @@ export default function HomePage() {
               <div className="space-y-4 text-neutral-gray text-lg leading-relaxed">
                 <p>
                   For over 15 years, Project Annie has been a cornerstone of
-                  Tallahassee&apos;s Frenchtown community. Founded by Ms. Annie Johnson,
+                  Tallahassee&apos;s Frenchtown community. Founded by {founder.name},
                   our organization provides essential services that empower families
                   and strengthen our neighborhood.
                 </p>
@@ -380,14 +398,13 @@ export default function HomePage() {
               {/* Quote */}
               <blockquote className="mt-10 pt-8 border-t border-neutral-light">
                 <p className="quote">
-                  &ldquo;When you help a child, you help a family. When you help
-                  a family, you help a community.&rdquo;
+                  &ldquo;{founder.quotes[2]}&rdquo;
                 </p>
                 <footer className="mt-4 flex items-center gap-3">
                   <div className="w-12 h-12 rounded-full overflow-hidden">
-                    <Image
-                      src={getImagePath('/images/ms-annie.webp')}
-                      alt="Ms. Annie Johnson"
+                    <FocalImage
+                      src={founder.photo}
+                      alt={founder.name}
                       width={48}
                       height={48}
                       className="object-cover w-full h-full"
@@ -395,10 +412,10 @@ export default function HomePage() {
                   </div>
                   <div>
                     <div className="font-heading font-semibold text-neutral-charcoal">
-                      Ms. Annie Johnson
+                      {founder.name}
                     </div>
                     <div className="text-sm text-neutral-gray">
-                      Founder & Executive Director
+                      {founder.title}
                     </div>
                   </div>
                 </footer>
@@ -418,7 +435,7 @@ export default function HomePage() {
             </h2>
             <p className="text-neutral-gray text-lg">
               Whether you&apos;re a parent seeking quality childcare, a student
-              looking to volunteer, or a donor wanting to give back  there&apos;s
+              looking to volunteer, or a donor wanting to give back  there&apos;s
               a place for you at Project Annie.
             </p>
           </AnimatedSection>
@@ -430,7 +447,7 @@ export default function HomePage() {
                   <div className="relative h-full bg-white rounded-lg overflow-hidden border border-neutral-light hover:border-primary/20 hover:shadow-md transition-all duration-300">
                     {/* Image */}
                     <div className="relative aspect-[16/10] overflow-hidden">
-                      <Image
+                      <FocalImage
                         src={pathway.image}
                         alt={pathway.title}
                         fill
@@ -469,102 +486,102 @@ export default function HomePage() {
       </section>
 
       {/* Current Campaign Section */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div className="container-base">
-          <div className="relative bg-secondary-dark rounded-2xl overflow-hidden">
-            {/* Background pattern */}
-            <div className="absolute inset-0 opacity-10">
-              <div className="absolute top-0 right-0 w-96 h-96 bg-accent-honey rounded-full blur-3xl" />
-              <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary rounded-full blur-3xl" />
-            </div>
-
-            <div className="relative grid lg:grid-cols-2 gap-8 p-8 lg:p-12">
-              {/* Content */}
-              <div className="text-white">
-                <span className="inline-flex items-center gap-2 bg-white/20 px-3 py-1.5 rounded text-sm font-medium mb-6">
-                  <Utensils className="w-4 h-4 text-accent-honey" />
-                  Annual Campaign
-                </span>
-
-                <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 text-white">
-                  Thanksgiving Meal Program 2025
-                </h2>
-
-                <p className="text-white text-lg mb-8">
-                  Every year, Project Annie serves over 2,000 meals to families
-                  in need during Thanksgiving. Help us continue this tradition
-                  of community care and connection.
-                </p>
-
-                {/* Progress bar */}
-                <div className="mb-8">
-                  <div className="flex justify-between text-sm mb-2">
-                    <span className="text-white/80">Progress</span>
-                    <span className="text-accent-honey font-semibold">
-                      $12,500 / $20,000
-                    </span>
-                  </div>
-                  <div className="h-3 bg-white/20 rounded-full overflow-hidden">
-                    <div
-                      className="h-full bg-accent-honey rounded-full transition-all duration-1000"
-                      style={{ width: '62.5%' }}
-                    />
-                  </div>
-                  <p className="text-white/80 text-sm mt-2">
-                    62% of our goal reached  thank you to all our donors!
-                  </p>
-                </div>
-
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Link
-                    href="/donate"
-                    className="btn bg-accent-honey hover:bg-accent-honey-dark text-neutral-charcoal font-semibold px-8 py-4"
-                  >
-                    <Heart className="w-5 h-5" />
-                    Donate Now
-                  </Link>
-                  <Link
-                    href="/volunteer"
-                    className="btn bg-white/10 hover:bg-white/20 text-white border border-white/20 px-8 py-4"
-                  >
-                    Volunteer to Help
-                  </Link>
-                </div>
+      {campaign.active && (
+        <section className="py-20 lg:py-28 bg-white">
+          <div className="container-base">
+            <div className="relative bg-secondary-dark rounded-2xl overflow-hidden">
+              {/* Background pattern */}
+              <div className="absolute inset-0 opacity-10">
+                <div className="absolute top-0 right-0 w-96 h-96 bg-accent-honey rounded-full blur-3xl" />
+                <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary rounded-full blur-3xl" />
               </div>
 
-              {/* Image */}
-              <div className="relative hidden lg:block">
-                <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
-                  <Image
-                    src={getImagePath('/images/Donate_Volunteer/Charity3.webp')}
-                    alt="Thanksgiving meal service"
-                    fill
-                    className="object-cover"
-                  />
+              <div className="relative grid lg:grid-cols-2 gap-8 p-8 lg:p-12">
+                {/* Content */}
+                <div className="text-white">
+                  <span className="inline-flex items-center gap-2 bg-white/20 px-3 py-1.5 rounded text-sm font-medium mb-6">
+                    <Utensils className="w-4 h-4 text-accent-honey" />
+                    Annual Campaign
+                  </span>
+
+                  <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 text-white">
+                    {campaign.title} {campaign.year}
+                  </h2>
+
+                  <p className="text-white text-lg mb-8">
+                    {campaign.description}
+                  </p>
+
+                  {/* Progress bar */}
+                  <div className="mb-8">
+                    <div className="flex justify-between text-sm mb-2">
+                      <span className="text-white/80">Progress</span>
+                      <span className="text-accent-honey font-semibold">
+                        ${campaign.currentAmount.toLocaleString()} / ${campaign.goalAmount.toLocaleString()}
+                      </span>
+                    </div>
+                    <div className="h-3 bg-white/20 rounded-full overflow-hidden">
+                      <div
+                        className="h-full bg-accent-honey rounded-full transition-all duration-1000"
+                        style={{ width: `${campaignProgress}%` }}
+                      />
+                    </div>
+                    <p className="text-white/80 text-sm mt-2">
+                      {campaignProgress}% of our goal reached  thank you to all our donors!
+                    </p>
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <Link
+                      href="/donate"
+                      className="btn bg-accent-honey hover:bg-accent-honey-dark text-neutral-charcoal font-semibold px-8 py-4"
+                    >
+                      <Heart className="w-5 h-5" />
+                      Donate Now
+                    </Link>
+                    <Link
+                      href="/volunteer"
+                      className="btn bg-white/10 hover:bg-white/20 text-white border border-white/20 px-8 py-4"
+                    >
+                      Volunteer to Help
+                    </Link>
+                  </div>
                 </div>
 
-                {/* Stats floating card */}
-                <div className="absolute -bottom-4 -left-4 bg-white rounded-lg p-4 shadow-lg">
-                  <div className="grid grid-cols-2 gap-4 text-center">
-                    <div>
-                      <div className="text-2xl font-heading font-bold text-primary">
-                        2,000+
+                {/* Image */}
+                <div className="relative hidden lg:block">
+                  <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
+                    <FocalImage
+                      src="/images/Donate_Volunteer/Charity3.webp"
+                      alt="Thanksgiving meal service"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+
+                  {/* Stats floating card */}
+                  <div className="absolute -bottom-4 -left-4 bg-white rounded-lg p-4 shadow-lg">
+                    <div className="grid grid-cols-2 gap-4 text-center">
+                      <div>
+                        <div className="text-2xl font-heading font-bold text-primary">
+                          {campaign.mealsServed}
+                        </div>
+                        <div className="text-xs text-neutral-gray">Meals Served</div>
                       </div>
-                      <div className="text-xs text-neutral-gray">Meals Served</div>
-                    </div>
-                    <div>
-                      <div className="text-2xl font-heading font-bold text-secondary">
-                        500+
+                      <div>
+                        <div className="text-2xl font-heading font-bold text-secondary">
+                          {campaign.familiesFed}
+                        </div>
+                        <div className="text-xs text-neutral-gray">Families Fed</div>
                       </div>
-                      <div className="text-xs text-neutral-gray">Families Fed</div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Photo Gallery Preview */}
       <section className="py-20 lg:py-28 bg-neutral-cream overflow-hidden">
@@ -601,23 +618,7 @@ export default function HomePage() {
           </AnimatedSection>
 
           <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-            {[
-              {
-                quote: "Project Annie gave my children a safe, loving place to learn while I finished my degree. I couldn't have done it without Ms. Annie.",
-                author: 'Maria T.',
-                role: 'Parent',
-              },
-              {
-                quote: "Volunteering at the Thanksgiving meal service changed my perspective. The sense of community here is unlike anything I've experienced.",
-                author: 'James K.',
-                role: 'FSU Volunteer',
-              },
-              {
-                quote: "The dedication Ms. Annie shows to every child and family is inspiring. This organization is the heart of Frenchtown.",
-                author: 'Dr. Sarah M.',
-                role: 'Community Partner',
-              },
-            ].map((testimonial, index) => (
+            {testimonials.map((testimonial, index) => (
               <AnimatedSection key={testimonial.author} delay={index * 0.1}>
                 <div className="h-full bg-neutral-cream rounded-lg p-6 lg:p-8 flex flex-col">
                   <div>
@@ -652,8 +653,8 @@ export default function HomePage() {
       <section className="relative py-24 lg:py-32 bg-secondary-dark overflow-hidden">
         {/* Background image */}
         <div className="absolute inset-0">
-          <Image
-            src={getImagePath('/images/Home/IMG12.webp')}
+          <FocalImage
+            src="/images/Home/IMG12.webp"
             alt="Community gathering"
             fill
             className="object-cover opacity-20"
@@ -673,7 +674,7 @@ export default function HomePage() {
                 <span className="text-accent-honey">Stronger Community</span>
               </h2>
               <p className="text-white/80 text-lg md:text-xl mb-10 max-w-2xl mx-auto">
-                Whether you donate, volunteer, or spread the word  every action
+                Whether you donate, volunteer, or spread the word  every action
                 helps a child learn, a family eat, and our community grow stronger.
               </p>
 

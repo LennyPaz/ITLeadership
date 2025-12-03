@@ -388,4 +388,41 @@
   .img-zoom:hover {
     @apply scale-105;
   }
+
+  /* Focal point utilities for smart image cropping */
+  .focal-center {
+    object-position: center center !important;
+  }
+
+  .focal-top {
+    object-position: center top !important;
+  }
+
+  .focal-bottom {
+    object-position: center bottom !important;
+  }
+
+  .focal-left {
+    object-position: left center !important;
+  }
+
+  .focal-right {
+    object-position: right center !important;
+  }
+
+  .focal-top-left {
+    object-position: left top !important;
+  }
+
+  .focal-top-right {
+    object-position: right top !important;
+  }
+
+  .focal-bottom-left {
+    object-position: left bottom !important;
+  }
+
+  .focal-bottom-right {
+    object-position: right bottom !important;
+  }
 }

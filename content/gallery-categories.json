@@ -1,0 +1,9 @@
+{
+  "items": [
+    { "id": "all", "label": "All Photos" },
+    { "id": "community", "label": "Community" },
+    { "id": "nursery", "label": "Nursery School" },
+    { "id": "thanksgiving", "label": "Thanksgiving" },
+    { "id": "volunteers", "label": "Volunteers" }
+  ]
+}

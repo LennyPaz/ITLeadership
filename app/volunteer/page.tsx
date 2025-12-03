@@ -1,7 +1,6 @@
 'use client'
 
 import { useRef } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
 import {
@@ -20,8 +19,8 @@ import {
   FileEdit,
   Quote,
 } from 'lucide-react'
-import { getImagePath } from '@/lib/utils'
 import ImageCarousel from '@/components/ImageCarousel'
+import FocalImage from '@/components/FocalImage'
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -109,12 +108,12 @@ const benefits = [
 ]
 
 const volunteerGallery = [
-  { src: getImagePath('/images/Donate_Volunteer/V1.webp'), alt: 'Volunteers at Project Annie' },
-  { src: getImagePath('/images/Donate_Volunteer/V2.webp'), alt: 'Student volunteers' },
-  { src: getImagePath('/images/Donate_Volunteer/V3.webp'), alt: 'Community service event' },
-  { src: getImagePath('/images/Donate_Volunteer/V4.webp'), alt: 'Thanksgiving volunteers' },
-  { src: getImagePath('/images/Donate_Volunteer/V5.webp'), alt: 'Volunteer meal service' },
-  { src: getImagePath('/images/Donate_Volunteer/V6.webp'), alt: 'Team of volunteers' },
+  { src: '/images/Donate_Volunteer/V1.webp', alt: 'Volunteers at Project Annie' },
+  { src: '/images/Donate_Volunteer/V2.webp', alt: 'Student volunteers' },
+  { src: '/images/Donate_Volunteer/V3.webp', alt: 'Community service event' },
+  { src: '/images/Donate_Volunteer/V4.webp', alt: 'Thanksgiving volunteers' },
+  { src: '/images/Donate_Volunteer/V5.webp', alt: 'Volunteer meal service' },
+  { src: '/images/Donate_Volunteer/V6.webp', alt: 'Team of volunteers' },
 ]
 
 const testimonials = [
@@ -133,8 +132,8 @@ const testimonials = [
 // Extended gallery for carousel
 const extendedGallery = [
   ...volunteerGallery,
-  { src: getImagePath('/images/Donate_Volunteer/V7.webp'), alt: 'Volunteers working' },
-  { src: getImagePath('/images/Donate_Volunteer/V8.webp'), alt: 'Community service' },
+  { src: '/images/Donate_Volunteer/V7.webp', alt: 'Volunteers working' },
+  { src: '/images/Donate_Volunteer/V8.webp', alt: 'Community service' },
 ]
 
 export default function VolunteerPage() {
@@ -143,8 +142,8 @@ export default function VolunteerPage() {
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 bg-secondary-dark overflow-hidden">
         <div className="absolute inset-0">
-          <Image
-            src={getImagePath('/images/Donate_Volunteer/V1.webp')}
+          <FocalImage
+            src="/images/Donate_Volunteer/V1.webp"
             alt="Volunteers at Project Annie"
             fill
             className="object-cover opacity-20"
@@ -271,7 +270,7 @@ export default function VolunteerPage() {
                       index === 0 ? 'col-span-2 aspect-video' : 'aspect-square'
                     }`}
                   >
-                    <Image
+                    <FocalImage
                       src={image.src}
                       alt={image.alt}
                       fill

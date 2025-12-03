@@ -1,60 +1,17 @@
 'use client'
 
 import { useState, useCallback, useEffect } from 'react'
-import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react'
-import { cn, getImagePath } from '@/lib/utils'
+import { cn } from '@/lib/utils'
+import FocalImage from '@/components/FocalImage'
 
-const categories = [
-  { id: 'all', label: 'All Photos' },
-  { id: 'community', label: 'Community' },
-  { id: 'nursery', label: 'Nursery School' },
-  { id: 'thanksgiving', label: 'Thanksgiving' },
-  { id: 'volunteers', label: 'Volunteers' },
-]
+// Import content from JSON files
+import galleryCategoriesData from '@/content/gallery-categories.json'
+import galleryData from '@/content/gallery.json'
 
-const galleryImages = [
-  // Community images
-  { src: getImagePath('/images/Home/IMG1.webp'), alt: 'Community volunteers at Project Annie', category: 'community' },
-  { src: getImagePath('/images/Home/IMG4.webp'), alt: 'Community gathering', category: 'community' },
-  { src: getImagePath('/images/Home/IMG5.webp'), alt: 'Frenchtown community event', category: 'community' },
-  { src: getImagePath('/images/Home/IMG6.webp'), alt: 'Community celebration', category: 'community' },
-  { src: getImagePath('/images/Home/IMG7.webp'), alt: 'Project Annie community event', category: 'community' },
-  { src: getImagePath('/images/Home/IMG8.webp'), alt: 'Community members at event', category: 'community' },
-  { src: getImagePath('/images/Home/IMG9.webp'), alt: 'Frenchtown families', category: 'community' },
-  { src: getImagePath('/images/Home/IMG10.webp'), alt: 'Community support', category: 'community' },
-
-  // Nursery school images
-  { src: getImagePath('/images/About/C1.webp'), alt: 'Children at Annie\'s Nursery School', category: 'nursery' },
-  { src: getImagePath('/images/About/C2.webp'), alt: 'Nursery school classroom', category: 'nursery' },
-  { src: getImagePath('/images/About/C3.webp'), alt: 'Early learning activities', category: 'nursery' },
-  { src: getImagePath('/images/About/C4.webp'), alt: 'Children playing', category: 'nursery' },
-  { src: getImagePath('/images/About/C5.webp'), alt: 'Toddlers learning', category: 'nursery' },
-  { src: getImagePath('/images/About/C6.webp'), alt: 'Nursery school activities', category: 'nursery' },
-  { src: getImagePath('/images/About/EarlyChildcare.webp'), alt: 'Early childcare program', category: 'nursery' },
-  { src: getImagePath('/images/About/Toddler Care.webp'), alt: 'Toddler care at Project Annie', category: 'nursery' },
-
-  // Thanksgiving / Charity images
-  { src: getImagePath('/images/Donate_Volunteer/Charity1.webp'), alt: 'Thanksgiving meal preparation', category: 'thanksgiving' },
-  { src: getImagePath('/images/Donate_Volunteer/Charity2.webp'), alt: 'Community meal service', category: 'thanksgiving' },
-  { src: getImagePath('/images/Donate_Volunteer/Charity3.webp'), alt: 'Thanksgiving feast', category: 'thanksgiving' },
-  { src: getImagePath('/images/Donate_Volunteer/Annie1.webp'), alt: 'Ms. Annie at Thanksgiving', category: 'thanksgiving' },
-  { src: getImagePath('/images/Donate_Volunteer/Annie2.webp'), alt: 'Community leaders', category: 'thanksgiving' },
-  { src: getImagePath('/images/Home/IMG12.webp'), alt: 'Thanksgiving event', category: 'thanksgiving' },
-
-  // Volunteer images
-  { src: getImagePath('/images/Donate_Volunteer/V1.webp'), alt: 'Volunteers at Project Annie', category: 'volunteers' },
-  { src: getImagePath('/images/Donate_Volunteer/V2.webp'), alt: 'Student volunteers', category: 'volunteers' },
-  { src: getImagePath('/images/Donate_Volunteer/V3.webp'), alt: 'FSU volunteers', category: 'volunteers' },
-  { src: getImagePath('/images/Donate_Volunteer/V4.webp'), alt: 'Community volunteers', category: 'volunteers' },
-  { src: getImagePath('/images/Donate_Volunteer/V5.webp'), alt: 'Volunteer team', category: 'volunteers' },
-  { src: getImagePath('/images/Donate_Volunteer/V6.webp'), alt: 'Volunteers helping', category: 'volunteers' },
-  { src: getImagePath('/images/Donate_Volunteer/V7.webp'), alt: 'TCC student volunteers', category: 'volunteers' },
-  { src: getImagePath('/images/Donate_Volunteer/V8.webp'), alt: 'Volunteer service', category: 'volunteers' },
-  { src: getImagePath('/images/Donate_Volunteer/VW1.webp'), alt: 'Volunteers at work', category: 'volunteers' },
-  { src: getImagePath('/images/Donate_Volunteer/VW2.webp'), alt: 'Volunteer activities', category: 'volunteers' },
-]
+const categories = galleryCategoriesData.items
+const galleryImages = galleryData.items
 
 export default function GalleryPage() {
   const [selectedCategory, setSelectedCategory] = useState('all')
@@ -119,8 +76,8 @@ export default function GalleryPage() {
       {/* Hero Section */}
       <section className="relative pt-32 pb-16 lg:pt-40 lg:pb-20 bg-secondary-dark overflow-hidden">
         <div className="absolute inset-0">
-          <Image
-            src={getImagePath('/images/Home/IMG12.webp')}
+          <FocalImage
+            src="/images/Home/IMG12.webp"
             alt="Project Annie community"
             fill
             className="object-cover opacity-20"
@@ -196,7 +153,7 @@ export default function GalleryPage() {
                   onClick={() => openLightbox(index)}
                 >
                   <div className="aspect-square relative">
-                    <Image
+                    <FocalImage
                       src={image.src}
                       alt={image.alt}
                       fill
@@ -283,7 +240,7 @@ export default function GalleryPage() {
               className="relative max-w-5xl max-h-[80vh] mx-4"
               onClick={(e) => e.stopPropagation()}
             >
-              <Image
+              <FocalImage
                 src={filteredImages[lightboxIndex].src}
                 alt={filteredImages[lightboxIndex].alt}
                 width={1200}

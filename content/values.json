@@ -1,0 +1,26 @@
+{
+  "mission": "\"Helping Children/Adults to Help Themselves.\" Project Annie provides quality, affordable childcare and early education that empowers families in the Frenchtown community to pursue their goals while ensuring their children receive the care and development they deserve.",
+  "vision": "A thriving Frenchtown where every family has access to quality childcare, every child has the foundation for success, and our community grows stronger through mutual support and shared purpose.",
+  "values": [
+    {
+      "title": "Compassion",
+      "description": "We treat every child and family with love, dignity, and respect.",
+      "icon": "Heart"
+    },
+    {
+      "title": "Community",
+      "description": "We believe in the power of neighbors helping neighbors.",
+      "icon": "Users"
+    },
+    {
+      "title": "Education",
+      "description": "We invest in early learning to build stronger futures.",
+      "icon": "BookOpen"
+    },
+    {
+      "title": "Excellence",
+      "description": "We strive for quality in everything we do.",
+      "icon": "Star"
+    }
+  ]
+}

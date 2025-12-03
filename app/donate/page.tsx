@@ -1,7 +1,6 @@
 'use client'
 
 import { useRef, useState } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
 import {
@@ -20,7 +19,8 @@ import {
   HandHeart,
   Quote,
 } from 'lucide-react'
-import { cn, getImagePath } from '@/lib/utils'
+import { cn } from '@/lib/utils'
+import FocalImage from '@/components/FocalImage'
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -141,8 +141,8 @@ export default function DonatePage() {
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 bg-secondary-dark overflow-hidden">
         <div className="absolute inset-0">
-          <Image
-            src={getImagePath('/images/Donate_Volunteer/Charity1.webp')}
+          <FocalImage
+            src="/images/Donate_Volunteer/Charity1.webp"
             alt="Community support at Project Annie"
             fill
             className="object-cover opacity-20"
@@ -347,8 +347,8 @@ export default function DonatePage() {
                     </p>
                     <div className="flex items-center gap-2">
                       <div className="w-8 h-8 rounded-full overflow-hidden">
-                        <Image
-                          src={getImagePath('/images/ms-annie.webp')}
+                        <FocalImage
+                          src="/images/ms-annie.webp"
                           alt="Ms. Annie"
                           width={32}
                           height={32}
@@ -468,8 +468,8 @@ export default function DonatePage() {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-4">
                     <div className="aspect-square rounded-lg overflow-hidden">
-                      <Image
-                        src={getImagePath('/images/Donate_Volunteer/Charity2.webp')}
+                      <FocalImage
+                        src="/images/Donate_Volunteer/Charity2.webp"
                         alt="Community meal service"
                         width={400}
                         height={400}
@@ -477,8 +477,8 @@ export default function DonatePage() {
                       />
                     </div>
                     <div className="aspect-[4/3] rounded-lg overflow-hidden">
-                      <Image
-                        src={getImagePath('/images/About/C1.webp')}
+                      <FocalImage
+                        src="/images/About/C1.webp"
                         alt="Children at nursery"
                         width={400}
                         height={300}
@@ -488,8 +488,8 @@ export default function DonatePage() {
                   </div>
                   <div className="space-y-4 pt-8">
                     <div className="aspect-[4/3] rounded-lg overflow-hidden">
-                      <Image
-                        src={getImagePath('/images/Donate_Volunteer/Annie1.webp')}
+                      <FocalImage
+                        src="/images/Donate_Volunteer/Annie1.webp"
                         alt="Ms. Annie with community"
                         width={400}
                         height={300}
@@ -497,8 +497,8 @@ export default function DonatePage() {
                       />
                     </div>
                     <div className="aspect-square rounded-lg overflow-hidden">
-                      <Image
-                        src={getImagePath('/images/Donate_Volunteer/Charity3.webp')}
+                      <FocalImage
+                        src="/images/Donate_Volunteer/Charity3.webp"
                         alt="Thanksgiving volunteers"
                         width={400}
                         height={400}

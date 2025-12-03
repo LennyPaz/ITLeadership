@@ -3,6 +3,9 @@ import Image from 'next/image'
 import { MapPin, Phone, Mail, Clock, Heart, ExternalLink } from 'lucide-react'
 import { getImagePath } from '@/lib/utils'
 
+// Import content from JSON files
+import settingsData from '@/content/settings.json'
+
 const quickLinks = [
   { href: '/about', label: 'About Us' },
   { href: '/programs', label: 'Programs' },
@@ -19,6 +22,11 @@ const supportLinks = [
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
+  const settings = settingsData
+
+  // Format address
+  const formattedAddress = `${settings.address.street}, ${settings.address.city}, ${settings.address.state} ${settings.address.zip}`
+  const mapsUrl = `https://maps.google.com/?q=${encodeURIComponent(formattedAddress)}`
 
   return (
     <footer className="bg-secondary text-white">
@@ -31,15 +39,15 @@ export default function Footer() {
               <div className="relative w-16 h-16 bg-white rounded-lg p-1 transition-transform duration-200 group-hover:scale-105">
                 <Image
                   src={getImagePath('/images/logo.webp')}
-                  alt="Project Annie Logo"
+                  alt={`${settings.organizationName} Logo`}
                   fill
                   className="object-contain"
                 />
               </div>
             </Link>
             <p className="mt-5 text-white/80 text-sm leading-relaxed">
-              Helping Children/Adults to Help Themselves. Providing quality,
-              affordable childcare to Tallahassee&apos;s Frenchtown community since 2008.
+              {settings.tagline}. Providing quality,
+              affordable childcare to Tallahassee&apos;s Frenchtown community since {settings.yearFounded}.
             </p>
             <div className="mt-6 inline-flex items-center gap-2 text-accent-honey text-sm font-medium">
               <Heart className="w-4 h-4" />
@@ -106,43 +114,43 @@ export default function Footer() {
             <ul className="space-y-4">
               <li>
                 <a
-                  href="https://maps.google.com/?q=625+W+4th+Ave+Tallahassee+FL+32303"
+                  href={mapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-start gap-3 text-white/80 hover:text-white transition-colors text-sm group"
                 >
                   <MapPin className="w-4 h-4 mt-0.5 shrink-0 text-accent-honey" />
                   <span>
-                    625 W. 4th Ave.<br />
-                    Tallahassee, FL 32303
+                    {settings.address.street}<br />
+                    {settings.address.city}, {settings.address.state} {settings.address.zip}
                   </span>
                   <ExternalLink className="w-3 h-3 mt-0.5 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </a>
               </li>
               <li>
                 <a
-                  href="tel:8502226133"
+                  href={`tel:${settings.phone.replace(/[^0-9]/g, '')}`}
                   className="flex items-center gap-3 text-white/80 hover:text-white transition-colors text-sm"
                 >
                   <Phone className="w-4 h-4 shrink-0 text-accent-honey" />
-                  <span>(850) 222-6133</span>
+                  <span>{settings.phone}</span>
                 </a>
               </li>
               <li>
                 <a
-                  href="mailto:info@projectannie.org"
+                  href={`mailto:${settings.email}`}
                   className="flex items-center gap-3 text-white/80 hover:text-white transition-colors text-sm"
                 >
                   <Mail className="w-4 h-4 shrink-0 text-accent-honey" />
-                  <span>info@projectannie.org</span>
+                  <span>{settings.email}</span>
                 </a>
               </li>
               <li>
                 <div className="flex items-start gap-3 text-white/80 text-sm">
                   <Clock className="w-4 h-4 mt-0.5 shrink-0 text-accent-honey" />
                   <span>
-                    Mon - Fri: 7:00 AM - 6:00 PM<br />
-                    Sat - Sun: Closed
+                    {settings.hours.weekdays}<br />
+                    {settings.hours.weekend}
                   </span>
                 </div>
               </li>
@@ -156,7 +164,7 @@ export default function Footer() {
         <div className="container-base py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/80">
             <p>
-              &copy; {currentYear} Project Annie, Inc. All rights reserved.
+              &copy; {currentYear} {settings.organizationName}, Inc. All rights reserved.
             </p>
             <div className="flex items-center gap-6">
               <Link
@@ -166,7 +174,7 @@ export default function Footer() {
                 Privacy Policy
               </Link>
               <span className="text-white/50">|</span>
-              <span>EIN: 26-0638919</span>
+              <span>EIN: {settings.ein}</span>
             </div>
           </div>
         </div>
