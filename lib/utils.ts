@@ -1,8 +1,8 @@
 import { clsx, type ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 
-// Base path for GitHub Pages deployment
-export const BASE_PATH = '/ITLeadership'
+// Base path - empty for Netlify, was '/ITLeadership' for GitHub Pages
+export const BASE_PATH = ''
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -10,8 +10,8 @@ export function cn(...inputs: ClassValue[]) {
 
 // Helper to get correct image path with basePath for static export
 export function getImagePath(path: string): string {
-  // Only add basePath if the path starts with /
-  if (path.startsWith('/')) {
+  // Only add basePath if the path starts with / and basePath is set
+  if (BASE_PATH && path.startsWith('/')) {
     return `${BASE_PATH}${path}`
   }
   return path
