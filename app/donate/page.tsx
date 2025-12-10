@@ -231,12 +231,15 @@ export default function DonatePage() {
                 </div>
 
                 {/* Donate Button */}
-                <button
+                <a
+                  href={`https://www.paypal.com/paypalme/ProjectAnnieInc/${selectedAmount || customAmount || ''}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn-primary w-full py-4 text-lg justify-center"
                 >
                   <Heart className="w-5 h-5" />
                   Donate ${selectedAmount || customAmount || '0'}
-                </button>
+                </a>
 
                 <p className="text-center text-sm text-neutral-gray mt-4">
                   Secure donation processed by PayPal. You&apos;ll be redirected to complete your gift.

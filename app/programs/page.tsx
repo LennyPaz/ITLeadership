@@ -13,6 +13,8 @@ import {
   Calendar,
   Star,
   Sparkles,
+  Download,
+  Briefcase,
 } from 'lucide-react'
 import FocalImage from '@/components/FocalImage'
 import { getIcon } from '@/lib/icons'
@@ -393,6 +395,122 @@ export default function ProgramsPage() {
                 </div>
               </div>
             </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Enrollment Application Download */}
+      <section className="py-20 lg:py-28 bg-white">
+        <div className="container-base">
+          <div className="max-w-4xl mx-auto">
+            <AnimatedSection className="text-center mb-12">
+              <span className="badge-honey mb-4">Download Forms</span>
+              <h2 className="text-3xl md:text-4xl font-heading font-bold text-neutral-charcoal mb-4">
+                Enrollment Application
+              </h2>
+              <p className="text-neutral-gray text-lg">
+                Ready to enroll your child? Download and complete our enrollment application
+                for children ages 1-3.
+              </p>
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.2}>
+              <div className="bg-neutral-cream rounded-lg p-8 text-center">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <FileText className="w-8 h-8 text-primary" />
+                </div>
+                <h3 className="font-heading font-bold text-xl text-neutral-charcoal mb-2">
+                  Application for Enrollment
+                </h3>
+                <p className="text-neutral-gray mb-6">
+                  Complete this application to begin the enrollment process for your child.
+                </p>
+                <a
+                  href="/images/Nursery/Forms/Annie APPLICATION FOR ENROLLMENT.pdf"
+                  download
+                  className="btn-primary inline-flex items-center gap-2 px-8 py-3"
+                >
+                  <Download className="w-5 h-5" />
+                  Download Application (PDF)
+                </a>
+              </div>
+            </AnimatedSection>
+          </div>
+        </div>
+      </section>
+
+      {/* Employment Forms */}
+      <section className="py-20 lg:py-28 bg-neutral-cream">
+        <div className="container-base">
+          <AnimatedSection className="text-center max-w-2xl mx-auto mb-14">
+            <span className="badge-secondary mb-4">Join Our Team</span>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-neutral-charcoal mb-4">
+              Employment Opportunities
+            </h2>
+            <p className="text-neutral-gray text-lg">
+              Interested in working at Annie&apos;s Nursery School? Download the required
+              forms below to begin your application process.
+            </p>
+          </AnimatedSection>
+
+          <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {[
+              {
+                title: 'Items Needed Prior to Employment',
+                description: 'Review the requirements and documents needed before starting employment.',
+                file: '1. Items needed prior to emplyment.docx',
+              },
+              {
+                title: 'Employment Application',
+                description: 'Complete this application to apply for a position at our nursery school.',
+                file: '2. Employment Application.docx',
+              },
+              {
+                title: 'DCF Course Registration - How to Apply',
+                description: 'Instructions for registering for required DCF training courses.',
+                file: '3. DCF Course Reg 1 how to apply.docx',
+              },
+              {
+                title: 'DCF Course Registration - Sample Sheet',
+                description: 'Sample registration form for DCF course requirements.',
+                file: '4. DCF Course Reg 2 sample sheet.docx',
+              },
+            ].map((form, index) => (
+              <AnimatedSection key={form.file} delay={index * 0.1}>
+                <div className="bg-white rounded-lg p-6 h-full border border-neutral-light hover:border-primary/20 hover:shadow-sm transition-all">
+                  <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-4">
+                    <Briefcase className="w-6 h-6 text-secondary" />
+                  </div>
+                  <h3 className="font-heading font-bold text-lg text-neutral-charcoal mb-2">
+                    {form.title}
+                  </h3>
+                  <p className="text-neutral-gray text-sm mb-4">
+                    {form.description}
+                  </p>
+                  <a
+                    href={`/images/Nursery/Forms/${form.file}`}
+                    download
+                    className="inline-flex items-center gap-2 text-primary font-medium hover:text-primary-dark transition-colors"
+                  >
+                    <Download className="w-4 h-4" />
+                    Download Form
+                  </a>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+
+          <AnimatedSection delay={0.5} className="mt-12 text-center">
+            <p className="text-neutral-gray">
+              Questions about employment?{' '}
+              <Link href="/contact" className="text-primary font-medium hover:text-primary-dark">
+                Contact us
+              </Link>{' '}
+              or call{' '}
+              <a href="tel:8502226133" className="text-primary font-medium hover:text-primary-dark">
+                (850) 222-6133
+              </a>
+            </p>
           </AnimatedSection>
         </div>
       </section>
