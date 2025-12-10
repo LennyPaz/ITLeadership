@@ -204,32 +204,6 @@ export default function DonatePage() {
                   </div>
                 </div>
 
-                {/* Donation Frequency */}
-                <div className="mb-8">
-                  <label className="input-label">Donation Frequency</label>
-                  <div className="flex gap-4">
-                    <label className="flex items-center gap-2 cursor-pointer">
-                      <input
-                        type="radio"
-                        name="frequency"
-                        value="once"
-                        defaultChecked
-                        className="w-4 h-4 text-primary border-neutral-light focus:ring-primary"
-                      />
-                      <span className="text-neutral-charcoal">One-time</span>
-                    </label>
-                    <label className="flex items-center gap-2 cursor-pointer">
-                      <input
-                        type="radio"
-                        name="frequency"
-                        value="monthly"
-                        className="w-4 h-4 text-primary border-neutral-light focus:ring-primary"
-                      />
-                      <span className="text-neutral-charcoal">Monthly</span>
-                    </label>
-                  </div>
-                </div>
-
                 {/* Donate Button */}
                 <a
                   href={`https://www.paypal.com/paypalme/ProjectAnnieInc/${selectedAmount || customAmount || ''}`}
@@ -242,7 +216,7 @@ export default function DonatePage() {
                 </a>
 
                 <p className="text-center text-sm text-neutral-gray mt-4">
-                  Secure donation processed by PayPal. You&apos;ll be redirected to complete your gift.
+                  Secure one-time donation processed by PayPal. You&apos;ll be redirected to complete your gift.
                 </p>
               </AnimatedSection>
             </div>
