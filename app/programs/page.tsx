@@ -380,11 +380,11 @@ export default function ProgramsPage() {
                 <div className="w-12 h-12 bg-accent-honey/20 rounded-lg flex items-center justify-center shrink-0">
                   <FileText className="w-6 h-6 text-accent-honey-dark" />
                 </div>
-                <div>
+                <div className="flex-1">
                   <h3 className="font-heading font-bold text-lg text-neutral-charcoal mb-2">
                     Documents Required
                   </h3>
-                  <ul className="space-y-2 text-neutral-gray">
+                  <ul className="space-y-2 text-neutral-gray mb-6">
                     {requiredDocuments.map((doc) => (
                       <li key={doc} className="flex items-center gap-2">
                         <CheckCircle2 className="w-4 h-4 text-accent-sage" />
@@ -392,50 +392,18 @@ export default function ProgramsPage() {
                       </li>
                     ))}
                   </ul>
+                  <a
+                    href="/images/Nursery/Forms/Annie APPLICATION FOR ENROLLMENT.pdf"
+                    download
+                    className="btn-primary inline-flex items-center gap-2 px-6 py-3"
+                  >
+                    <Download className="w-5 h-5" />
+                    Download Enrollment Application (PDF)
+                  </a>
                 </div>
               </div>
             </div>
           </AnimatedSection>
-        </div>
-      </section>
-
-      {/* Enrollment Application Download */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div className="container-base">
-          <div className="max-w-4xl mx-auto">
-            <AnimatedSection className="text-center mb-12">
-              <span className="badge-honey mb-4">Download Forms</span>
-              <h2 className="text-3xl md:text-4xl font-heading font-bold text-neutral-charcoal mb-4">
-                Enrollment Application
-              </h2>
-              <p className="text-neutral-gray text-lg">
-                Ready to enroll your child? Download and complete our enrollment application
-                for children ages 1-3.
-              </p>
-            </AnimatedSection>
-
-            <AnimatedSection delay={0.2}>
-              <div className="bg-neutral-cream rounded-lg p-8 text-center">
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <FileText className="w-8 h-8 text-primary" />
-                </div>
-                <h3 className="font-heading font-bold text-xl text-neutral-charcoal mb-2">
-                  Application for Enrollment
-                </h3>
-                <p className="text-neutral-gray mb-6">
-                  Complete this application to begin the enrollment process for your child.
-                </p>
-                <a
-                  href="/images/Nursery/Forms/Annie APPLICATION FOR ENROLLMENT.pdf"
-                  download
-                  className="btn-primary inline-flex items-center gap-2 px-8 py-3"
-                >
-                  <Download className="w-5 h-5" />
-                  Download Application (PDF)
-                </a>
-              </div>
-            </AnimatedSection>
-          </div>
         </div>
       </section>
 
