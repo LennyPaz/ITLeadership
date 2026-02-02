@@ -133,7 +133,7 @@ export default function VolunteerPage() {
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <a
-                href="mailto:volunteer@projectannie.org"
+                href="mailto:anniejohnsont@gmail.com"
                 className="btn bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/20 px-8 py-4 text-lg"
               >
                 <Mail className="w-5 h-5" />
@@ -408,11 +408,11 @@ export default function VolunteerPage() {
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <a
-                href="mailto:volunteer@projectannie.org"
+                href="mailto:anniejohnsont@gmail.com"
                 className="btn bg-white/10 hover:bg-white/20 text-white border border-white/20 px-8 py-4 text-lg"
               >
                 <Mail className="w-5 h-5" />
-                volunteer@projectannie.org
+                anniejohnsont@gmail.com
               </a>
             </div>
           </AnimatedSection>

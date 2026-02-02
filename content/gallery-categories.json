@@ -2,8 +2,8 @@
   "items": [
     { "id": "all", "label": "All Photos" },
     { "id": "community", "label": "Community" },
-    { "id": "nursery", "label": "Nursery School" },
-    { "id": "thanksgiving", "label": "Thanksgiving" },
+    { "id": "children", "label": "Children" },
+    { "id": "meals", "label": "Meals" },
     { "id": "volunteers", "label": "Volunteers" }
   ]
 }

@@ -2,7 +2,7 @@
   "organizationName": "Project Annie",
   "tagline": "Helping Children/Adults to Help Themselves",
   "phone": "(850) 222-6133",
-  "email": "info@projectannie.org",
+  "email": "anniejohnsont@gmail.com",
   "address": {
     "street": "625 W. 4th Ave.",
     "city": "Tallahassee",
@@ -10,10 +10,10 @@
     "zip": "32303"
   },
   "hours": {
-    "weekdays": "Mon - Fri: 7:00 AM - 6:00 PM",
+    "weekdays": "Mon - Fri: 9:00 AM - 3:00 PM",
     "weekend": "Sat - Sun: Closed"
   },
-  "volunteerEmail": "volunteer@projectannie.org",
+  "volunteerEmail": "anniejohnsont@gmail.com",
   "ein": "26-0638919",
   "yearFounded": 2008
 }

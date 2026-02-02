@@ -1,6 +1,6 @@
 {
   "ageRange": "1-3 Years",
-  "hours": "7 AM - 6 PM",
+  "hours": "9 AM - 3 PM",
   "days": "Mon - Fri",
   "status": "Now Enrolling",
   "features": [
@@ -30,22 +30,21 @@
       "icon": "Users"
     },
     {
-      "title": "Flexible Hours",
-      "description": "Full-day care from 7 AM to 6 PM to accommodate working families' schedules.",
+      "title": "Convenient Hours",
+      "description": "Quality care from 9 AM to 3 PM, Monday through Friday.",
       "icon": "Clock"
     }
   ],
   "dailySchedule": [
-    { "time": "7:00 AM", "activity": "Arrival & Free Play" },
-    { "time": "8:30 AM", "activity": "Breakfast" },
-    { "time": "9:00 AM", "activity": "Circle Time & Morning Activities" },
+    { "time": "9:00 AM", "activity": "Arrival & Breakfast" },
+    { "time": "9:30 AM", "activity": "Circle Time & Morning Activities" },
     { "time": "10:30 AM", "activity": "Outdoor Play" },
-    { "time": "11:30 AM", "activity": "Lunch" },
-    { "time": "12:00 PM", "activity": "Nap Time" },
-    { "time": "2:30 PM", "activity": "Afternoon Snack" },
-    { "time": "3:00 PM", "activity": "Learning Activities & Creative Play" },
-    { "time": "4:30 PM", "activity": "Outdoor Play" },
-    { "time": "5:30 PM", "activity": "Quiet Play & Pickup" }
+    { "time": "11:15 AM", "activity": "Learning Activities" },
+    { "time": "12:00 PM", "activity": "Lunch" },
+    { "time": "12:30 PM", "activity": "Rest Time" },
+    { "time": "2:00 PM", "activity": "Snack & Afternoon Activities" },
+    { "time": "2:45 PM", "activity": "Cleanup & Pickup Prep" },
+    { "time": "3:00 PM", "activity": "Pickup" }
   ],
   "enrollmentSteps": [
     {

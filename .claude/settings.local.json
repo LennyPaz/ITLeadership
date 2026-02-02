@@ -33,7 +33,11 @@
       "Bash(npx tinacms audit)",
       "Bash(python3:*)",
       "Bash(npm audit:*)",
-      "Bash(tee:*)"
+      "Bash(tee:*)",
+      "Bash(grep:*)",
+      "Bash(/dev/null --include=\"*.tsx\" --include=\"*.ts\")",
+      "Bash(xargs:*)",
+      "Bash(npx next build)"
     ],
     "deny": [],
     "ask": []

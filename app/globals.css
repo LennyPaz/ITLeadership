@@ -98,7 +98,15 @@
 
   /* Focus states for accessibility */
   :focus-visible {
-    @apply outline-2 outline-offset-2 outline-primary;
+    outline: 3px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* High-contrast focus for elements on dark backgrounds */
+  [class*="bg-secondary"] :focus-visible,
+  [class*="bg-neutral-charcoal"] :focus-visible {
+    outline-color: #fff;
   }
 
   /* Selection */
@@ -184,6 +192,11 @@
   .card-interactive {
     @apply card-elevated cursor-pointer;
     @apply hover:-translate-y-0.5;
+  }
+
+  .card-interactive:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 2px;
   }
 
   /* Form inputs */

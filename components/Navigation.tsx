@@ -141,6 +141,7 @@ export default function Navigation() {
                 <Link
                   key={link.href}
                   href={link.href}
+                  aria-current={isActive ? 'page' : undefined}
                   className={cn(
                     'relative px-4 py-2 font-heading font-medium text-sm transition-colors',
                     isActive
@@ -224,6 +225,7 @@ export default function Navigation() {
                       >
                         <Link
                           href={link.href}
+                          aria-current={isActive ? 'page' : undefined}
                           className={cn(
                             'flex items-center justify-between py-3 px-4 rounded-lg font-heading font-medium transition-colors',
                             isActive

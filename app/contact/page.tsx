@@ -83,6 +83,7 @@ export default function ContactPage() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -94,19 +95,36 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setError(null)
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formState),
+      })
 
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-    setFormState({
-      name: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: '',
-    })
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message')
+      }
+
+      setIsSubmitted(true)
+      setFormState({
+        name: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: '',
+      })
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -163,7 +181,7 @@ export default function ContactPage() {
             </a>
 
             <a
-              href="mailto:info@projectannie.org"
+              href="mailto:anniejohnsont@gmail.com"
               className="flex items-center gap-4 py-6 px-4 hover:bg-white transition-colors"
             >
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
@@ -172,7 +190,7 @@ export default function ContactPage() {
               <div>
                 <div className="text-sm text-neutral-gray">Email Us</div>
                 <div className="font-heading font-semibold text-neutral-charcoal">
-                  info@projectannie.org
+                  anniejohnsont@gmail.com
                 </div>
               </div>
             </a>
@@ -317,6 +335,12 @@ export default function ContactPage() {
                       />
                     </div>
 
+                    {error && (
+                      <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-700">
+                        {error}
+                      </div>
+                    )}
+
                     <button
                       type="submit"
                       disabled={isSubmitting}
@@ -355,7 +379,7 @@ export default function ContactPage() {
                         <div>
                           <div className="font-semibold text-neutral-charcoal">Hours</div>
                           <div className="text-neutral-gray text-sm">
-                            Monday - Friday: 7:00 AM - 6:00 PM<br />
+                            Monday - Friday: 9:00 AM - 3:00 PM<br />
                             Saturday - Sunday: Closed
                           </div>
                         </div>
@@ -391,10 +415,10 @@ export default function ContactPage() {
                         <div>
                           <div className="font-semibold text-neutral-charcoal">Email</div>
                           <a
-                            href="mailto:info@projectannie.org"
+                            href="mailto:anniejohnsont@gmail.com"
                             className="text-primary hover:text-primary-dark text-sm"
                           >
-                            info@projectannie.org
+                            anniejohnsont@gmail.com
                           </a>
                         </div>
                       </div>
