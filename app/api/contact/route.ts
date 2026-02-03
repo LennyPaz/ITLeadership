@@ -1,6 +1,16 @@
 import { Resend } from 'resend'
 import { NextResponse } from 'next/server'
 
+/** Escape HTML special characters to prevent XSS in email templates */
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;')
+}
+
 // Initialize Resend only when API key is available (not during build)
 const getResend = () => {
   const apiKey = process.env.RESEND_API_KEY
@@ -34,6 +44,13 @@ export async function POST(request: Request) {
 
     const subjectLabel = subjectLabels[subject] || subject
 
+    // Sanitize all user inputs before injecting into HTML email
+    const safeName = escapeHtml(name)
+    const safeEmail = escapeHtml(email)
+    const safePhone = phone ? escapeHtml(phone) : ''
+    const safeMessage = escapeHtml(message)
+    const safeSubjectLabel = escapeHtml(subjectLabel)
+
     const resend = getResend()
     const { data, error } = await resend.emails.send({
       from: 'Project Annie Contact Form <onboarding@resend.dev>',
@@ -49,31 +66,31 @@ export async function POST(request: Request) {
           <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
             <tr>
               <td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; width: 120px;">Name:</td>
-              <td style="padding: 10px; border-bottom: 1px solid #eee;">${name}</td>
+              <td style="padding: 10px; border-bottom: 1px solid #eee;">${safeName}</td>
             </tr>
             <tr>
               <td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: bold;">Email:</td>
               <td style="padding: 10px; border-bottom: 1px solid #eee;">
-                <a href="mailto:${email}" style="color: #C4532A;">${email}</a>
+                <a href="mailto:${safeEmail}" style="color: #C4532A;">${safeEmail}</a>
               </td>
             </tr>
-            ${phone ? `
+            ${safePhone ? `
             <tr>
               <td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: bold;">Phone:</td>
               <td style="padding: 10px; border-bottom: 1px solid #eee;">
-                <a href="tel:${phone}" style="color: #C4532A;">${phone}</a>
+                <a href="tel:${safePhone}" style="color: #C4532A;">${safePhone}</a>
               </td>
             </tr>
             ` : ''}
             <tr>
               <td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: bold;">Subject:</td>
-              <td style="padding: 10px; border-bottom: 1px solid #eee;">${subjectLabel}</td>
+              <td style="padding: 10px; border-bottom: 1px solid #eee;">${safeSubjectLabel}</td>
             </tr>
           </table>
 
           <div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; margin-top: 20px;">
             <h3 style="color: #333; margin-top: 0;">Message:</h3>
-            <p style="color: #555; line-height: 1.6; white-space: pre-wrap;">${message}</p>
+            <p style="color: #555; line-height: 1.6; white-space: pre-wrap;">${safeMessage}</p>
           </div>
 
           <p style="color: #888; font-size: 12px; margin-top: 30px; text-align: center;">
