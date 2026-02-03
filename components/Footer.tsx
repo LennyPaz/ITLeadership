@@ -45,7 +45,7 @@ export default function Footer() {
                 />
               </div>
             </Link>
-            <p className="mt-5 text-white/80 text-sm leading-relaxed">
+            <p className="mt-5 text-white/90 text-sm leading-relaxed">
               {settings.tagline}. Providing quality,
               affordable childcare to Tallahassee&apos;s Frenchtown community since {settings.yearFounded}.
             </p>
@@ -65,7 +65,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-white/80 hover:text-white transition-colors text-sm inline-flex items-center gap-1 group"
+                    className="text-white/90 hover:text-white transition-colors text-sm inline-flex items-center gap-1 group"
                   >
                     <span className="group-hover:translate-x-1 transition-transform">
                       {link.label}
@@ -86,7 +86,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-white/80 hover:text-white transition-colors text-sm inline-flex items-center gap-1 group"
+                    className="text-white/90 hover:text-white transition-colors text-sm inline-flex items-center gap-1 group"
                   >
                     <span className="group-hover:translate-x-1 transition-transform">
                       {link.label}
@@ -117,7 +117,7 @@ export default function Footer() {
                   href={mapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-start gap-3 text-white/80 hover:text-white transition-colors text-sm group"
+                  className="flex items-start gap-3 text-white/90 hover:text-white transition-colors text-sm group"
                 >
                   <MapPin className="w-4 h-4 mt-0.5 shrink-0 text-accent-honey" />
                   <span>
@@ -130,7 +130,7 @@ export default function Footer() {
               <li>
                 <a
                   href={`tel:${settings.phone.replace(/[^0-9]/g, '')}`}
-                  className="flex items-center gap-3 text-white/80 hover:text-white transition-colors text-sm"
+                  className="flex items-center gap-3 text-white/90 hover:text-white transition-colors text-sm"
                 >
                   <Phone className="w-4 h-4 shrink-0 text-accent-honey" />
                   <span>{settings.phone}</span>
@@ -139,14 +139,14 @@ export default function Footer() {
               <li>
                 <a
                   href={`mailto:${settings.email}`}
-                  className="flex items-center gap-3 text-white/80 hover:text-white transition-colors text-sm"
+                  className="flex items-center gap-3 text-white/90 hover:text-white transition-colors text-sm"
                 >
                   <Mail className="w-4 h-4 shrink-0 text-accent-honey" />
                   <span>{settings.email}</span>
                 </a>
               </li>
               <li>
-                <div className="flex items-start gap-3 text-white/80 text-sm">
+                <div className="flex items-start gap-3 text-white/90 text-sm">
                   <Clock className="w-4 h-4 mt-0.5 shrink-0 text-accent-honey" />
                   <span>
                     {settings.hours.weekdays}<br />
@@ -162,7 +162,7 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-white/10">
         <div className="container-base py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/80">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/90">
             <p>
               &copy; {currentYear} {settings.organizationName}, Inc. All rights reserved.
             </p>

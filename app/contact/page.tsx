@@ -258,6 +258,8 @@ export default function ContactPage() {
                           id="name"
                           name="name"
                           required
+                          aria-invalid={!!error}
+                          aria-describedby={error ? 'form-error' : undefined}
                           value={formState.name}
                           onChange={handleInputChange}
                           className="input"
@@ -273,6 +275,8 @@ export default function ContactPage() {
                           id="email"
                           name="email"
                           required
+                          aria-invalid={!!error}
+                          aria-describedby={error ? 'form-error' : undefined}
                           value={formState.email}
                           onChange={handleInputChange}
                           className="input"
@@ -304,6 +308,8 @@ export default function ContactPage() {
                           id="subject"
                           name="subject"
                           required
+                          aria-invalid={!!error}
+                          aria-describedby={error ? 'form-error' : undefined}
                           value={formState.subject}
                           onChange={handleInputChange}
                           className="input"
@@ -327,6 +333,8 @@ export default function ContactPage() {
                         id="message"
                         name="message"
                         required
+                        aria-invalid={!!error}
+                        aria-describedby={error ? 'form-error' : undefined}
                         rows={6}
                         value={formState.message}
                         onChange={handleInputChange}
@@ -336,7 +344,7 @@ export default function ContactPage() {
                     </div>
 
                     {error && (
-                      <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-700">
+                      <div id="form-error" role="alert" className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-700">
                         {error}
                       </div>
                     )}
