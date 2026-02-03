@@ -145,6 +145,7 @@ export default function GalleryPage() {
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
+                aria-pressed={selectedCategory === category.id}
                 className={cn(
                   'px-4 py-2 rounded font-heading font-medium text-sm whitespace-nowrap transition-all flex items-center gap-2',
                   selectedCategory === category.id
@@ -181,7 +182,16 @@ export default function GalleryPage() {
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.3, delay: index * 0.02 }}
                   className="relative group cursor-pointer overflow-hidden rounded-lg break-inside-avoid mb-4"
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`View ${image.alt}`}
                   onClick={() => openLightbox(index)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault()
+                      openLightbox(index)
+                    }
+                  }}
                 >
                   <div className="relative">
                     <Image
@@ -235,6 +245,9 @@ export default function GalleryPage() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 bg-neutral-charcoal/95 flex items-center justify-center"
+            role="dialog"
+            aria-modal="true"
+            aria-label={filteredImages[lightboxIndex].alt}
             onClick={closeLightbox}
           >
             {/* Close button */}

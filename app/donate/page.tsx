@@ -188,12 +188,13 @@ export default function DonatePage() {
 
                 {/* Custom Amount */}
                 <div className="mb-8">
-                  <label className="input-label">Or enter a custom amount</label>
+                  <label htmlFor="custom-amount" className="input-label">Or enter a custom amount</label>
                   <div className="relative">
                     <span className="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-gray font-semibold">
                       $
                     </span>
                     <input
+                      id="custom-amount"
                       type="number"
                       min="1"
                       placeholder="Other amount"
