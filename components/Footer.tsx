@@ -174,6 +174,13 @@ export default function Footer() {
                 Privacy Policy
               </Link>
               <span className="text-white/50">|</span>
+              <Link
+                href="/accessibility"
+                className="hover:text-white transition-colors"
+              >
+                Accessibility
+              </Link>
+              <span className="text-white/50">|</span>
               <span>EIN: {settings.ein}</span>
             </div>
           </div>
