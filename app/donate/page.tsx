@@ -196,6 +196,7 @@ export default function DonatePage() {
                     <input
                       id="custom-amount"
                       type="number"
+                      inputMode="numeric"
                       min="1"
                       placeholder="Other amount"
                       value={customAmount}

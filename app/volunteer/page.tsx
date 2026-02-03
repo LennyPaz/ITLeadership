@@ -8,6 +8,7 @@ import {
   ArrowRight,
   Mail,
   Quote,
+  Heart,
 } from 'lucide-react'
 import ImageCarousel from '@/components/ImageCarousel'
 import FocalImage from '@/components/FocalImage'
@@ -418,6 +419,22 @@ export default function VolunteerPage() {
           </AnimatedSection>
         </div>
       </section>
+
+      {/* Sticky mobile donate nudge */}
+      <div className="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-white/95 backdrop-blur-md border-t border-neutral-light px-4 py-3">
+        <div className="flex items-center justify-between gap-3">
+          <p className="text-sm text-neutral-gray">
+            Not ready to volunteer?
+          </p>
+          <Link
+            href="/donate"
+            className="flex items-center gap-2 px-4 py-2 bg-accent-honey text-white text-sm font-heading font-semibold rounded-full whitespace-nowrap"
+          >
+            <Heart className="w-4 h-4" />
+            Donate Instead
+          </Link>
+        </div>
+      </div>
     </>
   )
 }

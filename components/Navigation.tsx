@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Phone, ChevronRight } from 'lucide-react'
+import { Menu, X, Phone, ChevronRight, Heart } from 'lucide-react'
 import { cn, getImagePath, BASE_PATH } from '@/lib/utils'
 
 const navLinks = [
@@ -57,6 +57,7 @@ export default function Navigation() {
   }, [isOpen])
 
   return (
+    <>
     <header
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
@@ -265,5 +266,24 @@ export default function Navigation() {
         )}
       </AnimatePresence>
     </header>
+
+      {/* Sticky mobile donate button */}
+      <Link
+        href="/donate"
+        className={cn(
+          'fixed bottom-6 right-4 z-50 lg:hidden',
+          'flex items-center gap-2 px-5 py-3',
+          'bg-primary text-white font-heading font-semibold',
+          'rounded-full shadow-lg shadow-primary/30',
+          'transition-all duration-300',
+          'hover:bg-primary-dark hover:shadow-xl',
+          isOpen ? 'translate-y-20 opacity-0' : 'translate-y-0 opacity-100'
+        )}
+        aria-label="Donate Now"
+      >
+        <Heart className="w-5 h-5" />
+        Donate
+      </Link>
+    </>
   )
 }

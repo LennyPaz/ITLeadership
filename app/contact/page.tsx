@@ -274,6 +274,7 @@ export default function ContactPage() {
                           type="email"
                           id="email"
                           name="email"
+                          inputMode="email"
                           required
                           aria-invalid={!!error}
                           aria-describedby={error ? 'form-error' : undefined}
@@ -294,6 +295,7 @@ export default function ContactPage() {
                           type="tel"
                           id="phone"
                           name="phone"
+                          inputMode="tel"
                           value={formState.phone}
                           onChange={handleInputChange}
                           className="input"
