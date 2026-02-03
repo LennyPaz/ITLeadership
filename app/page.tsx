@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
 import {
@@ -111,6 +111,49 @@ function AnimatedSection({
       {children}
     </motion.div>
   )
+}
+
+// Animated count-up for stat numbers
+function CountUp({ value }: { value: string }) {
+  const ref = useRef<HTMLSpanElement>(null)
+  const isInView = useInView(ref, { once: true, margin: '-50px' })
+  const [display, setDisplay] = useState(value)
+
+  // Parse "2,000+", "$25", "100%" etc.
+  const parse = useCallback(() => {
+    const prefix = value.match(/^[^0-9]*/)?.[0] || ''
+    const suffix = value.match(/[^0-9]*$/)?.[0] || ''
+    const numStr = value
+      .replace(prefix, '')
+      .replace(suffix, '')
+      .replace(/,/g, '')
+    const target = parseInt(numStr, 10)
+    return { prefix, suffix, target }
+  }, [value])
+
+  useEffect(() => {
+    if (!isInView) return
+    const { prefix, suffix, target } = parse()
+    if (isNaN(target) || target === 0) return
+
+    const duration = 1800 // ms
+    const start = performance.now()
+
+    const step = (now: number) => {
+      const elapsed = now - start
+      const progress = Math.min(elapsed / duration, 1)
+      // Ease-out cubic
+      const eased = 1 - Math.pow(1 - progress, 3)
+      const current = Math.round(eased * target)
+      const formatted = current.toLocaleString()
+      setDisplay(`${prefix}${formatted}${suffix}`)
+      if (progress < 1) requestAnimationFrame(step)
+    }
+
+    requestAnimationFrame(step)
+  }, [isInView, parse])
+
+  return <span ref={ref}>{display}</span>
 }
 
 export default function HomePage() {
@@ -277,7 +320,7 @@ export default function HomePage() {
                     <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary mb-4 group-hover:scale-110 transition-transform">
                       <IconComponent className="w-6 h-6" />
                     </div>
-                    <div className="stat-number mb-2">{stat.number}</div>
+                    <div className="stat-number mb-2"><CountUp value={stat.number} /></div>
                     <div className="text-neutral-gray text-sm">{stat.label}</div>
                   </div>
                 </motion.div>
@@ -602,7 +645,7 @@ export default function HomePage() {
           <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
             {testimonials.map((testimonial, index) => (
               <AnimatedSection key={testimonial.author} delay={index * 0.1}>
-                <div className="h-full bg-neutral-cream rounded-lg p-6 lg:p-8 flex flex-col">
+                <div className="h-full bg-neutral-cream rounded-lg p-6 lg:p-8 flex flex-col border-l-4 border-accent-honey/40 hover:-translate-y-1 hover:shadow-md transition-all duration-300">
                   <div>
                     <Quote className="w-10 h-10 text-accent-honey/50 mb-4" />
                     <p className="text-neutral-charcoal text-lg leading-relaxed">

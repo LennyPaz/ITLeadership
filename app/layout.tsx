@@ -70,6 +70,45 @@ export const metadata: Metadata = {
   },
 }
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'NonprofitOrganization',
+  name: 'Project Annie, Inc.',
+  alternateName: "Annie's Nursery School",
+  url: 'https://projectannie.org',
+  logo: 'https://projectannie.org/images/logo.webp',
+  description:
+    "Project Annie provides quality, affordable childcare and early education for children ages 1-3 in Tallahassee's Frenchtown community. Serving families for over 15 years.",
+  foundingDate: '2008',
+  founder: {
+    '@type': 'Person',
+    name: 'Annie M. Johnson',
+  },
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '625 W. 4th Ave.',
+    addressLocality: 'Tallahassee',
+    addressRegion: 'FL',
+    postalCode: '32303',
+    addressCountry: 'US',
+  },
+  telephone: '+1-850-222-6133',
+  email: 'anniejohnsont@gmail.com',
+  areaServed: {
+    '@type': 'City',
+    name: 'Tallahassee',
+    containedInPlace: {
+      '@type': 'State',
+      name: 'Florida',
+    },
+  },
+  nonprofitStatus: '501(c)(3)',
+  taxID: '26-0638919',
+  sameAs: [
+    'https://www.paypal.com/paypalme/ProjectAnnieInc',
+  ],
+}
+
 export default function RootLayout({
   children,
 }: {
@@ -84,6 +123,10 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#C4532A" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body className="min-h-screen flex flex-col">
         <a
