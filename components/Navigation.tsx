@@ -126,7 +126,7 @@ export default function Navigation() {
               </div>
               <div className={cn(
                 'text-xs tracking-wide transition-colors',
-                isScrolled || isOpen ? 'text-neutral-gray' : 'text-white/80'
+                isScrolled || isOpen ? 'text-neutral-gray' : 'text-white/90'
               )}>
                 Annie&apos;s Nursery School
               </div>

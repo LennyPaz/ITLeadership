@@ -242,7 +242,7 @@ export default function HomePage() {
                       <div className="text-3xl font-heading font-bold text-white">
                         {stat.num}
                       </div>
-                      <div className="text-white/60 text-sm">{stat.label}</div>
+                      <div className="text-white/80 text-sm">{stat.label}</div>
                     </div>
                   ))}
                 </div>
@@ -540,7 +540,7 @@ export default function HomePage() {
                   {/* Progress bar */}
                   <div className="mb-8">
                     <div className="flex justify-between text-sm mb-2">
-                      <span className="text-white/80">Progress</span>
+                      <span className="text-white/90">Progress</span>
                       <span className="text-accent-honey font-semibold">
                         ${campaign.currentAmount.toLocaleString()} / ${campaign.goalAmount.toLocaleString()}
                       </span>
@@ -551,7 +551,7 @@ export default function HomePage() {
                         style={{ width: `${campaignProgress}%` }}
                       />
                     </div>
-                    <p className="text-white/80 text-sm mt-2">
+                    <p className="text-white/90 text-sm mt-2">
                       {campaignProgress}% of our goal reached  thank you to all our donors!
                     </p>
                   </div>
@@ -698,7 +698,7 @@ export default function HomePage() {
                 Join Us in Building a{' '}
                 <span className="text-accent-honey">Stronger Community</span>
               </h2>
-              <p className="text-white/80 text-lg md:text-xl mb-10 max-w-2xl mx-auto">
+              <p className="text-white/90 text-lg md:text-xl mb-10 max-w-2xl mx-auto">
                 Whether you donate, volunteer, or spread the word  every action
                 helps a child learn, a family eat, and our community grow stronger.
               </p>

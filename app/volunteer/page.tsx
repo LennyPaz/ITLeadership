@@ -118,7 +118,7 @@ export default function VolunteerPage() {
               <span className="text-accent-honey">Difference</span>
               <br />in Your Community
             </h1>
-            <p className="text-white/80 text-lg md:text-xl leading-relaxed max-w-2xl">
+            <p className="text-white/90 text-lg md:text-xl leading-relaxed max-w-2xl">
               Join FSU and TCC students, professionals, and community members who
               give their time to support Frenchtown families. Every hour you give
               creates lasting impact.
@@ -395,7 +395,7 @@ export default function VolunteerPage() {
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-6">
               Ready to Make a Difference?
             </h2>
-            <p className="text-white/80 text-lg mb-10 max-w-2xl mx-auto">
+            <p className="text-white/90 text-lg mb-10 max-w-2xl mx-auto">
               Your time and talents can change lives. Join our community of
               volunteers today and experience the joy of giving back.
             </p>

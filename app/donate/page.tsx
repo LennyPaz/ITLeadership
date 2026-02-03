@@ -111,7 +111,7 @@ export default function DonatePage() {
               Your Gift{' '}
               <span className="text-accent-honey">Changes Lives</span>
             </h1>
-            <p className="text-white/80 text-lg md:text-xl leading-relaxed max-w-2xl">
+            <p className="text-white/90 text-lg md:text-xl leading-relaxed max-w-2xl">
               Every donation to Project Annie goes directly to supporting children,
               feeding families, and strengthening the Frenchtown community. Your
               generosity makes a real difference.
@@ -129,7 +129,7 @@ export default function DonatePage() {
                 <div className="text-3xl md:text-4xl font-heading font-bold text-white">
                   {stat.number}
                 </div>
-                <div className="text-white/80 text-sm">{stat.label}</div>
+                <div className="text-white/90 text-sm">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -442,7 +442,7 @@ export default function DonatePage() {
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-6">
               Interested in Major Giving or Sponsorship?
             </h2>
-            <p className="text-white/80 text-lg mb-10 max-w-2xl mx-auto">
+            <p className="text-white/90 text-lg mb-10 max-w-2xl mx-auto">
               For donations over $1,000, corporate partnerships, or planned giving,
               we&apos;d love to speak with you personally about how your gift can
               make the greatest impact.

@@ -153,7 +153,7 @@ export default function ContactPage() {
               Get in{' '}
               <span className="text-accent-honey">Touch</span>
             </h1>
-            <p className="text-white/80 text-lg md:text-xl leading-relaxed">
+            <p className="text-white/90 text-lg md:text-xl leading-relaxed">
               Have questions about enrollment, volunteering, or how to support our
               mission? We&apos;d love to hear from you.
             </p>
@@ -458,7 +458,7 @@ export default function ContactPage() {
                             <div className="font-heading font-semibold text-white text-sm">
                               {action.title}
                             </div>
-                            <div className="text-white/60 text-xs">
+                            <div className="text-white/80 text-xs">
                               {action.description}
                             </div>
                           </div>
@@ -523,7 +523,7 @@ export default function ContactPage() {
             <h2 className="text-2xl md:text-3xl font-heading font-bold text-white mb-4">
               Ready to Visit?
             </h2>
-            <p className="text-white/80 mb-6 max-w-xl mx-auto">
+            <p className="text-white/90 mb-6 max-w-xl mx-auto">
               Schedule a tour to see our nursery school in person and meet Ms. Annie
               and our dedicated team.
             </p>

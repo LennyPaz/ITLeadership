@@ -129,7 +129,7 @@ export default function GalleryPage() {
               Our Community{' '}
               <span className="text-accent-honey">in Action</span>
             </h1>
-            <p className="text-white/80 text-lg md:text-xl leading-relaxed max-w-2xl">
+            <p className="text-white/90 text-lg md:text-xl leading-relaxed max-w-2xl">
               Explore photos from our nursery school, community meals, volunteer
               events, and celebrations. These moments capture the heart of Project Annie.
             </p>
@@ -260,7 +260,7 @@ export default function GalleryPage() {
             </button>
 
             {/* Image counter */}
-            <div className="absolute top-4 left-4 text-white/80 text-sm font-medium bg-black/30 px-3 py-1 rounded-full">
+            <div className="absolute top-4 left-4 text-white/90 text-sm font-medium bg-black/30 px-3 py-1 rounded-full">
               {lightboxIndex + 1} / {filteredImages.length}
             </div>
 
@@ -315,7 +315,7 @@ export default function GalleryPage() {
             </motion.div>
 
             {/* Keyboard hint */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/50 text-xs bg-black/30 px-3 py-1 rounded-full">
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/70 text-xs bg-black/30 px-3 py-1 rounded-full">
               Use arrow keys to navigate, ESC to close
             </div>
           </motion.div>

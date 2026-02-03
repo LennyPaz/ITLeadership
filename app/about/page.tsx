@@ -92,7 +92,7 @@ export default function AboutPage() {
               A Legacy of{' '}
               <span className="text-accent-honey">Love & Service</span>
             </h1>
-            <p className="text-white/80 text-lg md:text-xl leading-relaxed max-w-2xl">
+            <p className="text-white/90 text-lg md:text-xl leading-relaxed max-w-2xl">
               For over 15 years, Project Annie has been the heart of Frenchtown
               providing quality childcare, nourishing meals, and hope to families
               throughout Tallahassee.
@@ -481,7 +481,7 @@ export default function AboutPage() {
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-6">
               Ready to Be Part of Our Story?
             </h2>
-            <p className="text-white/80 text-lg mb-10 max-w-2xl mx-auto">
+            <p className="text-white/90 text-lg mb-10 max-w-2xl mx-auto">
               Join the hundreds of families, volunteers, and donors who make
               Project Annie possible. Together, we can do more.
             </p>

@@ -93,7 +93,7 @@ export default function ProgramsPage() {
               Annie&apos;s{' '}
               <span className="text-accent-honey">Nursery School</span>
             </h1>
-            <p className="text-white/80 text-lg md:text-xl leading-relaxed max-w-2xl">
+            <p className="text-white/90 text-lg md:text-xl leading-relaxed max-w-2xl">
               Quality, affordable childcare for children ages 1-3 in a safe, loving
               environment that nurtures growth, curiosity, and confidence.
             </p>
@@ -491,7 +491,7 @@ export default function ProgramsPage() {
               <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-6">
                 Ready to Give Your Child the Best Start?
               </h2>
-              <p className="text-white/80 text-lg mb-8">
+              <p className="text-white/90 text-lg mb-8">
                 Schedule a tour today to see our facility, meet our team, and
                 discover why families trust Annie&apos;s Nursery School with their
                 most precious little ones.
