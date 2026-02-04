@@ -1,0 +1,24 @@
+{
+  "name": "Project Annie | Annie's Nursery School",
+  "short_name": "Project Annie",
+  "description": "Quality, affordable childcare serving Tallahassee's Frenchtown community for over 15 years.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FDFCFA",
+  "theme_color": "#C4532A",
+  "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["education", "nonprofit"],
+  "lang": "en",
+  "dir": "ltr"
+}

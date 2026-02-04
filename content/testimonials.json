@@ -39,6 +39,14 @@
       "showOn": [
         "volunteer"
       ]
+    },
+    {
+      "quote": "Knowing that every dollar goes directly to feeding families and caring for children makes giving easy. Project Annie is the real deal.",
+      "author": "David R.",
+      "role": "Monthly Donor",
+      "showOn": [
+        "donate"
+      ]
     }
   ]
 }

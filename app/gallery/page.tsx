@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useCallback, useEffect, useMemo } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
@@ -34,6 +34,7 @@ function getFocalPointStyle(focalPoint?: string): string {
 }
 
 export default function GalleryPage() {
+  const prefersReducedMotion = useReducedMotion()
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
 
@@ -111,6 +112,7 @@ export default function GalleryPage() {
             src="/images/Gallery/g5.webp"
             alt="Project Annie community"
             fill
+            sizes="100vw"
             className="object-cover opacity-20"
             style={{ objectPosition: 'center top' }}
           />
@@ -119,9 +121,9 @@ export default function GalleryPage() {
 
         <div className="container-base relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.6 }}
             className="max-w-3xl"
           >
             <span className="badge bg-white/10 text-white mb-6">Photo Gallery</span>

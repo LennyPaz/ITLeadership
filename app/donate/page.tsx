@@ -1,8 +1,8 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
-import { motion, useInView } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import {
   Heart,
   CheckCircle2,
@@ -14,41 +14,12 @@ import {
 import { cn } from '@/lib/utils'
 import FocalImage from '@/components/FocalImage'
 import { getIcon } from '@/lib/icons'
+import AnimatedSection from '@/components/AnimatedSection'
 
 // Import content from JSON files
 import donationData from '@/content/donation-tiers.json'
 import statsData from '@/content/stats.json'
-
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0 },
-}
-
-function AnimatedSection({
-  children,
-  className,
-  delay = 0,
-}: {
-  children: React.ReactNode
-  className?: string
-  delay?: number
-}) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
-
-  return (
-    <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={isInView ? 'visible' : 'hidden'}
-      variants={fadeInUp}
-      transition={{ duration: 0.6, delay, ease: [0.25, 0.1, 0.25, 1] }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  )
-}
+import testimonialsData from '@/content/testimonials.json'
 
 // Map donation tiers from JSON with dynamic icons
 const donationTiers = donationData.items.map((tier) => ({
@@ -68,9 +39,18 @@ const fundAllocation = donationData.fundAllocation
 // Impact stats from JSON
 const impactStats = statsData.donateStats
 
+// Filter testimonials for donate page
+const donorTestimonials = testimonialsData.items.filter((t) =>
+  t.showOn.includes('donate')
+)
+
 export default function DonatePage() {
+  const prefersReducedMotion = useReducedMotion()
   const [selectedAmount, setSelectedAmount] = useState<number | null>(100)
   const [customAmount, setCustomAmount] = useState('')
+  const [isMonthly, setIsMonthly] = useState(true)
+
+  const donateAmount = selectedAmount || Number(customAmount) || 0
 
   const handleAmountSelect = (amount: number) => {
     setSelectedAmount(amount)
@@ -91,6 +71,7 @@ export default function DonatePage() {
             src="/images/Donate_Volunteer/Charity1.webp"
             alt="Community support at Project Annie"
             fill
+            sizes="100vw"
             className="object-cover opacity-20"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-secondary-dark via-secondary-dark/95 to-secondary-dark" />
@@ -101,9 +82,9 @@ export default function DonatePage() {
 
         <div className="container-base relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.6 }}
             className="max-w-3xl"
           >
             <span className="badge bg-white/10 text-white mb-6">Support Our Mission</span>
@@ -151,12 +132,42 @@ export default function DonatePage() {
                   Select a donation amount to see the direct impact your gift will have.
                 </p>
 
+                {/* Monthly / One-time Toggle */}
+                <div className="flex bg-neutral-cream rounded-lg p-1 mb-6">
+                  <button
+                    onClick={() => setIsMonthly(true)}
+                    aria-pressed={isMonthly}
+                    className={cn(
+                      'flex-1 py-2.5 text-sm font-heading font-semibold rounded-md transition-all',
+                      isMonthly
+                        ? 'bg-primary text-white shadow-sm'
+                        : 'text-neutral-gray hover:text-neutral-charcoal'
+                    )}
+                  >
+                    Monthly
+                  </button>
+                  <button
+                    onClick={() => setIsMonthly(false)}
+                    aria-pressed={!isMonthly}
+                    className={cn(
+                      'flex-1 py-2.5 text-sm font-heading font-semibold rounded-md transition-all',
+                      !isMonthly
+                        ? 'bg-primary text-white shadow-sm'
+                        : 'text-neutral-gray hover:text-neutral-charcoal'
+                    )}
+                  >
+                    One-time
+                  </button>
+                </div>
+
                 {/* Amount Selection Grid */}
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
                   {donationTiers.map((tier) => (
                     <button
                       key={tier.amount}
                       onClick={() => handleAmountSelect(tier.amount)}
+                      aria-pressed={selectedAmount === tier.amount}
+                      aria-label={`Donate $${tier.amount} — ${tier.impact}`}
                       className={cn(
                         'relative p-4 rounded-lg border-2 transition-all text-left',
                         selectedAmount === tier.amount
@@ -208,17 +219,19 @@ export default function DonatePage() {
 
                 {/* Donate Button */}
                 <a
-                  href={`https://www.paypal.com/paypalme/ProjectAnnieInc/${selectedAmount || customAmount || ''}`}
+                  href={`https://www.paypal.com/paypalme/ProjectAnnieInc/${donateAmount || ''}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-primary w-full py-4 text-lg justify-center"
                 >
                   <Heart className="w-5 h-5" />
-                  Donate ${selectedAmount || customAmount || '0'}
+                  Donate ${donateAmount}{isMonthly ? '/mo' : ''}
                 </a>
 
                 <p className="text-center text-sm text-neutral-gray mt-4">
-                  Secure one-time donation processed by PayPal. You&apos;ll be redirected to complete your gift.
+                  {isMonthly
+                    ? 'Secure monthly donation processed by PayPal. You can cancel anytime.'
+                    : 'Secure one-time donation processed by PayPal. You\u2019ll be redirected to complete your gift.'}
                 </p>
               </AnimatedSection>
             </div>
@@ -323,6 +336,38 @@ export default function DonatePage() {
           </div>
         </div>
       </section>
+
+      {/* Why I Give — Donor Testimonial */}
+      {donorTestimonials.length > 0 && (
+        <section className="py-16 lg:py-20 bg-white">
+          <div className="container-base max-w-3xl">
+            <AnimatedSection className="text-center">
+              <span className="badge-secondary mb-4">Why I Give</span>
+              <div className="bg-neutral-cream rounded-lg p-8 lg:p-10">
+                <Quote className="w-10 h-10 text-accent-honey/50 mx-auto mb-4" />
+                <p className="text-neutral-charcoal text-lg lg:text-xl leading-relaxed mb-6 italic">
+                  &ldquo;{donorTestimonials[0].quote}&rdquo;
+                </p>
+                <div className="flex items-center justify-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                    <span className="font-heading font-bold text-primary">
+                      {donorTestimonials[0].author[0]}
+                    </span>
+                  </div>
+                  <div className="text-left">
+                    <div className="font-heading font-semibold text-neutral-charcoal">
+                      {donorTestimonials[0].author}
+                    </div>
+                    <div className="text-sm text-neutral-gray">
+                      {donorTestimonials[0].role}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </AnimatedSection>
+          </div>
+        </section>
+      )}
 
       {/* Transparency Section */}
       <section className="py-20 lg:py-28 bg-white">
@@ -467,6 +512,29 @@ export default function DonatePage() {
           </AnimatedSection>
         </div>
       </section>
+
+      {/* Sticky mobile donate bar */}
+      <div className="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-white/95 backdrop-blur-md border-t border-neutral-light px-4 py-3">
+        <div className="flex items-center justify-between gap-3">
+          <div className="text-sm">
+            <span className="text-neutral-charcoal font-heading font-semibold">
+              ${donateAmount}
+            </span>
+            <span className="text-neutral-gray">
+              {isMonthly ? '/mo' : ' one-time'}
+            </span>
+          </div>
+          <a
+            href={`https://www.paypal.com/paypalme/ProjectAnnieInc/${donateAmount || ''}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-5 py-2.5 bg-primary hover:bg-primary-dark text-white text-sm font-heading font-semibold rounded-full whitespace-nowrap transition-colors"
+          >
+            <Heart className="w-4 h-4" />
+            Give Now
+          </a>
+        </div>
+      </div>
     </>
   )
 }

@@ -1,8 +1,7 @@
 'use client'
 
-import { useRef } from 'react'
 import Link from 'next/link'
-import { motion, useInView } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import {
   Baby,
   Clock,
@@ -18,40 +17,10 @@ import {
 } from 'lucide-react'
 import FocalImage from '@/components/FocalImage'
 import { getIcon } from '@/lib/icons'
+import AnimatedSection from '@/components/AnimatedSection'
 
 // Import content from JSON file
 import programsData from '@/content/programs.json'
-
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0 },
-}
-
-function AnimatedSection({
-  children,
-  className,
-  delay = 0,
-}: {
-  children: React.ReactNode
-  className?: string
-  delay?: number
-}) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
-
-  return (
-    <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={isInView ? 'visible' : 'hidden'}
-      variants={fadeInUp}
-      transition={{ duration: 0.6, delay, ease: [0.25, 0.1, 0.25, 1] }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  )
-}
 
 // Map features from JSON with dynamic icons
 const features = programsData.features.map((feature) => ({
@@ -64,6 +33,8 @@ const { dailySchedule, enrollmentSteps, learningAreas, keyPoints, requiredDocume
 const { ageRange, hours, days, status } = programsData
 
 export default function ProgramsPage() {
+  const prefersReducedMotion = useReducedMotion()
+
   return (
     <>
       {/* Hero Section */}
@@ -73,6 +44,7 @@ export default function ProgramsPage() {
             src="/images/About/EarlyChildcare.webp"
             alt="Children learning at Annie's Nursery School"
             fill
+            sizes="100vw"
             className="object-cover opacity-20"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-secondary-dark via-secondary-dark/95 to-secondary-dark" />
@@ -83,9 +55,9 @@ export default function ProgramsPage() {
 
         <div className="container-base relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.6 }}
             className="max-w-3xl"
           >
             <span className="badge bg-white/10 text-white mb-6">Our Programs</span>
@@ -521,6 +493,7 @@ export default function ProgramsPage() {
                   src="/images/Nursery/ELC.webp"
                   alt="Annie's Nursery School"
                   fill
+                  sizes="(max-width: 1024px) 0px, 50vw"
                   className="object-cover"
                 />
               </div>

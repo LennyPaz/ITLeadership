@@ -1,8 +1,9 @@
 'use client'
 
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState, useMemo } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
+import { useReducedMotion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import FocalImage from './FocalImage'
 
@@ -22,8 +23,21 @@ export default function ImageCarousel({
   autoplayDelay = 5000,
   className,
 }: ImageCarouselProps) {
+  const prefersReducedMotion = useReducedMotion()
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([])
+
+  // Disable autoplay for users who prefer reduced motion
+  const plugins = useMemo(() => {
+    if (prefersReducedMotion) return []
+    return [
+      Autoplay({
+        delay: autoplayDelay,
+        stopOnInteraction: false,
+        stopOnMouseEnter: true,
+      }),
+    ]
+  }, [prefersReducedMotion, autoplayDelay])
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
@@ -32,13 +46,7 @@ export default function ImageCarousel({
       slidesToScroll: 2,
       containScroll: 'trimSnaps',
     },
-    [
-      Autoplay({
-        delay: autoplayDelay,
-        stopOnInteraction: false,
-        stopOnMouseEnter: true,
-      }),
-    ]
+    plugins
   )
 
   const scrollTo = useCallback(
@@ -67,19 +75,28 @@ export default function ImageCarousel({
   }, [emblaApi, onSelect])
 
   return (
-    <div className={cn('relative', className)}>
+    <div
+      className={cn('relative', className)}
+      role="region"
+      aria-label="Photo gallery carousel"
+      aria-roledescription="carousel"
+    >
       {/* Carousel viewport */}
-      <div className="overflow-hidden" ref={emblaRef}>
-        <div className="flex gap-4 px-4 md:px-8">
+      <div className="overflow-hidden" ref={emblaRef} aria-live="off">
+        <div className="flex gap-4 px-4 md:px-8" role="list">
           {images.map((image) => (
             <div
               key={image.src}
+              role="listitem"
+              aria-roledescription="slide"
               className="relative shrink-0 w-72 md:w-80 lg:w-96 aspect-[4/3] rounded-lg overflow-hidden group"
             >
               <FocalImage
                 src={image.src}
                 alt={image.alt}
                 fill
+                sizes="(max-width: 768px) 288px, (max-width: 1024px) 320px, 384px"
+                loading="lazy"
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-neutral-charcoal/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />

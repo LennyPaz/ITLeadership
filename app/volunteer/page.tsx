@@ -1,8 +1,7 @@
 'use client'
 
-import { useRef } from 'react'
 import Link from 'next/link'
-import { motion, useInView } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import {
   Clock,
   ArrowRight,
@@ -13,42 +12,12 @@ import {
 import ImageCarousel from '@/components/ImageCarousel'
 import FocalImage from '@/components/FocalImage'
 import { getIcon } from '@/lib/icons'
+import AnimatedSection from '@/components/AnimatedSection'
 
 // Import content from JSON files
 import volunteerData from '@/content/volunteer-opportunities.json'
 import testimonialsData from '@/content/testimonials.json'
 import statsData from '@/content/stats.json'
-
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0 },
-}
-
-function AnimatedSection({
-  children,
-  className,
-  delay = 0,
-}: {
-  children: React.ReactNode
-  className?: string
-  delay?: number
-}) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
-
-  return (
-    <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={isInView ? 'visible' : 'hidden'}
-      variants={fadeInUp}
-      transition={{ duration: 0.6, delay, ease: [0.25, 0.1, 0.25, 1] }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  )
-}
 
 // Map opportunities and benefits from JSON with dynamic icons
 const opportunities = volunteerData.items.map((opp) => ({
@@ -89,6 +58,8 @@ const extendedGallery = [
 ]
 
 export default function VolunteerPage() {
+  const prefersReducedMotion = useReducedMotion()
+
   return (
     <>
       {/* Hero Section */}
@@ -98,6 +69,7 @@ export default function VolunteerPage() {
             src="/images/Donate_Volunteer/V1.webp"
             alt="Volunteers at Project Annie"
             fill
+            sizes="100vw"
             className="object-cover opacity-20"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-secondary-dark via-secondary-dark/95 to-secondary-dark" />
@@ -108,9 +80,9 @@ export default function VolunteerPage() {
 
         <div className="container-base relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.6 }}
             className="max-w-3xl"
           >
             <span className="badge bg-white/10 text-white mb-6">Volunteer</span>
@@ -221,6 +193,7 @@ export default function VolunteerPage() {
                       src={image.src}
                       alt={image.alt}
                       fill
+                      sizes="(max-width: 1024px) 50vw, 25vw"
                       className="object-cover hover:scale-105 transition-transform duration-500"
                     />
                   </div>

@@ -1,9 +1,9 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion, useInView } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import {
   MapPin,
   Phone,
@@ -17,37 +17,7 @@ import {
   ExternalLink,
 } from 'lucide-react'
 import { cn, getImagePath } from '@/lib/utils'
-
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0 },
-}
-
-function AnimatedSection({
-  children,
-  className,
-  delay = 0,
-}: {
-  children: React.ReactNode
-  className?: string
-  delay?: number
-}) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
-
-  return (
-    <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={isInView ? 'visible' : 'hidden'}
-      variants={fadeInUp}
-      transition={{ duration: 0.6, delay, ease: [0.25, 0.1, 0.25, 1] }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  )
-}
+import AnimatedSection from '@/components/AnimatedSection'
 
 const quickActions = [
   {
@@ -74,6 +44,7 @@ const quickActions = [
 ]
 
 export default function ContactPage() {
+  const prefersReducedMotion = useReducedMotion()
   const [formState, setFormState] = useState({
     name: '',
     email: '',
@@ -136,6 +107,7 @@ export default function ContactPage() {
             src={getImagePath('/images/Home/IMG7.webp')}
             alt="Project Annie community"
             fill
+            sizes="100vw"
             className="object-cover opacity-20"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-secondary-dark via-secondary-dark/95 to-secondary-dark" />
@@ -143,9 +115,9 @@ export default function ContactPage() {
 
         <div className="container-base relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.6 }}
             className="max-w-2xl"
           >
             <span className="badge bg-white/10 text-white mb-6">Contact Us</span>
@@ -231,7 +203,7 @@ export default function ContactPage() {
                 </p>
 
                 {isSubmitted ? (
-                  <div className="bg-accent-sage/10 border border-accent-sage/30 rounded-lg p-8 text-center">
+                  <div className="bg-accent-sage/10 border border-accent-sage/30 rounded-lg p-8 text-center" role="status" aria-live="polite">
                     <CheckCircle2 className="w-16 h-16 text-accent-sage mx-auto mb-4" />
                     <h3 className="font-heading font-bold text-xl text-neutral-charcoal mb-2">
                       Message Sent!
@@ -258,6 +230,7 @@ export default function ContactPage() {
                           id="name"
                           name="name"
                           required
+                          aria-required="true"
                           aria-invalid={!!error}
                           aria-describedby={error ? 'form-error' : undefined}
                           value={formState.name}
@@ -276,6 +249,7 @@ export default function ContactPage() {
                           name="email"
                           inputMode="email"
                           required
+                          aria-required="true"
                           aria-invalid={!!error}
                           aria-describedby={error ? 'form-error' : undefined}
                           value={formState.email}
@@ -310,6 +284,7 @@ export default function ContactPage() {
                           id="subject"
                           name="subject"
                           required
+                          aria-required="true"
                           aria-invalid={!!error}
                           aria-describedby={error ? 'form-error' : undefined}
                           value={formState.subject}
@@ -335,6 +310,7 @@ export default function ContactPage() {
                         id="message"
                         name="message"
                         required
+                        aria-required="true"
                         aria-invalid={!!error}
                         aria-describedby={error ? 'form-error' : undefined}
                         rows={6}
@@ -346,7 +322,7 @@ export default function ContactPage() {
                     </div>
 
                     {error && (
-                      <div id="form-error" role="alert" className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-700">
+                      <div id="form-error" role="alert" aria-live="assertive" className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-700">
                         {error}
                       </div>
                     )}

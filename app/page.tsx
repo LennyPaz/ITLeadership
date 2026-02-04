@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
-import { motion, useInView } from 'framer-motion'
+import { motion, useInView, useReducedMotion } from 'framer-motion'
 import {
   Heart,
   Users,
@@ -18,6 +18,7 @@ import {
 import { cn } from '@/lib/utils'
 import ImageCarousel from '@/components/ImageCarousel'
 import FocalImage from '@/components/FocalImage'
+import AnimatedSection from '@/components/AnimatedSection'
 
 // Import content from JSON files
 import statsData from '@/content/stats.json'
@@ -31,6 +32,11 @@ const fadeInUp = {
   visible: { opacity: 1, y: 0 },
 }
 
+const noMotion = {
+  hidden: { opacity: 1, y: 0 },
+  visible: { opacity: 1, y: 0 },
+}
+
 const staggerContainer = {
   hidden: { opacity: 0 },
   visible: {
@@ -39,6 +45,11 @@ const staggerContainer = {
       staggerChildren: 0.1,
     },
   },
+}
+
+const noStagger = {
+  hidden: { opacity: 1 },
+  visible: { opacity: 1 },
 }
 
 // Icon mapping
@@ -87,32 +98,6 @@ const galleryImages = [
   { src: '/images/Home/IMG8.webp', alt: 'Children learning at nursery' },
 ]
 
-function AnimatedSection({
-  children,
-  className,
-  delay = 0,
-}: {
-  children: React.ReactNode
-  className?: string
-  delay?: number
-}) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
-
-  return (
-    <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={isInView ? 'visible' : 'hidden'}
-      variants={fadeInUp}
-      transition={{ duration: 0.6, delay, ease: [0.25, 0.1, 0.25, 1] }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  )
-}
-
 // Animated count-up for stat numbers
 function CountUp({ value }: { value: string }) {
   const ref = useRef<HTMLSpanElement>(null)
@@ -157,6 +142,8 @@ function CountUp({ value }: { value: string }) {
 }
 
 export default function HomePage() {
+  const prefersReducedMotion = useReducedMotion()
+
   // Get content from imported JSON
   const stats = statsData.homeStats
   const testimonials = testimonialsData.items.filter(t => t.showOn.includes('home'))
@@ -176,6 +163,7 @@ export default function HomePage() {
             src="/images/Home/IMG1.webp"
             alt="Project Annie community gathering"
             fill
+            sizes="100vw"
             className="object-cover opacity-30"
             priority
           />
@@ -190,9 +178,9 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Text content */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
+              initial={prefersReducedMotion ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+              transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             >
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded mb-6">
                 <Sparkles className="w-4 h-4 text-accent-honey" />
@@ -251,9 +239,9 @@ export default function HomePage() {
 
             {/* Hero image composition */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={prefersReducedMotion ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+              transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.8, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
               className="relative hidden lg:block"
             >
               <div className="relative">
@@ -263,6 +251,7 @@ export default function HomePage() {
                     src={founder.photo}
                     alt={founder.name}
                     fill
+                    sizes="(max-width: 1024px) 0px, 50vw"
                     className="object-cover"
                     priority
                   />
@@ -304,7 +293,7 @@ export default function HomePage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-100px' }}
-            variants={staggerContainer}
+            variants={prefersReducedMotion ? noStagger : staggerContainer}
             className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
           >
             {stats.map((stat) => {
@@ -312,8 +301,8 @@ export default function HomePage() {
               return (
                 <motion.div
                   key={stat.label}
-                  variants={fadeInUp}
-                  transition={{ duration: 0.5 }}
+                  variants={prefersReducedMotion ? noMotion : fadeInUp}
+                  transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.5 }}
                   className="relative group"
                 >
                   <div className="bg-white rounded-lg p-6 lg:p-8 text-center border border-neutral-light hover:border-primary/20 transition-colors">
@@ -476,6 +465,7 @@ export default function HomePage() {
                         src={pathway.image}
                         alt={pathway.title}
                         fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-neutral-charcoal/60 to-transparent" />
@@ -580,6 +570,7 @@ export default function HomePage() {
                       src="/images/Donate_Volunteer/Charity3.webp"
                       alt="Thanksgiving meal service"
                       fill
+                      sizes="(max-width: 1024px) 0px, 50vw"
                       className="object-cover"
                     />
                   </div>
@@ -682,6 +673,7 @@ export default function HomePage() {
             src="/images/Home/IMG12.webp"
             alt="Community gathering"
             fill
+            sizes="100vw"
             className="object-cover opacity-20"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-secondary-dark via-secondary-dark/95 to-secondary-dark/90" />
