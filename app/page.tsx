@@ -449,7 +449,7 @@ export default function HomePage() {
             </h2>
             <p className="text-neutral-gray text-lg">
               Whether you&apos;re a parent seeking quality childcare, a student
-              looking to volunteer, or a donor wanting to give back  there&apos;s
+              looking to volunteer, or a donor wanting to give back &mdash; there&apos;s
               a place for you at Project Annie.
             </p>
           </AnimatedSection>
@@ -542,7 +542,7 @@ export default function HomePage() {
                       />
                     </div>
                     <p className="text-white/90 text-sm mt-2">
-                      {campaignProgress}% of our goal reached  thank you to all our donors!
+                      {campaignProgress}% of our goal reached &mdash; thank you to all our donors!
                     </p>
                   </div>
 
@@ -691,7 +691,7 @@ export default function HomePage() {
                 <span className="text-accent-honey">Stronger Community</span>
               </h2>
               <p className="text-white/90 text-lg md:text-xl mb-10 max-w-2xl mx-auto">
-                Whether you donate, volunteer, or spread the word  every action
+                Whether you donate, volunteer, or spread the word &mdash; every action
                 helps a child learn, a family eat, and our community grow stronger.
               </p>
 

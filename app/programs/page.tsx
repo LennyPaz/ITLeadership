@@ -183,7 +183,7 @@ export default function ProgramsPage() {
                 <p>
                   With small class sizes and dedicated caregivers, each child receives
                   the individual attention they need to thrive. We focus on building
-                  social skills, encouraging curiosity, and fostering independenceall
+                  social skills, encouraging curiosity, and fostering independence &mdash; all
                   in a warm, family-like atmosphere.
                 </p>
               </div>
@@ -297,7 +297,7 @@ export default function ProgramsPage() {
                 </div>
 
                 <p>
-                  Every activity is an opportunity for learningfrom circle time
+                  Every activity is an opportunity for learning &mdash; from circle time
                   songs that build vocabulary to outdoor play that develops motor
                   skills and social awareness.
                 </p>
