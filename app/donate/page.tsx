@@ -49,17 +49,25 @@ export default function DonatePage() {
   const [selectedAmount, setSelectedAmount] = useState<number | null>(100)
   const [customAmount, setCustomAmount] = useState('')
   const [isMonthly, setIsMonthly] = useState(true)
+  const [amountError, setAmountError] = useState('')
 
   const donateAmount = selectedAmount || Number(customAmount) || 0
 
   const handleAmountSelect = (amount: number) => {
     setSelectedAmount(amount)
     setCustomAmount('')
+    setAmountError('')
   }
 
   const handleCustomAmount = (value: string) => {
     setCustomAmount(value)
     setSelectedAmount(null)
+    const num = Number(value)
+    if (value && (num < 1 || isNaN(num))) {
+      setAmountError('Enter $1 or more.')
+    } else {
+      setAmountError('')
+    }
   }
 
   return (
@@ -212,21 +220,36 @@ export default function DonatePage() {
                       placeholder="Other amount"
                       value={customAmount}
                       onChange={(e) => handleCustomAmount(e.target.value)}
-                      className="input pl-8"
+                      aria-invalid={!!amountError}
+                      aria-describedby={amountError ? 'amount-error' : undefined}
+                      className={cn('input pl-8', amountError && 'border-red-400')}
                     />
                   </div>
+                  {amountError && (
+                    <p id="amount-error" role="alert" className="text-red-600 text-sm mt-1">{amountError}</p>
+                  )}
                 </div>
 
                 {/* Donate Button */}
-                <a
-                  href={`https://www.paypal.com/paypalme/ProjectAnnieInc/${donateAmount || ''}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary w-full py-4 text-lg justify-center"
-                >
-                  <Heart className="w-5 h-5" />
-                  Donate ${donateAmount}{isMonthly ? '/mo' : ''}
-                </a>
+                {donateAmount >= 1 ? (
+                  <a
+                    href={`https://www.paypal.com/paypalme/ProjectAnnieInc/${donateAmount}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary w-full py-4 text-lg justify-center"
+                  >
+                    <Heart className="w-5 h-5" />
+                    Donate ${donateAmount}{isMonthly ? '/mo' : ''}
+                  </a>
+                ) : (
+                  <button
+                    disabled
+                    className="btn-primary w-full py-4 text-lg justify-center opacity-50 cursor-not-allowed"
+                  >
+                    <Heart className="w-5 h-5" />
+                    Donate $0
+                  </button>
+                )}
 
                 <p className="text-center text-sm text-neutral-gray mt-4">
                   {isMonthly
@@ -524,15 +547,25 @@ export default function DonatePage() {
               {isMonthly ? '/mo' : ' one-time'}
             </span>
           </div>
-          <a
-            href={`https://www.paypal.com/paypalme/ProjectAnnieInc/${donateAmount || ''}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-5 py-2.5 bg-primary hover:bg-primary-dark text-white text-sm font-heading font-semibold rounded-full whitespace-nowrap transition-colors"
-          >
-            <Heart className="w-4 h-4" />
-            Give Now
-          </a>
+          {donateAmount >= 1 ? (
+            <a
+              href={`https://www.paypal.com/paypalme/ProjectAnnieInc/${donateAmount}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-5 py-2.5 bg-primary hover:bg-primary-dark text-white text-sm font-heading font-semibold rounded-full whitespace-nowrap transition-colors"
+            >
+              <Heart className="w-4 h-4" />
+              Give Now
+            </a>
+          ) : (
+            <button
+              disabled
+              className="flex items-center gap-2 px-5 py-2.5 bg-primary/50 text-white/70 text-sm font-heading font-semibold rounded-full whitespace-nowrap cursor-not-allowed"
+            >
+              <Heart className="w-4 h-4" />
+              Give Now
+            </button>
+          )}
         </div>
       </div>
     </>

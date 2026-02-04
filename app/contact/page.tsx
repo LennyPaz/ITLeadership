@@ -55,16 +55,39 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({})
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target
     setFormState((prev) => ({ ...prev, [name]: value }))
+    if (fieldErrors[name]) {
+      setFieldErrors((prev) => {
+        const next = { ...prev }
+        delete next[name]
+        return next
+      })
+    }
+  }
+
+  const validateFields = (): boolean => {
+    const errors: Record<string, string> = {}
+    if (!formState.name.trim()) errors.name = 'Name is required.'
+    if (!formState.email.trim()) {
+      errors.email = 'Email is required.'
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formState.email)) {
+      errors.email = 'Enter a valid email address.'
+    }
+    if (!formState.subject) errors.subject = 'Please select a subject.'
+    if (!formState.message.trim()) errors.message = 'Message is required.'
+    setFieldErrors(errors)
+    return Object.keys(errors).length === 0
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (!validateFields()) return
     setIsSubmitting(true)
     setError(null)
 
@@ -231,13 +254,16 @@ export default function ContactPage() {
                           name="name"
                           required
                           aria-required="true"
-                          aria-invalid={!!error}
-                          aria-describedby={error ? 'form-error' : undefined}
+                          aria-invalid={!!fieldErrors.name}
+                          aria-describedby={fieldErrors.name ? 'name-error' : undefined}
                           value={formState.name}
                           onChange={handleInputChange}
-                          className="input"
+                          className={cn('input', fieldErrors.name && 'border-red-400')}
                           placeholder="John Smith"
                         />
+                        {fieldErrors.name && (
+                          <p id="name-error" role="alert" className="text-red-600 text-sm mt-1">{fieldErrors.name}</p>
+                        )}
                       </div>
                       <div>
                         <label htmlFor="email" className="input-label">
@@ -250,13 +276,16 @@ export default function ContactPage() {
                           inputMode="email"
                           required
                           aria-required="true"
-                          aria-invalid={!!error}
-                          aria-describedby={error ? 'form-error' : undefined}
+                          aria-invalid={!!fieldErrors.email}
+                          aria-describedby={fieldErrors.email ? 'email-error' : undefined}
                           value={formState.email}
                           onChange={handleInputChange}
-                          className="input"
+                          className={cn('input', fieldErrors.email && 'border-red-400')}
                           placeholder="john@example.com"
                         />
+                        {fieldErrors.email && (
+                          <p id="email-error" role="alert" className="text-red-600 text-sm mt-1">{fieldErrors.email}</p>
+                        )}
                       </div>
                     </div>
 
@@ -285,11 +314,11 @@ export default function ContactPage() {
                           name="subject"
                           required
                           aria-required="true"
-                          aria-invalid={!!error}
-                          aria-describedby={error ? 'form-error' : undefined}
+                          aria-invalid={!!fieldErrors.subject}
+                          aria-describedby={fieldErrors.subject ? 'subject-error' : undefined}
                           value={formState.subject}
                           onChange={handleInputChange}
-                          className="input"
+                          className={cn('input', fieldErrors.subject && 'border-red-400')}
                         >
                           <option value="">Select a subject</option>
                           <option value="enrollment">Enrollment Inquiry</option>
@@ -299,6 +328,9 @@ export default function ContactPage() {
                           <option value="media">Media Inquiry</option>
                           <option value="other">Other</option>
                         </select>
+                        {fieldErrors.subject && (
+                          <p id="subject-error" role="alert" className="text-red-600 text-sm mt-1">{fieldErrors.subject}</p>
+                        )}
                       </div>
                     </div>
 
@@ -311,14 +343,17 @@ export default function ContactPage() {
                         name="message"
                         required
                         aria-required="true"
-                        aria-invalid={!!error}
-                        aria-describedby={error ? 'form-error' : undefined}
+                        aria-invalid={!!fieldErrors.message}
+                        aria-describedby={fieldErrors.message ? 'message-error' : undefined}
                         rows={6}
                         value={formState.message}
                         onChange={handleInputChange}
-                        className="input resize-none"
+                        className={cn('input resize-none', fieldErrors.message && 'border-red-400')}
                         placeholder="How can we help you?"
                       />
+                      {fieldErrors.message && (
+                        <p id="message-error" role="alert" className="text-red-600 text-sm mt-1">{fieldErrors.message}</p>
+                      )}
                     </div>
 
                     {error && (
