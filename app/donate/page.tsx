@@ -48,7 +48,6 @@ export default function DonatePage() {
   const prefersReducedMotion = useReducedMotion()
   const [selectedAmount, setSelectedAmount] = useState<number | null>(100)
   const [customAmount, setCustomAmount] = useState('')
-  const [isMonthly, setIsMonthly] = useState(true)
   const [amountError, setAmountError] = useState('')
 
   const donateAmount = selectedAmount || Number(customAmount) || 0
@@ -140,32 +139,11 @@ export default function DonatePage() {
                   Select a donation amount to see the direct impact your gift will have.
                 </p>
 
-                {/* Monthly / One-time Toggle */}
-                <div className="flex bg-neutral-cream rounded-lg p-1 mb-6">
-                  <button
-                    onClick={() => setIsMonthly(true)}
-                    aria-pressed={isMonthly}
-                    className={cn(
-                      'flex-1 py-2.5 text-sm font-heading font-semibold rounded-md transition-all',
-                      isMonthly
-                        ? 'bg-primary text-white shadow-sm'
-                        : 'text-neutral-gray hover:text-neutral-charcoal'
-                    )}
-                  >
-                    Monthly
-                  </button>
-                  <button
-                    onClick={() => setIsMonthly(false)}
-                    aria-pressed={!isMonthly}
-                    className={cn(
-                      'flex-1 py-2.5 text-sm font-heading font-semibold rounded-md transition-all',
-                      !isMonthly
-                        ? 'bg-primary text-white shadow-sm'
-                        : 'text-neutral-gray hover:text-neutral-charcoal'
-                    )}
-                  >
-                    One-time
-                  </button>
+                {/* One-time donation note */}
+                <div className="bg-neutral-cream rounded-lg px-4 py-2.5 mb-6">
+                  <p className="text-sm text-neutral-gray text-center font-heading font-semibold">
+                    One-time Donation via PayPal
+                  </p>
                 </div>
 
                 {/* Amount Selection Grid */}
@@ -239,7 +217,7 @@ export default function DonatePage() {
                     className="btn-primary w-full py-4 text-lg justify-center"
                   >
                     <Heart className="w-5 h-5" />
-                    Donate ${donateAmount}{isMonthly ? '/mo' : ''}
+                    Donate ${donateAmount}
                   </a>
                 ) : (
                   <button
@@ -252,9 +230,7 @@ export default function DonatePage() {
                 )}
 
                 <p className="text-center text-sm text-neutral-gray mt-4">
-                  {isMonthly
-                    ? 'Secure monthly donation processed by PayPal. You can cancel anytime.'
-                    : 'Secure one-time donation processed by PayPal. You\u2019ll be redirected to complete your gift.'}
+                  Secure one-time donation processed by PayPal. You&rsquo;ll be redirected to complete your gift.
                 </p>
               </AnimatedSection>
             </div>
@@ -543,9 +519,7 @@ export default function DonatePage() {
             <span className="text-neutral-charcoal font-heading font-semibold">
               ${donateAmount}
             </span>
-            <span className="text-neutral-gray">
-              {isMonthly ? '/mo' : ' one-time'}
-            </span>
+            <span className="text-neutral-gray"> one-time</span>
           </div>
           {donateAmount >= 1 ? (
             <a

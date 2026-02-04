@@ -12,10 +12,34 @@ export const metadata: Metadata = {
   },
 }
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'DonateAction',
+  name: 'Donate to Project Annie',
+  description:
+    'Support Project Annie with a tax-deductible donation to provide childcare, meals, and community support in Tallahassee\'s Frenchtown neighborhood.',
+  url: 'https://projectannie.org/donate/',
+  recipient: {
+    '@type': 'NonprofitOrganization',
+    name: 'Project Annie, Inc.',
+    url: 'https://projectannie.org',
+    taxID: '26-0638919',
+    nonprofitStatus: '501(c)(3)',
+  },
+}
+
 export default function DonateLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  return children
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      {children}
+    </>
+  )
 }
