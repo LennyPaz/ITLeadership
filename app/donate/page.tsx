@@ -10,6 +10,7 @@ import {
   Phone,
   Quote,
   Shield,
+  ChevronDown,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import FocalImage from '@/components/FocalImage'
@@ -39,16 +40,44 @@ const fundAllocation = donationData.fundAllocation
 // Impact stats from JSON
 const impactStats = statsData.donateStats
 
+// Hero-level stats (bigger numbers from homepage)
+const heroStats = statsData.homeStats
+
 // Filter testimonials for donate page
 const donorTestimonials = testimonialsData.items.filter((t) =>
   t.showOn.includes('donate')
 )
+
+// FAQ items for donor objection-busting
+const faqItems = [
+  {
+    q: 'Is my donation tax-deductible?',
+    a: 'Yes. Project Annie, Inc. is a registered 501(c)(3) nonprofit organization (EIN: 26-0638919). You will receive a receipt for your records, and your donation may be tax-deductible to the extent allowed by law.',
+  },
+  {
+    q: 'Where does my money go?',
+    a: '85% of every dollar goes directly to programs and services — childcare, meals, and community support. 10% supports our annual Thanksgiving meal program, and just 5% covers administrative costs.',
+  },
+  {
+    q: 'Can I donate by check or mail?',
+    a: 'Absolutely. Mail checks to: Project Annie, Inc., 625 W. 4th Ave., Tallahassee, FL 32303. Please make checks payable to "Project Annie, Inc."',
+  },
+  {
+    q: 'Can I set up a recurring donation?',
+    a: 'We currently accept one-time donations through PayPal. For recurring giving or major gifts, please contact us at (850) 222-6133 or anniejohnsont@gmail.com and we\'ll work with you directly.',
+  },
+  {
+    q: 'How can my company get involved?',
+    a: 'We welcome corporate partnerships including sponsorships, matching gifts, workplace giving, and in-kind donations. Reach out through our contact page to discuss partnership opportunities.',
+  },
+]
 
 export default function DonatePage() {
   const prefersReducedMotion = useReducedMotion()
   const [selectedAmount, setSelectedAmount] = useState<number | null>(100)
   const [customAmount, setCustomAmount] = useState('')
   const [amountError, setAmountError] = useState('')
+  const [openFaq, setOpenFaq] = useState<number | null>(null)
   const donateAmount = selectedAmount || Number(customAmount) || 0
 
   const handleAmountSelect = (amount: number) => {
@@ -103,6 +132,18 @@ export default function DonatePage() {
               feeding families, and strengthening the Frenchtown community. Your
               generosity makes a real difference.
             </p>
+
+            {/* Hero impact stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-10 pt-8 border-t border-white/15">
+              {heroStats.map((stat) => (
+                <div key={stat.label}>
+                  <div className="text-2xl md:text-3xl font-heading font-bold text-accent-honey">
+                    {stat.number}
+                  </div>
+                  <div className="text-white/70 text-sm mt-1">{stat.label}</div>
+                </div>
+              ))}
+            </div>
           </motion.div>
         </div>
       </section>
@@ -366,6 +407,47 @@ export default function DonatePage() {
           </div>
         </section>
       )}
+
+      {/* FAQ Section */}
+      <section className="py-16 lg:py-20 bg-neutral-cream">
+        <div className="container-base max-w-3xl">
+          <AnimatedSection className="text-center mb-10">
+            <span className="badge-primary mb-4">Common Questions</span>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-neutral-charcoal">
+              Donation FAQ
+            </h2>
+          </AnimatedSection>
+
+          <div className="space-y-3">
+            {faqItems.map((item, i) => (
+              <AnimatedSection key={i} delay={i * 0.05}>
+                <div className="bg-white rounded-lg border border-neutral-light overflow-hidden">
+                  <button
+                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                    aria-expanded={openFaq === i}
+                    className="w-full flex items-center justify-between gap-4 p-5 text-left"
+                  >
+                    <span className="font-heading font-semibold text-neutral-charcoal">
+                      {item.q}
+                    </span>
+                    <ChevronDown
+                      className={cn(
+                        'w-5 h-5 text-neutral-gray shrink-0 transition-transform',
+                        openFaq === i && 'rotate-180'
+                      )}
+                    />
+                  </button>
+                  {openFaq === i && (
+                    <div className="px-5 pb-5 -mt-1 text-neutral-gray leading-relaxed">
+                      {item.a}
+                    </div>
+                  )}
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Transparency Section */}
       <section className="py-20 lg:py-28 bg-white">

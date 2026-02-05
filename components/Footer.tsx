@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { MapPin, Phone, Mail, Clock, Heart, ExternalLink } from 'lucide-react'
+import { MapPin, Phone, Mail, Clock, Heart, ExternalLink, Shield, Award } from 'lucide-react'
 import { getImagePath } from '@/lib/utils'
 
 // Import content from JSON files
@@ -155,6 +155,30 @@ export default function Footer() {
                 </div>
               </li>
             </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* Trust Badges & Partners */}
+      <div className="border-t border-white/10">
+        <div className="container-base py-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            {/* Trust badges */}
+            <div className="flex items-center gap-6">
+              <div className="flex items-center gap-2 text-white/70 text-xs">
+                <Shield className="w-5 h-5 text-accent-honey" />
+                <span>501(c)(3) Verified</span>
+              </div>
+              <div className="flex items-center gap-2 text-white/70 text-xs">
+                <Award className="w-5 h-5 text-accent-honey" />
+                <span>GuideStar Listed</span>
+              </div>
+            </div>
+
+            {/* Partner acknowledgment */}
+            <div className="text-white/50 text-xs text-center md:text-right">
+              Proudly serving Tallahassee&apos;s Frenchtown community with our local partners
+            </div>
           </div>
         </div>
       </div>
