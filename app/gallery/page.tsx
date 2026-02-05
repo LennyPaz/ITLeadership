@@ -201,6 +201,7 @@ export default function GalleryPage() {
                       alt={image.alt}
                       width={600}
                       height={400}
+                      sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                       className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
                       style={{ objectPosition: getFocalPointStyle(image.focalPoint) }}
                     />
@@ -305,6 +306,7 @@ export default function GalleryPage() {
                 alt={filteredImages[lightboxIndex].alt}
                 width={1200}
                 height={800}
+                sizes="(max-width: 1280px) 100vw, 1200px"
                 className="max-h-[80vh] w-auto object-contain rounded-lg"
               />
 

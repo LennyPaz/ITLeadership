@@ -1,7 +1,4 @@
-'use client'
-
 import Link from 'next/link'
-import { motion, useReducedMotion } from 'framer-motion'
 import {
   Clock,
   ArrowRight,
@@ -13,6 +10,7 @@ import ImageCarousel from '@/components/ImageCarousel'
 import FocalImage from '@/components/FocalImage'
 import { getIcon } from '@/lib/icons'
 import AnimatedSection from '@/components/AnimatedSection'
+import HeroSection from '@/components/HeroSection'
 
 // Import content from JSON files
 import volunteerData from '@/content/volunteer-opportunities.json'
@@ -58,8 +56,6 @@ const extendedGallery = [
 ]
 
 export default function VolunteerPage() {
-  const prefersReducedMotion = useReducedMotion()
-
   return (
     <>
       {/* Hero Section */}
@@ -79,12 +75,7 @@ export default function VolunteerPage() {
         <div className="absolute bottom-10 right-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
 
         <div className="container-base relative z-10">
-          <motion.div
-            initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.6 }}
-            className="max-w-3xl"
-          >
+          <HeroSection className="max-w-3xl">
             <span className="badge bg-white/10 text-white mb-6">Volunteer</span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6">
               Make a{' '}
@@ -113,7 +104,7 @@ export default function VolunteerPage() {
                 Email Us
               </a>
             </div>
-          </motion.div>
+          </HeroSection>
         </div>
       </section>
 

@@ -1,7 +1,4 @@
-'use client'
-
 import Link from 'next/link'
-import { motion, useReducedMotion } from 'framer-motion'
 import {
   Heart,
   Users,
@@ -17,6 +14,7 @@ import {
 import FocalImage from '@/components/FocalImage'
 import { getIcon } from '@/lib/icons'
 import AnimatedSection from '@/components/AnimatedSection'
+import HeroSection from '@/components/HeroSection'
 
 // Import content from JSON files
 import valuesData from '@/content/values.json'
@@ -32,8 +30,6 @@ const values = valuesData.values.map((value) => ({
 const timeline = timelineData.items
 
 export default function AboutPage() {
-  const prefersReducedMotion = useReducedMotion()
-
   return (
     <>
       {/* Hero Section */}
@@ -53,23 +49,18 @@ export default function AboutPage() {
         <div className="absolute bottom-10 right-10 w-96 h-96 bg-accent-honey/10 rounded-full blur-3xl" />
 
         <div className="container-base relative z-10">
-          <motion.div
-            initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.6 }}
-            className="max-w-3xl"
-          >
+          <HeroSection className="max-w-3xl">
             <span className="badge bg-white/10 text-white mb-6">About Us</span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6">
               A Legacy of{' '}
               <span className="text-accent-honey">Love & Service</span>
             </h1>
             <p className="text-white/90 text-lg md:text-xl leading-relaxed max-w-2xl">
-              For over 15 years, Project Annie has been the heart of Frenchtown
+              For over 15 years, Project Annie has been the heart of Frenchtown
               providing quality childcare, nourishing meals, and hope to families
               throughout Tallahassee.
             </p>
-          </motion.div>
+          </HeroSection>
         </div>
       </section>
 
@@ -115,7 +106,7 @@ export default function AboutPage() {
                 <p>
                   Annie M. Johnson has dedicated her life to serving the Frenchtown
                   community. Born and raised in Tallahassee, Ms. Annie understood
-                  firsthand the challenges facing working familiesthe struggle to
+                  firsthand the challenges facing working familiesthe struggle to
                   find affordable, quality childcare while pursuing education and employment.
                 </p>
                 <p>
@@ -135,7 +126,7 @@ export default function AboutPage() {
                 {[
                   { number: '15+', label: 'Years Serving' },
                   { number: '500+', label: 'Families Helped' },
-                  { number: '', label: 'Love Given' },
+                  { number: '', label: 'Love Given' },
                 ].map((stat) => (
                   <div key={stat.label} className="text-center p-4 bg-neutral-cream rounded-lg">
                     <div className="text-2xl font-heading font-bold text-primary">
@@ -399,7 +390,7 @@ export default function AboutPage() {
               </h2>
               <p className="text-neutral-gray text-lg leading-relaxed mb-6">
                 Project Annie is located in the historic Frenchtown neighborhood of
-                Tallahasseea community with deep roots and a bright future. We&apos;re
+                Tallahasseea community with deep roots and a bright future. We&apos;re
                 proud to serve our neighbors and work alongside local partners to
                 strengthen this vibrant area.
               </p>

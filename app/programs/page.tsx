@@ -1,7 +1,4 @@
-'use client'
-
 import Link from 'next/link'
-import { motion, useReducedMotion } from 'framer-motion'
 import {
   Baby,
   Clock,
@@ -18,6 +15,7 @@ import {
 import FocalImage from '@/components/FocalImage'
 import { getIcon } from '@/lib/icons'
 import AnimatedSection from '@/components/AnimatedSection'
+import HeroSection from '@/components/HeroSection'
 
 // Import content from JSON file
 import programsData from '@/content/programs.json'
@@ -33,8 +31,6 @@ const { dailySchedule, enrollmentSteps, learningAreas, keyPoints, requiredDocume
 const { ageRange, hours, days, status } = programsData
 
 export default function ProgramsPage() {
-  const prefersReducedMotion = useReducedMotion()
-
   return (
     <>
       {/* Hero Section */}
@@ -54,12 +50,7 @@ export default function ProgramsPage() {
         <div className="absolute bottom-10 left-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
 
         <div className="container-base relative z-10">
-          <motion.div
-            initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.6 }}
-            className="max-w-3xl"
-          >
+          <HeroSection className="max-w-3xl">
             <span className="badge bg-white/10 text-white mb-6">Our Programs</span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6">
               Annie&apos;s{' '}
@@ -86,7 +77,7 @@ export default function ProgramsPage() {
                 (850) 222-6133
               </a>
             </div>
-          </motion.div>
+          </HeroSection>
         </div>
       </section>
 
