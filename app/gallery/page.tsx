@@ -1,10 +1,35 @@
 'use client'
 
-import { useState, useCallback, useEffect, useMemo } from 'react'
+import { useState, useCallback, useEffect, useMemo, useRef } from 'react'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
+
+const MAX_STAGGER = 20
+
+function useInView() {
+  const ref = useRef<HTMLDivElement>(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          observer.unobserve(el)
+        }
+      },
+      { rootMargin: '200px' }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  return { ref, isVisible }
+}
 
 // Import content from JSON files
 import galleryCategoriesData from '@/content/gallery-categories.json'
@@ -33,6 +58,71 @@ function getFocalPointStyle(focalPoint?: string): string {
   return positions[focalPoint || 'center'] || 'center center'
 }
 
+function GalleryItem({
+  image,
+  index,
+  prefersReducedMotion,
+  onOpen,
+}: {
+  image: GalleryImage
+  index: number
+  prefersReducedMotion: boolean | null
+  onOpen: () => void
+}) {
+  const { ref, isVisible } = useInView()
+  const cappedDelay = Math.min(index, MAX_STAGGER) * 0.02
+
+  return (
+    <motion.div
+      ref={ref}
+      key={image.src}
+      layout
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={isVisible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.3, delay: cappedDelay }}
+      className="relative group cursor-pointer overflow-hidden rounded-lg break-inside-avoid mb-4"
+      role="button"
+      tabIndex={0}
+      aria-label={`View ${image.alt}`}
+      onClick={onOpen}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
+          onOpen()
+        }
+      }}
+    >
+      {isVisible ? (
+        <div className="relative">
+          <Image
+            src={image.src}
+            alt={image.alt}
+            width={600}
+            height={400}
+            sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+            className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+            style={{ objectPosition: getFocalPointStyle(image.focalPoint) }}
+          />
+          <div className="absolute inset-0 bg-neutral-charcoal/0 group-hover:bg-neutral-charcoal/40 transition-colors duration-300" />
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center shadow-lg">
+              <ZoomIn className="w-5 h-5 text-neutral-charcoal" />
+            </div>
+          </div>
+          <div className="absolute bottom-2 left-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <span className="px-2 py-1 bg-white/90 text-neutral-charcoal text-xs rounded font-medium capitalize">
+              {image.category}
+            </span>
+          </div>
+        </div>
+      ) : (
+        <div className="w-full" style={{ aspectRatio: '3/2' }} />
+      )}
+    </motion.div>
+  )
+}
+
 export default function GalleryPage() {
   const prefersReducedMotion = useReducedMotion()
   const [selectedCategory, setSelectedCategory] = useState('all')
@@ -53,12 +143,17 @@ export default function GalleryPage() {
     return counts
   }, [])
 
+  const lightboxRef = useRef<HTMLDivElement>(null)
+  const triggerRef = useRef<HTMLElement | null>(null)
+
   const openLightbox = (index: number) => {
+    triggerRef.current = document.activeElement as HTMLElement
     setLightboxIndex(index)
   }
 
   const closeLightbox = () => {
     setLightboxIndex(null)
+    triggerRef.current?.focus()
   }
 
   const goToPrevious = useCallback(() => {
@@ -101,6 +196,40 @@ export default function GalleryPage() {
     return () => {
       document.body.style.overflow = ''
     }
+  }, [lightboxIndex])
+
+  // Focus trap for lightbox
+  useEffect(() => {
+    if (lightboxIndex === null) return
+    const dialog = lightboxRef.current
+    if (!dialog) return
+
+    const focusable = dialog.querySelectorAll<HTMLElement>(
+      'button, [href], [tabindex]:not([tabindex="-1"])'
+    )
+    if (focusable.length === 0) return
+    const first = focusable[0]
+    const last = focusable[focusable.length - 1]
+
+    first.focus()
+
+    const trap = (e: KeyboardEvent) => {
+      if (e.key !== 'Tab') return
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault()
+          last.focus()
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault()
+          first.focus()
+        }
+      }
+    }
+
+    dialog.addEventListener('keydown', trap)
+    return () => dialog.removeEventListener('keydown', trap)
   }, [lightboxIndex])
 
   return (
@@ -176,54 +305,13 @@ export default function GalleryPage() {
           <div className="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
             <AnimatePresence mode="popLayout">
               {filteredImages.map((image: GalleryImage, index: number) => (
-                <motion.div
+                <GalleryItem
                   key={image.src}
-                  layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.3, delay: index * 0.02 }}
-                  className="relative group cursor-pointer overflow-hidden rounded-lg break-inside-avoid mb-4"
-                  role="button"
-                  tabIndex={0}
-                  aria-label={`View ${image.alt}`}
-                  onClick={() => openLightbox(index)}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      e.preventDefault()
-                      openLightbox(index)
-                    }
-                  }}
-                >
-                  <div className="relative">
-                    <Image
-                      src={image.src}
-                      alt={image.alt}
-                      width={600}
-                      height={400}
-                      sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                      className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
-                      style={{ objectPosition: getFocalPointStyle(image.focalPoint) }}
-                    />
-
-                    {/* Overlay */}
-                    <div className="absolute inset-0 bg-neutral-charcoal/0 group-hover:bg-neutral-charcoal/40 transition-colors duration-300" />
-
-                    {/* Zoom icon */}
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center shadow-lg">
-                        <ZoomIn className="w-5 h-5 text-neutral-charcoal" />
-                      </div>
-                    </div>
-
-                    {/* Category badge */}
-                    <div className="absolute bottom-2 left-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <span className="px-2 py-1 bg-white/90 text-neutral-charcoal text-xs rounded font-medium capitalize">
-                        {image.category}
-                      </span>
-                    </div>
-                  </div>
-                </motion.div>
+                  image={image}
+                  index={index}
+                  prefersReducedMotion={prefersReducedMotion}
+                  onOpen={() => openLightbox(index)}
+                />
               ))}
             </AnimatePresence>
           </div>
@@ -244,9 +332,11 @@ export default function GalleryPage() {
       <AnimatePresence>
         {lightboxIndex !== null && (
           <motion.div
-            initial={{ opacity: 0 }}
+            ref={lightboxRef}
+            initial={prefersReducedMotion ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            exit={prefersReducedMotion ? undefined : { opacity: 0 }}
+            transition={prefersReducedMotion ? { duration: 0 } : undefined}
             className="fixed inset-0 z-50 bg-neutral-charcoal/95 flex items-center justify-center"
             role="dialog"
             aria-modal="true"
@@ -294,10 +384,10 @@ export default function GalleryPage() {
             {/* Main image */}
             <motion.div
               key={filteredImages[lightboxIndex].src}
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.2 }}
+              exit={prefersReducedMotion ? undefined : { opacity: 0, scale: 0.95 }}
+              transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.2 }}
               className="relative max-w-5xl max-h-[80vh] mx-4"
               onClick={(e) => e.stopPropagation()}
             >
