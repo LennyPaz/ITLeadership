@@ -49,7 +49,6 @@ export default function DonatePage() {
   const [selectedAmount, setSelectedAmount] = useState<number | null>(100)
   const [customAmount, setCustomAmount] = useState('')
   const [amountError, setAmountError] = useState('')
-
   const donateAmount = selectedAmount || Number(customAmount) || 0
 
   const handleAmountSelect = (amount: number) => {

@@ -6,5 +6,7 @@
   "currentAmount": 12500,
   "mealsServed": "2,000+",
   "familiesFed": "500+",
-  "active": true
+  "active": true,
+  "deadline": "November 28, 2026",
+  "donorCount": 147
 }

@@ -212,9 +212,10 @@ export default function HomePage() {
                 </Link>
                 <Link
                   href="/donate"
-                  className="btn bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border border-white/20 px-8 py-4 text-lg"
+                  className="btn bg-accent-honey hover:bg-accent-honey-dark text-neutral-charcoal font-semibold px-8 py-4 text-lg"
                 >
-                  Support Our Mission
+                  <Heart className="w-5 h-5" />
+                  Donate Now
                 </Link>
               </div>
 
@@ -542,8 +543,15 @@ export default function HomePage() {
                       />
                     </div>
                     <p className="text-white/90 text-sm mt-2">
-                      {campaignProgress}% of our goal reached &mdash; thank you to all our donors!
+                      {campaignProgress}% of our goal reached
+                      {campaign.deadline && <> &mdash; help us reach our goal by <span className="text-accent-honey font-semibold">{campaign.deadline}</span></>}
                     </p>
+                    {campaign.donorCount && (
+                      <p className="text-white/80 text-sm mt-1">
+                        <Users className="w-3.5 h-3.5 inline -mt-0.5 mr-1" />
+                        {campaign.donorCount} donors have contributed so far
+                      </p>
+                    )}
                   </div>
 
                   <div className="flex flex-col sm:flex-row gap-4">
