@@ -175,9 +175,19 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Partner acknowledgment */}
-            <div className="text-white/50 text-xs text-center md:text-right">
-              Proudly serving Tallahassee&apos;s Frenchtown community with our local partners
+            {/* Partner logos */}
+            <div className="flex items-center gap-4 flex-wrap justify-center md:justify-end">
+              <span className="text-white/50 text-xs">Our Partners</span>
+              {[1, 2, 3, 4, 5, 6].map((n) => (
+                <div key={n} className="relative w-8 h-8 opacity-60 hover:opacity-100 transition-opacity">
+                  <Image
+                    src={getImagePath(`/images/Partners/P${n}.webp`)}
+                    alt={`Partner ${n}`}
+                    fill
+                    className="object-contain brightness-0 invert"
+                  />
+                </div>
+              ))}
             </div>
           </div>
         </div>

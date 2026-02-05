@@ -673,6 +673,28 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Partners Section */}
+      <section className="py-12 bg-neutral-cream border-t border-neutral-200">
+        <div className="container-base">
+          <p className="text-center text-sm text-neutral-gray font-heading font-medium tracking-wide uppercase mb-8">
+            Our Partners
+          </p>
+          <div className="flex items-center justify-center gap-8 md:gap-12 flex-wrap">
+            {[1, 2, 3, 4, 5, 6].map((n) => (
+              <div key={n} className="relative w-16 h-16 md:w-20 md:h-20 opacity-50 hover:opacity-100 transition-opacity duration-300">
+                <FocalImage
+                  src={`/images/Partners/P${n}.webp`}
+                  alt={`Partner ${n}`}
+                  fill
+                  sizes="80px"
+                  className="object-contain"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Final CTA Section */}
       <section className="relative py-24 lg:py-32 bg-secondary-dark overflow-hidden">
         {/* Background image */}
