@@ -380,6 +380,12 @@ export default function VolunteerPage() {
                 anniejohnsont@gmail.com
               </a>
             </div>
+            <p className="text-sm text-white/60 mt-4">
+              Your information is never shared.{' '}
+              <Link href="/privacy" className="underline hover:text-white/90">
+                Privacy Policy
+              </Link>
+            </p>
           </AnimatedSection>
         </div>
       </section>

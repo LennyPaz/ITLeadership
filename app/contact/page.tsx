@@ -15,6 +15,7 @@ import {
   GraduationCap,
   CheckCircle2,
   ExternalLink,
+  Shield,
 } from 'lucide-react'
 import { cn, getImagePath } from '@/lib/utils'
 import AnimatedSection from '@/components/AnimatedSection'
@@ -409,6 +410,14 @@ export default function ContactPage() {
                         </>
                       )}
                     </button>
+
+                    <p className="text-sm text-neutral-dark/60 flex items-center gap-1.5 mt-3">
+                      <Shield className="w-4 h-4 flex-shrink-0" />
+                      Your information is secure and will never be shared.{' '}
+                      <Link href="/privacy" className="underline hover:text-primary">
+                        Privacy Policy
+                      </Link>
+                    </p>
                   </form>
                 )}
               </AnimatedSection>
