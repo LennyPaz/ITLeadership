@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion, useReducedMotion } from 'framer-motion'
@@ -51,6 +51,7 @@ export default function ContactPage() {
     phone: '',
     subject: '',
     message: '',
+    website: '',
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
@@ -71,6 +72,8 @@ export default function ContactPage() {
     }
   }
 
+  const formRef = useRef<HTMLFormElement>(null)
+
   const validateFields = (): boolean => {
     const errors: Record<string, string> = {}
     if (!formState.name.trim()) errors.name = 'Name is required.'
@@ -82,7 +85,17 @@ export default function ContactPage() {
     if (!formState.subject) errors.subject = 'Please select a subject.'
     if (!formState.message.trim()) errors.message = 'Message is required.'
     setFieldErrors(errors)
-    return Object.keys(errors).length === 0
+
+    // Auto-focus first errored field
+    const errorKeys = Object.keys(errors)
+    if (errorKeys.length > 0 && formRef.current) {
+      const firstErrorField = formRef.current.querySelector<HTMLElement>(
+        `[name="${errorKeys[0]}"]`
+      )
+      firstErrorField?.focus()
+    }
+
+    return errorKeys.length === 0
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -113,6 +126,7 @@ export default function ContactPage() {
         phone: '',
         subject: '',
         message: '',
+        website: '',
       })
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
@@ -242,7 +256,20 @@ export default function ContactPage() {
                     </button>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+                    {/* Honeypot field - hidden from real users */}
+                    <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', top: '-9999px' }}>
+                      <label htmlFor="website">Website</label>
+                      <input
+                        type="text"
+                        id="website"
+                        name="website"
+                        tabIndex={-1}
+                        autoComplete="off"
+                        value={formState.website || ''}
+                        onChange={handleInputChange}
+                      />
+                    </div>
                     <div className="grid sm:grid-cols-2 gap-6">
                       <div>
                         <label htmlFor="name" className="input-label">
@@ -253,6 +280,7 @@ export default function ContactPage() {
                           id="name"
                           name="name"
                           required
+                          maxLength={100}
                           aria-required="true"
                           aria-invalid={!!fieldErrors.name}
                           aria-describedby={fieldErrors.name ? 'name-error' : undefined}
@@ -275,6 +303,7 @@ export default function ContactPage() {
                           name="email"
                           inputMode="email"
                           required
+                          maxLength={254}
                           aria-required="true"
                           aria-invalid={!!fieldErrors.email}
                           aria-describedby={fieldErrors.email ? 'email-error' : undefined}
@@ -342,6 +371,7 @@ export default function ContactPage() {
                         id="message"
                         name="message"
                         required
+                        maxLength={5000}
                         aria-required="true"
                         aria-invalid={!!fieldErrors.message}
                         aria-describedby={fieldErrors.message ? 'message-error' : undefined}

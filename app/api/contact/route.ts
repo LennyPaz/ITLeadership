@@ -20,14 +20,88 @@ const getResend = () => {
   return new Resend(apiKey)
 }
 
+// Rate limiting: IP -> { count, resetTime }
+const rateLimitMap = new Map<string, { count: number; resetTime: number }>()
+const RATE_LIMIT_MAX = 5
+const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000 // 15 minutes
+
+// Valid subject keys (whitelist)
+const VALID_SUBJECTS = new Set([
+  'enrollment',
+  'volunteer',
+  'donation',
+  'partnership',
+  'media',
+  'other',
+])
+
 export async function POST(request: Request) {
   try {
-    const { name, email, phone, subject, message } = await request.json()
+    // Rate limiting by IP
+    const forwarded = request.headers.get('x-forwarded-for')
+    const ip = forwarded?.split(',')[0]?.trim() || 'unknown'
+    const now = Date.now()
+    const rateEntry = rateLimitMap.get(ip)
+
+    if (rateEntry && now < rateEntry.resetTime) {
+      if (rateEntry.count >= RATE_LIMIT_MAX) {
+        return NextResponse.json(
+          { error: 'Too many submissions. Please try again later.' },
+          { status: 429 }
+        )
+      }
+      rateEntry.count++
+    } else {
+      rateLimitMap.set(ip, { count: 1, resetTime: now + RATE_LIMIT_WINDOW_MS })
+    }
+
+    // Clean up expired entries periodically
+    if (rateLimitMap.size > 1000) {
+      rateLimitMap.forEach((val, key) => {
+        if (now >= val.resetTime) rateLimitMap.delete(key)
+      })
+    }
+
+    const { name, email, phone, subject, message, website } = await request.json()
+
+    // Honeypot: reject if hidden field is filled
+    if (website) {
+      // Silently accept to not tip off bots
+      return NextResponse.json({ success: true })
+    }
 
     // Validate required fields
     if (!name || !email || !subject || !message) {
       return NextResponse.json(
         { error: 'Missing required fields' },
+        { status: 400 }
+      )
+    }
+
+    // Input length limits
+    if (typeof name !== 'string' || name.length > 100) {
+      return NextResponse.json(
+        { error: 'Name must be 100 characters or fewer.' },
+        { status: 400 }
+      )
+    }
+    if (typeof email !== 'string' || email.length > 254) {
+      return NextResponse.json(
+        { error: 'Email must be 254 characters or fewer.' },
+        { status: 400 }
+      )
+    }
+    if (typeof message !== 'string' || message.length > 5000) {
+      return NextResponse.json(
+        { error: 'Message must be 5000 characters or fewer.' },
+        { status: 400 }
+      )
+    }
+
+    // Subject whitelist validation
+    if (!VALID_SUBJECTS.has(subject)) {
+      return NextResponse.json(
+        { error: 'Invalid subject selected.' },
         { status: 400 }
       )
     }
@@ -42,7 +116,7 @@ export async function POST(request: Request) {
       other: 'Other',
     }
 
-    const subjectLabel = subjectLabels[subject] || subject
+    const subjectLabel = subjectLabels[subject]!
 
     // Sanitize all user inputs before injecting into HTML email
     const safeName = escapeHtml(name)
