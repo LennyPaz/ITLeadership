@@ -1,9 +1,8 @@
 {
   "items": [
     { "id": "all", "label": "All Photos" },
-    { "id": "community", "label": "Community" },
-    { "id": "children", "label": "Children" },
-    { "id": "meals", "label": "Meals" },
-    { "id": "volunteers", "label": "Volunteers" }
+    { "id": "community", "label": "Community Events" },
+    { "id": "meals", "label": "Community Meals" },
+    { "id": "volunteers", "label": "Our Volunteers" }
   ]
 }

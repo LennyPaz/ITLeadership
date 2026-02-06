@@ -226,7 +226,7 @@ export default function HomePage() {
                   {[
                     { num: '2K+', label: 'Meals' },
                     { num: '150+', label: 'Children' },
-                    { num: '15+', label: 'Years' },
+                    { num: '18', label: 'Years' },
                   ].map((stat) => (
                     <div key={stat.label}>
                       <div className="text-3xl font-heading font-bold text-white">
@@ -383,7 +383,7 @@ export default function HomePage() {
 
               <div className="space-y-4 text-neutral-gray text-lg leading-relaxed">
                 <p>
-                  For over 15 years, Project Annie has been a cornerstone of
+                  Since 2008, Project Annie has been a cornerstone of
                   Tallahassee&apos;s Frenchtown community. Founded by {founder.name},
                   our organization provides essential services that empower families
                   and strengthen our neighborhood.
@@ -675,43 +675,42 @@ export default function HomePage() {
       </section>
 
       {/* Partners Section */}
-      <section className="py-16 lg:py-20 bg-neutral-cream border-t border-neutral-200">
-        <div className="container-base">
-          <div className="text-center mb-12">
-            <p className="text-sm text-neutral-gray font-heading font-medium tracking-wide uppercase mb-3">
-              Community Collaboration
-            </p>
-            <h2 className="text-2xl md:text-3xl font-heading font-bold text-secondary-dark">
-              Our Partners
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {partnersData.partners.map((partner) => (
-              <div
-                key={partner.id}
-                className="group bg-white rounded-lg p-5 border border-neutral-200 hover:border-accent-honey hover:shadow-md transition-all duration-300"
+      <section id="partners" className="py-14 lg:py-18 bg-neutral-cream overflow-hidden scroll-mt-24">
+        <AnimatedSection className="text-center mb-8">
+          <span className="font-heading text-xs font-semibold tracking-[0.2em] uppercase text-neutral-gray">
+            Proudly Supported By
+          </span>
+          <div className="mt-3 mx-auto w-8 h-0.5 bg-accent-honey rounded-full" />
+        </AnimatedSection>
+
+        {/* Marquee ribbon */}
+        <div className="relative group">
+          {/* Fade edges */}
+          <div className="absolute left-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-r from-neutral-cream to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-l from-neutral-cream to-transparent z-10 pointer-events-none" />
+
+          <div className="flex animate-marquee group-hover:[animation-play-state:paused]">
+            {[...partnersData.partners, ...partnersData.partners].map((partner, i) => (
+              <span
+                key={`${partner.id}-${i}`}
+                className="flex items-center shrink-0 px-5 md:px-7"
               >
-                <h3 className="font-heading font-semibold text-secondary-dark group-hover:text-primary transition-colors mb-2">
+                <span className="font-accent italic text-secondary/70 text-base md:text-lg whitespace-nowrap">
                   {partner.name}
-                </h3>
-                <p className="text-sm text-neutral-gray leading-relaxed mb-3">
-                  {partner.description}
-                </p>
-                {partner.url && (
-                  <a
-                    href={partner.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center text-xs font-medium text-primary hover:text-primary-dark transition-colors"
-                  >
-                    Visit Website
-                    <ChevronRight className="w-3 h-3 ml-1" />
-                  </a>
-                )}
-              </div>
+                </span>
+                <span className="ml-5 md:ml-7 text-accent-honey/50 text-xs select-none" aria-hidden="true">
+                  &#9670;
+                </span>
+              </span>
             ))}
           </div>
         </div>
+
+        <AnimatedSection delay={0.1} className="text-center mt-8">
+          <p className="text-xs text-neutral-gray/70">
+            {partnersData.partners.length} organizations helping us strengthen Frenchtown
+          </p>
+        </AnimatedSection>
       </section>
 
       {/* Final CTA Section */}

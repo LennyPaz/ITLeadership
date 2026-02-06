@@ -371,7 +371,7 @@ export default function ProgramsPage() {
       </section>
 
       {/* Employment Forms */}
-      <section className="py-20 lg:py-28 bg-neutral-cream">
+      <section className="py-20 lg:py-28 bg-white">
         <div className="container-base">
           <AnimatedSection className="text-center max-w-2xl mx-auto mb-14">
             <span className="badge-secondary mb-4">Join Our Team</span>
@@ -447,7 +447,7 @@ export default function ProgramsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 lg:py-28 bg-secondary">
+      <section className="py-20 lg:py-28 bg-secondary-dark">
         <div className="container-base">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <AnimatedSection>

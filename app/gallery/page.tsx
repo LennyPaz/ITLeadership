@@ -38,6 +38,12 @@ import galleryData from '@/content/gallery.json'
 const categories = galleryCategoriesData.items
 const galleryImages = galleryData.items
 
+// Build a lookup map from category ID to human-readable label
+const categoryLabelMap: Record<string, string> = {}
+for (const cat of categories) {
+  categoryLabelMap[cat.id] = cat.label
+}
+
 // Type for gallery images with focal point
 type GalleryImage = {
   src: string
@@ -111,8 +117,8 @@ function GalleryItem({
             </div>
           </div>
           <div className="absolute bottom-2 left-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <span className="px-2 py-1 bg-white/90 text-neutral-charcoal text-xs rounded font-medium capitalize">
-              {image.category}
+            <span className="px-2 py-1 bg-white/90 text-neutral-charcoal text-xs rounded font-medium">
+              {categoryLabelMap[image.category] || image.category}
             </span>
           </div>
         </div>

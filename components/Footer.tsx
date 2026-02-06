@@ -161,7 +161,7 @@ export default function Footer() {
       </div>
 
       {/* Trust Badges & Partners */}
-      <div className="border-t border-white/10">
+      <div>
         <div className="container-base py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             {/* Trust badges */}
@@ -176,26 +176,20 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Partner logos */}
-            <div className="flex items-center gap-4 flex-wrap justify-center md:justify-end">
-              <span className="text-white/50 text-xs">Our Partners</span>
-              {partnersData.partners.map((partner) => (
-                <div key={partner.id} className="relative w-8 h-8 opacity-60 hover:opacity-100 transition-opacity">
-                  <Image
-                    src={getImagePath(`/images/Partners/${partner.id}.webp`)}
-                    alt={partner.name}
-                    fill
-                    className="object-contain brightness-0 invert"
-                  />
-                </div>
-              ))}
+            {/* Partner acknowledgment */}
+            <div className="flex items-center gap-2 text-white/50 text-xs">
+              <span>Supported by {partnersData.partners.length} community partners</span>
+              <span className="mx-1">|</span>
+              <Link href="/#partners" className="text-accent-honey/80 hover:text-accent-honey transition-colors">
+                View Partners
+              </Link>
             </div>
           </div>
         </div>
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-white/10">
+      <div>
         <div className="container-base py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/90">
             <p>

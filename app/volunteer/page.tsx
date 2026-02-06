@@ -90,7 +90,7 @@ export default function VolunteerPage() {
 
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
               <Link
-                href="/contact"
+                href="/contact#contact-form"
                 className="btn bg-primary hover:bg-primary-dark text-white px-8 py-4 text-lg"
               >
                 Apply to Volunteer
@@ -354,7 +354,7 @@ export default function VolunteerPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 lg:py-28 bg-secondary">
+      <section className="py-20 lg:py-28 bg-secondary-dark">
         <div className="container-base text-center">
           <AnimatedSection>
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-6">
@@ -366,7 +366,7 @@ export default function VolunteerPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/contact"
+                href="/contact#contact-form"
                 className="btn bg-primary hover:bg-primary-dark text-white px-8 py-4 text-lg"
               >
                 Apply to Volunteer

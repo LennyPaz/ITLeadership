@@ -56,7 +56,7 @@ export default function AboutPage() {
               <span className="text-accent-honey">Love & Service</span>
             </h1>
             <p className="text-white/90 text-lg md:text-xl leading-relaxed max-w-2xl">
-              For over 15 years, Project Annie has been the heart of Frenchtown
+              Since 2008, Project Annie has been the heart of Frenchtown
               providing quality childcare, nourishing meals, and hope to families
               throughout Tallahassee.
             </p>
@@ -106,7 +106,7 @@ export default function AboutPage() {
                 <p>
                   Annie M. Johnson has dedicated her life to serving the Frenchtown
                   community. Born and raised in Tallahassee, Ms. Annie understood
-                  firsthand the challenges facing working familiesthe struggle to
+                  firsthand the challenges facing working families&mdash;the struggle to
                   find affordable, quality childcare while pursuing education and employment.
                 </p>
                 <p>
@@ -124,9 +124,9 @@ export default function AboutPage() {
 
               <div className="mt-8 grid grid-cols-3 gap-4">
                 {[
-                  { number: '15+', label: 'Years Serving' },
+                  { number: '18', label: 'Years Serving' },
                   { number: '500+', label: 'Families Helped' },
-                  { number: '', label: 'Love Given' },
+                  { number: '∞', label: 'Love Given' },
                 ].map((stat) => (
                   <div key={stat.label} className="text-center p-4 bg-neutral-cream rounded-lg">
                     <div className="text-2xl font-heading font-bold text-primary">
@@ -342,7 +342,7 @@ export default function AboutPage() {
           <AnimatedSection className="text-center max-w-2xl mx-auto mb-14">
             <span className="badge-secondary mb-4">Our Journey</span>
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-neutral-charcoal">
-              15+ Years of Community Impact
+              18 Years of Community Impact
             </h2>
           </AnimatedSection>
 
@@ -390,7 +390,7 @@ export default function AboutPage() {
               </h2>
               <p className="text-neutral-gray text-lg leading-relaxed mb-6">
                 Project Annie is located in the historic Frenchtown neighborhood of
-                Tallahasseea community with deep roots and a bright future. We&apos;re
+                Tallahassee&mdash;a community with deep roots and a bright future. We&apos;re
                 proud to serve our neighbors and work alongside local partners to
                 strengthen this vibrant area.
               </p>
@@ -410,7 +410,7 @@ export default function AboutPage() {
                   <div>
                     <div className="font-semibold text-neutral-charcoal">Hours</div>
                     <div className="text-neutral-gray">
-                      Monday - Friday: 7:00 AM - 6:00 PM
+                      Mon - Fri: 9:00 AM - 3:00 PM
                     </div>
                   </div>
                 </div>
@@ -442,7 +442,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 lg:py-28 bg-secondary">
+      <section className="py-20 lg:py-28 bg-secondary-dark overflow-hidden">
         <div className="container-base text-center">
           <AnimatedSection>
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-6">

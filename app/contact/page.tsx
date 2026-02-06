@@ -19,6 +19,7 @@ import {
 } from 'lucide-react'
 import { cn, getImagePath } from '@/lib/utils'
 import AnimatedSection from '@/components/AnimatedSection'
+import settingsData from '@/content/settings.json'
 
 const quickActions = [
   {
@@ -227,7 +228,7 @@ export default function ContactPage() {
       </section>
 
       {/* Main Content */}
-      <section className="py-20 lg:py-28 bg-white">
+      <section id="contact-form" className="py-20 lg:py-28 bg-white scroll-mt-24">
         <div className="container-base">
           <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
             {/* Contact Form */}
@@ -439,8 +440,8 @@ export default function ContactPage() {
                         <div>
                           <div className="font-semibold text-neutral-charcoal">Hours</div>
                           <div className="text-neutral-gray text-sm">
-                            Monday - Friday: 9:00 AM - 3:00 PM<br />
-                            Saturday - Sunday: Closed
+                            {settingsData.hours.weekdays}<br />
+                            {settingsData.hours.weekend}
                           </div>
                         </div>
                       </div>
@@ -569,7 +570,7 @@ export default function ContactPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-primary">
+      <section className="py-16 bg-primary overflow-hidden">
         <div className="container-base text-center">
           <AnimatedSection>
             <h2 className="text-2xl md:text-3xl font-heading font-bold text-white mb-4">

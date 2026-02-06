@@ -95,7 +95,7 @@ export default function Navigation() {
               'text-sm transition-colors',
               isScrolled ? 'text-neutral-gray' : 'text-white/90'
             )}>
-              Serving Frenchtown for 15+ years
+              Serving Frenchtown Since 2008
             </div>
           </div>
         </div>

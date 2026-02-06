@@ -20,8 +20,8 @@ const sourceSans = Source_Sans_3({
 
 const lora = Lora({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  style: ['normal', 'italic'],
+  weight: ['400'],
+  style: ['italic'],
   variable: '--font-lora',
   display: 'swap',
 })
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     default: 'Project Annie | Annie\'s Nursery School - Tallahassee, FL',
     template: '%s | Project Annie',
   },
-  description: 'Project Annie provides quality, affordable childcare and early education for children ages 1-3 in Tallahassee\'s Frenchtown community. Serving families for over 15 years.',
+  description: 'Project Annie provides quality, affordable childcare and early education for children ages 1-3 in Tallahassee\'s Frenchtown community. Serving families since 2008.',
   keywords: [
     'childcare Tallahassee',
     'nursery school Frenchtown',
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     url: 'https://projectannie.org',
     siteName: 'Project Annie',
     title: 'Project Annie | Annie\'s Nursery School',
-    description: 'Quality, affordable childcare serving Tallahassee\'s Frenchtown community for over 15 years.',
+    description: 'Quality, affordable childcare serving Tallahassee\'s Frenchtown community since 2008.',
     images: [
       {
         url: '/images/og-image.jpg',
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Project Annie | Annie\'s Nursery School',
-    description: 'Quality, affordable childcare serving Tallahassee\'s Frenchtown community for over 15 years.',
+    description: 'Quality, affordable childcare serving Tallahassee\'s Frenchtown community since 2008.',
   },
   robots: {
     index: true,
@@ -85,7 +85,7 @@ const jsonLd = {
   url: 'https://projectannie.org',
   logo: 'https://projectannie.org/images/logo.webp',
   description:
-    "Project Annie provides quality, affordable childcare and early education for children ages 1-3 in Tallahassee's Frenchtown community. Serving families for over 15 years.",
+    "Project Annie provides quality, affordable childcare and early education for children ages 1-3 in Tallahassee's Frenchtown community. Serving families since 2008.",
   foundingDate: '2008',
   founder: {
     '@type': 'Person',

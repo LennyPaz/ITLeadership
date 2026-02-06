@@ -38,6 +38,7 @@ export default function AnimatedSection({
           : { duration: 0.6, delay, ease: [0.25, 0.1, 0.25, 1] }
       }
       className={className}
+      style={{ backfaceVisibility: 'hidden' }}
     >
       {children}
     </motion.div>
