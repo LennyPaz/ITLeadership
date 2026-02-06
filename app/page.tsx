@@ -25,6 +25,7 @@ import statsData from '@/content/stats.json'
 import testimonialsData from '@/content/testimonials.json'
 import campaignData from '@/content/campaign.json'
 import founderData from '@/content/founder.json'
+import partnersData from '@/content/partners.json'
 
 // Animation variants
 const fadeInUp = {
@@ -674,21 +675,39 @@ export default function HomePage() {
       </section>
 
       {/* Partners Section */}
-      <section className="py-12 bg-neutral-cream border-t border-neutral-200">
+      <section className="py-16 lg:py-20 bg-neutral-cream border-t border-neutral-200">
         <div className="container-base">
-          <p className="text-center text-sm text-neutral-gray font-heading font-medium tracking-wide uppercase mb-8">
-            Our Partners
-          </p>
-          <div className="flex items-center justify-center gap-8 md:gap-12 flex-wrap">
-            {[1, 2, 3, 4, 5, 6].map((n) => (
-              <div key={n} className="relative w-16 h-16 md:w-20 md:h-20 opacity-50 hover:opacity-100 transition-opacity duration-300">
-                <FocalImage
-                  src={`/images/Partners/P${n}.webp`}
-                  alt={`Partner ${n}`}
-                  fill
-                  sizes="80px"
-                  className="object-contain"
-                />
+          <div className="text-center mb-12">
+            <p className="text-sm text-neutral-gray font-heading font-medium tracking-wide uppercase mb-3">
+              Community Collaboration
+            </p>
+            <h2 className="text-2xl md:text-3xl font-heading font-bold text-secondary-dark">
+              Our Partners
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {partnersData.partners.map((partner) => (
+              <div
+                key={partner.id}
+                className="group bg-white rounded-lg p-5 border border-neutral-200 hover:border-accent-honey hover:shadow-md transition-all duration-300"
+              >
+                <h3 className="font-heading font-semibold text-secondary-dark group-hover:text-primary transition-colors mb-2">
+                  {partner.name}
+                </h3>
+                <p className="text-sm text-neutral-gray leading-relaxed mb-3">
+                  {partner.description}
+                </p>
+                {partner.url && (
+                  <a
+                    href={partner.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-xs font-medium text-primary hover:text-primary-dark transition-colors"
+                  >
+                    Visit Website
+                    <ChevronRight className="w-3 h-3 ml-1" />
+                  </a>
+                )}
               </div>
             ))}
           </div>

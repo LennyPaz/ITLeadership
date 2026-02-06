@@ -1,10 +1,89 @@
 {
   "partners": [
-    { "id": "P1", "name": "United Way of the Big Bend" },
-    { "id": "P2", "name": "City of Tallahassee" },
-    { "id": "P3", "name": "Leon County" },
-    { "id": "P4", "name": "Early Learning Coalition" },
-    { "id": "P5", "name": "Community Foundation of North Florida" },
-    { "id": "P6", "name": "Children's Services Council" }
+    {
+      "id": "211-big-bend",
+      "name": "211 Big Bend",
+      "description": "Community resource for those in need of paying electric bills, rent, or other services.",
+      "url": "https://www.211bigbend.org",
+      "phone": "850-617-6333"
+    },
+    {
+      "id": "grace-mission",
+      "name": "Grace Mission of Tallahassee",
+      "description": "Collaborates with Project Annie to serve the community.",
+      "url": "https://gracemission.net"
+    },
+    {
+      "id": "bethel-mb-church",
+      "name": "Bethel MB Church",
+      "description": "Provides community support to Project Annie.",
+      "url": null
+    },
+    {
+      "id": "good-news-outreach",
+      "name": "Good News Outreach",
+      "description": "Helping children and families break the cycle of poverty.",
+      "url": "https://goodnewsoutreach.org"
+    },
+    {
+      "id": "first-baptist-church",
+      "name": "First Baptist Church",
+      "description": "Volunteer workdays are provided when the need arises.",
+      "url": "https://fbctlh.org"
+    },
+    {
+      "id": "element3-church",
+      "name": "Element3 Church",
+      "description": "Provides food, monetary donations, repair projects, and volunteer recruitment.",
+      "url": "https://e3church.life"
+    },
+    {
+      "id": "apalachee-center",
+      "name": "Apalachee Center at Bethel",
+      "description": "Outpatient services including case management and psychiatry assistance through FACT and the Homeless Project.",
+      "url": "https://apalacheecenter.org"
+    },
+    {
+      "id": "elizabeth-poplar-spring",
+      "name": "Elizabeth Poplar Spring Church",
+      "description": "Provides community support to Project Annie.",
+      "url": null
+    },
+    {
+      "id": "leon-fruit-nut",
+      "name": "Leon Fruit & Nut Exchange",
+      "description": "Urban gleaning program moving food forward to those in need across Florida's Panhandle.",
+      "url": "https://leonfruitandnut.org"
+    },
+    {
+      "id": "volunteer-leon",
+      "name": "Volunteer Leon",
+      "description": "Leon County volunteer services — get involved, make a difference.",
+      "url": "https://volunteerleon.org"
+    },
+    {
+      "id": "st-paul-umc",
+      "name": "St. Paul United Methodist Church",
+      "description": "Major contributor to Project Annie's building renovation.",
+      "url": "https://stpaulumctallahassee.org"
+    },
+    {
+      "id": "faith-presbyterian",
+      "name": "Faith Presbyterian Church",
+      "description": "A place to worship, grow, and serve — following the path of Christ.",
+      "url": "https://faithpcusa.org"
+    },
+    {
+      "id": "fsu-ifc",
+      "name": "FSU Interfraternity Council",
+      "description": "Student-led governing body supporting FSU fraternities. Chose Project Annie as a recipient of golf tournament proceeds.",
+      "url": "https://greeklife.fsu.edu/ifc"
+    },
+    {
+      "id": "city-of-tallahassee",
+      "name": "City of Tallahassee",
+      "description": "Frenchtown Neighborhood First Plan — significant contributor to community programs.",
+      "url": "https://talgov.com"
+    }
   ]
 }
