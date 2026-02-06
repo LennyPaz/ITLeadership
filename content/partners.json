@@ -1,0 +1,10 @@
+{
+  "partners": [
+    { "id": "P1", "name": "United Way of the Big Bend" },
+    { "id": "P2", "name": "City of Tallahassee" },
+    { "id": "P3", "name": "Leon County" },
+    { "id": "P4", "name": "Early Learning Coalition" },
+    { "id": "P5", "name": "Community Foundation of North Florida" },
+    { "id": "P6", "name": "Children's Services Council" }
+  ]
+}

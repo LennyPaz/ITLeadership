@@ -5,6 +5,7 @@ import { getImagePath } from '@/lib/utils'
 
 // Import content from JSON files
 import settingsData from '@/content/settings.json'
+import partnersData from '@/content/partners.json'
 
 const quickLinks = [
   { href: '/about', label: 'About Us' },
@@ -35,7 +36,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
           {/* Brand column */}
           <div className="lg:col-span-1">
-            <Link href="/" className="inline-flex items-center gap-3 group">
+            <Link href="/" className="inline-flex items-center gap-3 group" aria-label="Project Annie Home">
               <div className="relative w-16 h-16 bg-white rounded-lg p-1 transition-transform duration-200 group-hover:scale-105">
                 <Image
                   src={getImagePath('/images/logo.webp')}
@@ -178,11 +179,11 @@ export default function Footer() {
             {/* Partner logos */}
             <div className="flex items-center gap-4 flex-wrap justify-center md:justify-end">
               <span className="text-white/50 text-xs">Our Partners</span>
-              {[1, 2, 3, 4, 5, 6].map((n) => (
-                <div key={n} className="relative w-8 h-8 opacity-60 hover:opacity-100 transition-opacity">
+              {partnersData.partners.map((partner) => (
+                <div key={partner.id} className="relative w-8 h-8 opacity-60 hover:opacity-100 transition-opacity">
                   <Image
-                    src={getImagePath(`/images/Partners/P${n}.webp`)}
-                    alt={`Partner ${n}`}
+                    src={getImagePath(`/images/Partners/${partner.id}.webp`)}
+                    alt={partner.name}
                     fill
                     className="object-contain brightness-0 invert"
                   />
