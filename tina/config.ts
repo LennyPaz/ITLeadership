@@ -9,8 +9,8 @@ const iconOptions = [
 
 export default defineConfig({
   branch: process.env.TINA_BRANCH || process.env.VERCEL_GIT_COMMIT_REF || process.env.HEAD || 'main',
-  clientId: process.env.TINA_CLIENT_ID || '',
-  token: process.env.TINA_TOKEN || '',
+  clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID || '',
+  token: process.env.NEXT_PUBLIC_TINA_TOKEN || '',
   build: {
     outputFolder: 'admin',
     publicFolder: 'public',
