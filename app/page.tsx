@@ -527,7 +527,7 @@ export default function HomePage() {
                   </p>
 
                   {/* Impact breakdown */}
-                  <div className="space-y-4 mb-8">
+                  <div className="space-y-3 mb-6">
                     {campaign.impactStats.map((stat) => (
                       <div key={stat.label} className="flex gap-3">
                         <div className="flex-shrink-0 w-1.5 bg-accent-honey rounded-full" />
@@ -544,7 +544,7 @@ export default function HomePage() {
                   </div>
 
                   {/* Transparency note */}
-                  <div className="bg-white/10 backdrop-blur-sm rounded-lg px-4 py-3 mb-8">
+                  <div className="bg-white/10 backdrop-blur-sm rounded-lg px-4 py-3 mb-6">
                     <p className="text-white/90 text-sm flex items-center gap-2">
                       <span className="text-accent-honey text-lg">✓</span>
                       {campaign.transparency}
