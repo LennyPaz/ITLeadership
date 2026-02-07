@@ -510,7 +510,7 @@ export default function HomePage() {
                 <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary rounded-full blur-3xl" />
               </div>
 
-              <div className="relative grid lg:grid-cols-2 gap-8 p-8 lg:p-12">
+              <div className="relative grid lg:grid-cols-[3fr_2fr] gap-8 p-8 lg:p-12">
                 {/* Content */}
                 <div className="text-white">
                   <span className="inline-flex items-center gap-2 bg-white/20 px-3 py-1.5 rounded text-sm font-medium mb-6">
@@ -522,7 +522,7 @@ export default function HomePage() {
                     {campaign.title}
                   </h2>
 
-                  <p className="text-white/90 text-lg mb-8">
+                  <p className="text-white/90 text-lg mb-6">
                     {campaign.description}
                   </p>
 
@@ -570,12 +570,12 @@ export default function HomePage() {
 
                 {/* Image */}
                 <div className="relative hidden lg:block">
-                  <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
+                  <div className="relative h-full min-h-[320px] rounded-lg overflow-hidden">
                     <FocalImage
                       src="/images/Donate_Volunteer/Charity3.webp"
                       alt="Community volunteers serving meals"
                       fill
-                      sizes="(max-width: 1024px) 0px, 50vw"
+                      sizes="(max-width: 1024px) 0px, 40vw"
                       className="object-cover"
                     />
                   </div>
