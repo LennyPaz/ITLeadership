@@ -13,12 +13,14 @@ const nextConfig = {
     optimizePackageImports: ['lucide-react', 'framer-motion'],
   },
   async rewrites() {
-    return [
-      {
-        source: '/admin',
-        destination: '/admin/index.html',
-      },
-    ]
+    return {
+      beforeFiles: [
+        {
+          source: '/admin',
+          destination: '/admin/index.html',
+        },
+      ],
+    }
   },
 }
 
