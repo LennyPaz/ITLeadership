@@ -14,7 +14,7 @@ const nextConfig = {
   },
   async rewrites() {
     return {
-      beforeFiles: [
+      afterFiles: [
         {
           source: '/admin',
           destination: '/admin/index.html',
