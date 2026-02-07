@@ -102,7 +102,7 @@ export default function Navigation() {
       </div>
 
       {/* Main navigation */}
-      <nav className="container-base">
+      <nav aria-label="Main navigation" className="container-base">
         <div className="flex items-center justify-between h-18 lg:h-20">
           {/* Logo */}
           <Link
@@ -214,7 +214,7 @@ export default function Navigation() {
               className="absolute top-full left-0 right-0 bg-white shadow-lg lg:hidden border-t border-neutral-light"
             >
               <div className="container-base py-6">
-                <nav className="space-y-1">
+                <nav aria-label="Mobile navigation" className="space-y-1">
                   {navLinks.map((link, index) => {
                     const isActive = pathname === link.href
                     return (
