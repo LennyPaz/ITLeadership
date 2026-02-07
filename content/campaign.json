@@ -1,12 +1,14 @@
 {
-  "title": "Thanksgiving Meal Program",
+  "title": "Supporting Families Year-Round",
   "year": 2026,
-  "description": "Every year, Project Annie serves over 2,000 meals to families in need during Thanksgiving. Help us continue this tradition of community care and connection.",
-  "goalAmount": 20000,
-  "currentAmount": 12500,
+  "description": "Every donation provides quality childcare, nutritious meals, and essential support to families in Frenchtown. Your gift today helps us continue serving our community tomorrow.",
+  "impactStats": [
+    { "label": "Every $50", "value": "Provides a week of quality childcare for one child" },
+    { "label": "Every $100", "value": "Feeds a family of four for two weeks" },
+    { "label": "Every $500", "value": "Supports our Thanksgiving meal program serving 20+ families" }
+  ],
   "mealsServed": "2,000+",
   "familiesFed": "500+",
   "active": true,
-  "deadline": "November 28, 2026",
-  "donorCount": 147
+  "transparency": "100% of donations fund direct programs and services"
 }

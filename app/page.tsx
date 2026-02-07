@@ -151,9 +151,6 @@ export default function HomePage() {
   const campaign = campaignData
   const founder = founderData
 
-  // Calculate campaign progress
-  const campaignProgress = Math.round((campaign.currentAmount / campaign.goalAmount) * 100)
-
   return (
     <>
       {/* Hero Section - Editorial Split Layout */}
@@ -502,7 +499,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Current Campaign Section */}
+      {/* Your Impact Section */}
       {campaign.active && (
         <section className="py-20 lg:py-28 bg-white">
           <div className="container-base">
@@ -517,42 +514,41 @@ export default function HomePage() {
                 {/* Content */}
                 <div className="text-white">
                   <span className="inline-flex items-center gap-2 bg-white/20 px-3 py-1.5 rounded text-sm font-medium mb-6">
-                    <Utensils className="w-4 h-4 text-accent-honey" />
-                    Annual Campaign
+                    <Heart className="w-4 h-4 text-accent-honey" />
+                    Your Impact
                   </span>
 
                   <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 text-white">
-                    {campaign.title} {campaign.year}
+                    {campaign.title}
                   </h2>
 
-                  <p className="text-white text-lg mb-8">
+                  <p className="text-white/90 text-lg mb-8">
                     {campaign.description}
                   </p>
 
-                  {/* Progress bar */}
-                  <div className="mb-8">
-                    <div className="flex justify-between text-sm mb-2">
-                      <span className="text-white/90">Progress</span>
-                      <span className="text-accent-honey font-semibold">
-                        ${campaign.currentAmount.toLocaleString()} / ${campaign.goalAmount.toLocaleString()}
-                      </span>
-                    </div>
-                    <div className="h-3 bg-white/20 rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-accent-honey rounded-full transition-all duration-1000"
-                        style={{ width: `${campaignProgress}%` }}
-                      />
-                    </div>
-                    <p className="text-white/90 text-sm mt-2">
-                      {campaignProgress}% of our goal reached
-                      {campaign.deadline && <> &mdash; help us reach our goal by <span className="text-accent-honey font-semibold">{campaign.deadline}</span></>}
+                  {/* Impact breakdown */}
+                  <div className="space-y-4 mb-8">
+                    {campaign.impactStats.map((stat) => (
+                      <div key={stat.label} className="flex gap-3">
+                        <div className="flex-shrink-0 w-1.5 bg-accent-honey rounded-full" />
+                        <div>
+                          <div className="text-accent-honey font-semibold text-sm mb-1">
+                            {stat.label}
+                          </div>
+                          <div className="text-white/90 text-sm">
+                            {stat.value}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Transparency note */}
+                  <div className="bg-white/10 backdrop-blur-sm rounded-lg px-4 py-3 mb-8">
+                    <p className="text-white/90 text-sm flex items-center gap-2">
+                      <span className="text-accent-honey text-lg">✓</span>
+                      {campaign.transparency}
                     </p>
-                    {campaign.donorCount && (
-                      <p className="text-white/80 text-sm mt-1">
-                        <Users className="w-3.5 h-3.5 inline -mt-0.5 mr-1" />
-                        {campaign.donorCount} donors have contributed so far
-                      </p>
-                    )}
                   </div>
 
                   <div className="flex flex-col sm:flex-row gap-4">
@@ -577,7 +573,7 @@ export default function HomePage() {
                   <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
                     <FocalImage
                       src="/images/Donate_Volunteer/Charity3.webp"
-                      alt="Thanksgiving meal service"
+                      alt="Community volunteers serving meals"
                       fill
                       sizes="(max-width: 1024px) 0px, 50vw"
                       className="object-cover"
@@ -586,6 +582,11 @@ export default function HomePage() {
 
                   {/* Stats floating card */}
                   <div className="absolute -bottom-4 -left-4 bg-white rounded-lg p-4 shadow-lg">
+                    <div className="text-center mb-2">
+                      <div className="text-xs font-semibold text-neutral-gray uppercase tracking-wide mb-1">
+                        This Year
+                      </div>
+                    </div>
                     <div className="grid grid-cols-2 gap-4 text-center">
                       <div>
                         <div className="text-2xl font-heading font-bold text-primary">
@@ -597,7 +598,7 @@ export default function HomePage() {
                         <div className="text-2xl font-heading font-bold text-secondary">
                           {campaign.familiesFed}
                         </div>
-                        <div className="text-xs text-neutral-gray">Families Fed</div>
+                        <div className="text-xs text-neutral-gray">Families Helped</div>
                       </div>
                     </div>
                   </div>
