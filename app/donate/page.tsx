@@ -272,6 +272,10 @@ export default function DonatePage() {
                 <p className="text-center text-sm text-neutral-gray mt-4">
                   Secure one-time donation processed by PayPal. You&rsquo;ll be redirected to complete your gift.
                 </p>
+                <p className="text-center text-sm text-neutral-gray mt-2 flex items-center justify-center gap-1.5">
+                  <Shield className="w-4 h-4 text-primary shrink-0" />
+                  Your gift is tax-deductible. EIN: 26-0638919
+                </p>
               </AnimatedSection>
             </div>
 

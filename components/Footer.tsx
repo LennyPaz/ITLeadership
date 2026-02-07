@@ -170,10 +170,16 @@ export default function Footer() {
                 <Shield className="w-5 h-5 text-accent-honey" />
                 <span>501(c)(3) Verified</span>
               </div>
-              <div className="flex items-center gap-2 text-white/70 text-xs">
+              <a
+                href="https://www.guidestar.org/profile/26-0638919"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-white/70 hover:text-white text-xs transition-colors"
+              >
                 <Award className="w-5 h-5 text-accent-honey" />
                 <span>GuideStar Listed</span>
-              </div>
+                <ExternalLink className="w-3 h-3" />
+              </a>
             </div>
 
             {/* Partner acknowledgment */}

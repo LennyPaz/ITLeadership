@@ -37,7 +37,8 @@
       "Bash(grep:*)",
       "Bash(/dev/null --include=\"*.tsx\" --include=\"*.ts\")",
       "Bash(xargs:*)",
-      "Bash(npx next build)"
+      "Bash(npx next build)",
+      "Bash(git remote get-url:*)"
     ],
     "deny": [],
     "ask": []
