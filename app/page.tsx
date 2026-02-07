@@ -510,9 +510,9 @@ export default function HomePage() {
                 <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary rounded-full blur-3xl" />
               </div>
 
-              <div className="relative p-8 lg:p-12">
-                {/* Content - Single Column Layout */}
-                <div className="max-w-3xl mx-auto text-white text-center">
+              <div className="relative grid lg:grid-cols-[3fr_2fr] gap-8 p-8 lg:p-12">
+                {/* Content */}
+                <div className="text-white">
                   <span className="inline-flex items-center gap-2 bg-white/20 px-3 py-1.5 rounded text-sm font-medium mb-6">
                     <Heart className="w-4 h-4 text-accent-honey" />
                     Your Impact
@@ -522,61 +522,36 @@ export default function HomePage() {
                     {campaign.title}
                   </h2>
 
-                  <p className="text-white/90 text-lg mb-8">
+                  <p className="text-white/90 text-lg mb-6">
                     {campaign.description}
                   </p>
 
-                  {/* Stats Card - Integrated into flow */}
-                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 mb-8 border-2 border-accent-honey/30">
-                    <div className="text-center mb-4">
-                      <div className="text-sm font-semibold text-accent-honey uppercase tracking-wide">
-                        This Year
-                      </div>
-                    </div>
-                    <div className="grid grid-cols-2 gap-6 text-center">
-                      <div>
-                        <div className="text-3xl md:text-4xl font-heading font-bold text-accent-honey">
-                          {campaign.mealsServed}
-                        </div>
-                        <div className="text-sm text-white/80 mt-1">Meals Served</div>
-                      </div>
-                      <div>
-                        <div className="text-3xl md:text-4xl font-heading font-bold text-accent-honey">
-                          {campaign.familiesFed}
-                        </div>
-                        <div className="text-sm text-white/80 mt-1">Families Helped</div>
-                      </div>
-                    </div>
-                  </div>
-
                   {/* Impact breakdown */}
-                  <div className="bg-white/5 backdrop-blur-sm rounded-lg p-6 mb-6 text-left">
-                    <div className="space-y-4">
-                      {campaign.impactStats.map((stat) => (
-                        <div key={stat.label} className="flex gap-3">
-                          <div className="flex-shrink-0 w-1.5 bg-accent-honey rounded-full" />
-                          <div>
-                            <div className="text-accent-honey font-semibold text-sm mb-1">
-                              {stat.label}
-                            </div>
-                            <div className="text-white/90 text-sm">
-                              {stat.value}
-                            </div>
+                  <div className="space-y-3 mb-6">
+                    {campaign.impactStats.map((stat) => (
+                      <div key={stat.label} className="flex gap-3">
+                        <div className="flex-shrink-0 w-1.5 bg-accent-honey rounded-full" />
+                        <div>
+                          <div className="text-accent-honey font-semibold text-sm mb-1">
+                            {stat.label}
+                          </div>
+                          <div className="text-white/90 text-sm">
+                            {stat.value}
                           </div>
                         </div>
-                      ))}
-                    </div>
+                      </div>
+                    ))}
                   </div>
 
                   {/* Transparency note */}
-                  <div className="bg-white/10 backdrop-blur-sm rounded-lg px-4 py-3 mb-8">
-                    <p className="text-white/90 text-sm flex items-center justify-center gap-2">
+                  <div className="bg-white/10 backdrop-blur-sm rounded-lg px-4 py-3 mb-6">
+                    <p className="text-white/90 text-sm flex items-center gap-2">
                       <span className="text-accent-honey text-lg">✓</span>
                       {campaign.transparency}
                     </p>
                   </div>
 
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <div className="flex flex-col sm:flex-row gap-4">
                     <Link
                       href="/donate"
                       className="btn bg-accent-honey hover:bg-accent-honey-dark text-neutral-charcoal font-semibold px-8 py-4"
@@ -590,6 +565,42 @@ export default function HomePage() {
                     >
                       Volunteer to Help
                     </Link>
+                  </div>
+                </div>
+
+                {/* Image */}
+                <div className="relative hidden lg:block">
+                  <div className="relative h-full min-h-[320px] rounded-lg overflow-hidden">
+                    <FocalImage
+                      src="/images/Donate_Volunteer/Charity3.webp"
+                      alt="Community volunteers serving meals"
+                      fill
+                      sizes="(max-width: 1024px) 0px, 40vw"
+                      className="object-cover"
+                    />
+                  </div>
+
+                  {/* Stats floating card */}
+                  <div className="absolute -bottom-4 -left-4 bg-white rounded-lg p-4 shadow-lg">
+                    <div className="text-center mb-2">
+                      <div className="text-xs font-semibold text-neutral-gray uppercase tracking-wide mb-1">
+                        This Year
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-4 text-center">
+                      <div>
+                        <div className="text-2xl font-heading font-bold text-primary">
+                          {campaign.mealsServed}
+                        </div>
+                        <div className="text-xs text-neutral-gray">Meals Served</div>
+                      </div>
+                      <div>
+                        <div className="text-2xl font-heading font-bold text-secondary">
+                          {campaign.familiesFed}
+                        </div>
+                        <div className="text-xs text-neutral-gray">Families Helped</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
