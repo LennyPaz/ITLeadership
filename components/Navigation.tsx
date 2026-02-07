@@ -32,9 +32,6 @@ export default function Navigation() {
     pathname = pathname.slice(0, -1)
   }
 
-  // Pages with light backgrounds need solid header from the start
-  const isLightBgPage = pathname === '/404' || pathname === '/not-found'
-
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20)
@@ -64,7 +61,7 @@ export default function Navigation() {
     <header
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        isScrolled || isLightBgPage
+        isScrolled
           ? 'bg-white/95 backdrop-blur-md shadow-sm'
           : 'bg-transparent'
       )}
@@ -73,7 +70,7 @@ export default function Navigation() {
       <div
         className={cn(
           'hidden md:block border-b transition-all duration-300',
-          isScrolled || isLightBgPage
+          isScrolled
             ? 'border-neutral-light/50 bg-neutral-cream/50'
             : 'border-white/10 bg-secondary-dark/80'
         )}
@@ -82,7 +79,7 @@ export default function Navigation() {
           <div className="flex items-center justify-between h-10 text-sm">
             <div className={cn(
               'flex items-center gap-2 transition-colors',
-              (isScrolled || isLightBgPage) ? 'text-neutral-gray' : 'text-white/90'
+              isScrolled ? 'text-neutral-gray' : 'text-white/90'
             )}>
               <Phone className="w-4 h-4" />
               <a
@@ -96,7 +93,7 @@ export default function Navigation() {
             </div>
             <div className={cn(
               'text-sm transition-colors',
-              (isScrolled || isLightBgPage) ? 'text-neutral-gray' : 'text-white/90'
+              isScrolled ? 'text-neutral-gray' : 'text-white/90'
             )}>
               Serving Frenchtown Since 2008
             </div>
@@ -124,13 +121,13 @@ export default function Navigation() {
             <div className="hidden sm:block">
               <div className={cn(
                 'font-heading font-bold text-lg transition-colors',
-                isScrolled || isOpen || isLightBgPage ? 'text-neutral-charcoal' : 'text-white'
+                isScrolled || isOpen ? 'text-neutral-charcoal' : 'text-white'
               )}>
                 Project Annie
               </div>
               <div className={cn(
                 'text-xs tracking-wide transition-colors',
-                isScrolled || isOpen || isLightBgPage ? 'text-neutral-gray' : 'text-white/90'
+                isScrolled || isOpen ? 'text-neutral-gray' : 'text-white/90'
               )}>
                 Annie&apos;s Nursery School
               </div>
@@ -150,7 +147,7 @@ export default function Navigation() {
                     'relative px-4 py-2 font-heading font-medium text-sm transition-colors',
                     isActive
                       ? 'text-primary'
-                      : (isScrolled || isLightBgPage)
+                      : isScrolled
                         ? 'text-neutral-charcoal hover:text-primary'
                         : 'text-white/90 hover:text-white'
                   )}
@@ -182,8 +179,7 @@ export default function Navigation() {
             onClick={() => setIsOpen(!isOpen)}
             className={cn(
               'relative z-10 lg:hidden p-2 -mr-2 transition-colors',
-              isScrolled || isOpen || isLightBgPage
-                ? 'text-neutral-charcoal'
+              isScrolled || isOpen                ? 'text-neutral-charcoal'
                 : 'text-white'
             )}
             aria-label={isOpen ? 'Close menu' : 'Open menu'}
