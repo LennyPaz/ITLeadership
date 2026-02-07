@@ -5,7 +5,7 @@ import { getImagePath } from '@/lib/utils'
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <>
       {/* Dark hero section */}
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 bg-secondary-dark overflow-hidden flex-1 flex items-center">
         {/* Background layer */}
@@ -107,6 +107,6 @@ export default function NotFound() {
           </div>
         </div>
       </section>
-    </div>
+    </>
   )
 }

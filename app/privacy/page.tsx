@@ -12,7 +12,6 @@ import {
 } from 'lucide-react'
 import FocalImage from '@/components/FocalImage'
 import HeroSection from '@/components/HeroSection'
-import PrivacyTableOfContents from '@/components/PrivacyTableOfContents'
 
 const sections = [
   {
@@ -169,14 +168,7 @@ export default function PrivacyPage() {
       {/* Content */}
       <section className="py-16 lg:py-24 bg-white">
         <div className="container-base">
-          <div className="lg:grid lg:grid-cols-[280px_1fr] lg:gap-12">
-            {/* Sticky TOC sidebar (desktop) + mobile pill bar */}
-            <aside>
-              <PrivacyTableOfContents />
-            </aside>
-
-            {/* Content sections */}
-            <div className="space-y-0">
+          <div className="max-w-3xl mx-auto space-y-0">
               {sections.map((section, index) => {
                 const Icon = section.icon
                 return (
@@ -213,7 +205,6 @@ export default function PrivacyPage() {
                   Back to top
                 </a>
               </div>
-            </div>
           </div>
         </div>
       </section>
