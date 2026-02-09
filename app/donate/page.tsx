@@ -167,6 +167,19 @@ export default function DonatePage() {
       {/* Main Donation Section */}
       <section className="py-20 lg:py-28 bg-white">
         <div className="container-base">
+          {/* Mobile Trust Signals — visible only below lg */}
+          <div className="lg:hidden mb-8 bg-neutral-cream rounded-lg px-4 py-3 flex items-center justify-center gap-4 text-sm text-neutral-charcoal">
+            <span className="flex items-center gap-1.5">
+              <CheckCircle2 className="w-4 h-4 text-accent-sage shrink-0" />
+              100% to programs
+            </span>
+            <span className="text-neutral-light">|</span>
+            <span className="flex items-center gap-1.5">
+              <Shield className="w-4 h-4 text-primary shrink-0" />
+              Tax-deductible
+            </span>
+          </div>
+
           <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
             {/* Donation Form */}
             <div className="lg:col-span-3">

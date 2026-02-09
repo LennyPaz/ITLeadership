@@ -38,7 +38,8 @@
       "Bash(/dev/null --include=\"*.tsx\" --include=\"*.ts\")",
       "Bash(xargs:*)",
       "Bash(npx next build)",
-      "Bash(git remote get-url:*)"
+      "Bash(git remote get-url:*)",
+      "Bash(git status:*)"
     ],
     "deny": [],
     "ask": []
