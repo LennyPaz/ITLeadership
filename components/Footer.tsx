@@ -165,11 +165,17 @@ export default function Footer() {
         <div className="container-base py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             {/* Trust badges */}
-            <div className="flex items-center gap-6">
-              <div className="flex items-center gap-2 text-white/70 text-xs">
+            <div className="flex items-center gap-6 flex-wrap">
+              <a
+                href="https://apps.irs.gov/app/eos/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-white/70 hover:text-white text-xs transition-colors"
+              >
                 <Shield className="w-5 h-5 text-accent-honey" />
                 <span>501(c)(3) Verified</span>
-              </div>
+                <ExternalLink className="w-3 h-3" />
+              </a>
               <a
                 href="https://www.guidestar.org/profile/26-0638919"
                 target="_blank"
@@ -180,6 +186,15 @@ export default function Footer() {
                 <span>GuideStar Listed</span>
                 <ExternalLink className="w-3 h-3" />
               </a>
+            </div>
+
+            {/* Fund allocation */}
+            <div className="flex items-center gap-2 text-white/60 text-xs">
+              <span className="font-medium text-accent-honey">85%</span><span>Programs</span>
+              <span className="text-white/30">|</span>
+              <span className="font-medium text-accent-honey">10%</span><span>Meals</span>
+              <span className="text-white/30">|</span>
+              <span className="font-medium text-accent-honey">5%</span><span>Ops</span>
             </div>
 
             {/* Partner acknowledgment */}

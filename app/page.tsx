@@ -315,6 +315,12 @@ export default function HomePage() {
               )
             })}
           </motion.div>
+
+          {statsData.lastUpdated && (
+            <p className="text-center text-neutral-gray/60 text-xs mt-6">
+              Stats as of {new Date(statsData.lastUpdated + 'T00:00:00').toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+            </p>
+          )}
         </div>
       </section>
 
