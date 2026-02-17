@@ -44,6 +44,15 @@ const jsonLd = {
   },
 }
 
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://projectannie.org' },
+    { '@type': 'ListItem', position: 2, name: 'Programs', item: 'https://projectannie.org/programs' },
+  ],
+}
+
 export default function ProgramsLayout({
   children,
 }: {
@@ -54,6 +63,10 @@ export default function ProgramsLayout({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       {children}
     </>
