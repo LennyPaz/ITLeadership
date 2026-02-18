@@ -35,7 +35,7 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://projectannie.org'),
+  metadataBase: new URL('https://projectannieinc.com'),
   title: {
     default: 'Project Annie | Annie\'s Nursery School - Tallahassee, FL',
     template: '%s | Project Annie',
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://projectannie.org',
+    url: 'https://projectannieinc.com',
     siteName: 'Project Annie',
     title: 'Project Annie | Annie\'s Nursery School',
     description: 'Quality, affordable childcare serving Tallahassee\'s Frenchtown community since 2008.',
@@ -83,8 +83,8 @@ const jsonLd = {
   '@type': 'NonprofitOrganization',
   name: 'Project Annie, Inc.',
   alternateName: "Annie's Nursery School",
-  url: 'https://projectannie.org',
-  logo: 'https://projectannie.org/images/logo.webp',
+  url: 'https://projectannieinc.com',
+  logo: 'https://projectannieinc.com/images/logo.webp',
   description:
     "Project Annie provides quality, affordable childcare and early education for children ages 1-3 in Tallahassee's Frenchtown community. Serving families since 2008.",
   foundingDate: '2008',

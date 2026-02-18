@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     title: 'Contact Us | Project Annie',
     description:
       'Contact Project Annie in Tallahassee. Call (850) 222-6133 or visit us at 625 W. 4th Ave. in Frenchtown.',
-    url: 'https://projectannie.org/contact/',
+    url: 'https://projectannieinc.com/contact/',
   },
 }
 
@@ -18,11 +18,11 @@ const jsonLd = {
   name: 'Contact Project Annie',
   description:
     'Contact Project Annie in Tallahassee, FL. Call, email, or visit us in Frenchtown.',
-  url: 'https://projectannie.org/contact/',
+  url: 'https://projectannieinc.com/contact/',
   mainEntity: {
     '@type': 'NonprofitOrganization',
     name: 'Project Annie, Inc.',
-    url: 'https://projectannie.org',
+    url: 'https://projectannieinc.com',
     telephone: '+1-850-222-6133',
     email: 'anniejohnsont@gmail.com',
     address: {
@@ -46,8 +46,8 @@ const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://projectannie.org' },
-    { '@type': 'ListItem', position: 2, name: 'Contact Us', item: 'https://projectannie.org/contact' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://projectannieinc.com' },
+    { '@type': 'ListItem', position: 2, name: 'Contact Us', item: 'https://projectannieinc.com/contact' },
   ],
 }
 

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     title: 'Volunteer | Project Annie',
     description:
       'Volunteer with Project Annie in Tallahassee. Join FSU and TCC students making a difference in Frenchtown.',
-    url: 'https://projectannie.org/volunteer/',
+    url: 'https://projectannieinc.com/volunteer/',
   },
 }
 
@@ -18,7 +18,7 @@ const jsonLd = {
   name: 'Volunteer with Project Annie',
   description:
     'Join FSU and TCC students volunteering with Project Annie through childcare assistance, community meals, and special events in Tallahassee\'s Frenchtown neighborhood.',
-  url: 'https://projectannie.org/volunteer/',
+  url: 'https://projectannieinc.com/volunteer/',
   location: {
     '@type': 'Place',
     name: "Annie's Nursery School",
@@ -34,7 +34,7 @@ const jsonLd = {
   organizer: {
     '@type': 'NonprofitOrganization',
     name: 'Project Annie, Inc.',
-    url: 'https://projectannie.org',
+    url: 'https://projectannieinc.com',
   },
 }
 
@@ -42,8 +42,8 @@ const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://projectannie.org' },
-    { '@type': 'ListItem', position: 2, name: 'Volunteer', item: 'https://projectannie.org/volunteer' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://projectannieinc.com' },
+    { '@type': 'ListItem', position: 2, name: 'Volunteer', item: 'https://projectannieinc.com/volunteer' },
   ],
 }
 

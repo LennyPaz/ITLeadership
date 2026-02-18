@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     title: 'Annie\'s Nursery School | Project Annie',
     description:
       'Quality, affordable childcare for children ages 1-3 in Tallahassee. Licensed nursery school with small class sizes and structured learning.',
-    url: 'https://projectannie.org/programs/',
+    url: 'https://projectannieinc.com/programs/',
   },
 }
 
@@ -18,11 +18,11 @@ const jsonLd = {
   name: "Annie's Nursery School",
   description:
     'Quality, affordable childcare for children ages 1-3 in Tallahassee\'s Frenchtown community. Licensed nursery school with small class sizes, structured learning, and a nurturing environment.',
-  url: 'https://projectannie.org/programs/',
+  url: 'https://projectannieinc.com/programs/',
   provider: {
     '@type': 'NonprofitOrganization',
     name: 'Project Annie, Inc.',
-    url: 'https://projectannie.org',
+    url: 'https://projectannieinc.com',
   },
   address: {
     '@type': 'PostalAddress',
@@ -48,8 +48,8 @@ const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://projectannie.org' },
-    { '@type': 'ListItem', position: 2, name: 'Programs', item: 'https://projectannie.org/programs' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://projectannieinc.com' },
+    { '@type': 'ListItem', position: 2, name: 'Programs', item: 'https://projectannieinc.com/programs' },
   ],
 }
 

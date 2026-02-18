@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     title: 'Donate | Project Annie',
     description:
       'Support Project Annie with a tax-deductible donation. Your gift provides childcare, meals, and hope to Frenchtown families.',
-    url: 'https://projectannie.org/donate/',
+    url: 'https://projectannieinc.com/donate/',
   },
 }
 
@@ -18,11 +18,11 @@ const jsonLd = {
   name: 'Donate to Project Annie',
   description:
     'Support Project Annie with a tax-deductible donation to provide childcare, meals, and community support in Tallahassee\'s Frenchtown neighborhood.',
-  url: 'https://projectannie.org/donate/',
+  url: 'https://projectannieinc.com/donate/',
   recipient: {
     '@type': 'NonprofitOrganization',
     name: 'Project Annie, Inc.',
-    url: 'https://projectannie.org',
+    url: 'https://projectannieinc.com',
     taxID: '26-0638919',
     nonprofitStatus: '501(c)(3)',
   },
@@ -32,8 +32,8 @@ const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://projectannie.org' },
-    { '@type': 'ListItem', position: 2, name: 'Donate', item: 'https://projectannie.org/donate' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://projectannieinc.com' },
+    { '@type': 'ListItem', position: 2, name: 'Donate', item: 'https://projectannieinc.com/donate' },
   ],
 }
 

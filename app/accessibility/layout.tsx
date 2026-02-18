@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     title: 'Accessibility Statement | Project Annie',
     description:
       'Project Annie is committed to making our website accessible to all visitors.',
-    url: 'https://projectannie.org/accessibility/',
+    url: 'https://projectannieinc.com/accessibility/',
   },
 }
 
@@ -16,8 +16,8 @@ const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://projectannie.org' },
-    { '@type': 'ListItem', position: 2, name: 'Accessibility', item: 'https://projectannie.org/accessibility' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://projectannieinc.com' },
+    { '@type': 'ListItem', position: 2, name: 'Accessibility', item: 'https://projectannieinc.com/accessibility' },
   ],
 }
 

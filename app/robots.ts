@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/', '/admin/'],
     },
-    sitemap: 'https://projectannie.org/sitemap.xml',
+    sitemap: 'https://projectannieinc.com/sitemap.xml',
   }
 }

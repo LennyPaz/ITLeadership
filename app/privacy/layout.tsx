@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     title: 'Privacy Policy | Project Annie',
     description:
       'Privacy policy for Project Annie\'s website. Learn how we handle your personal information.',
-    url: 'https://projectannie.org/privacy/',
+    url: 'https://projectannieinc.com/privacy/',
   },
 }
 
@@ -16,8 +16,8 @@ const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://projectannie.org' },
-    { '@type': 'ListItem', position: 2, name: 'Privacy Policy', item: 'https://projectannie.org/privacy' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://projectannieinc.com' },
+    { '@type': 'ListItem', position: 2, name: 'Privacy Policy', item: 'https://projectannieinc.com/privacy' },
   ],
 }
 

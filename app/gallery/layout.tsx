@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     title: 'Photo Gallery | Project Annie',
     description:
       'Browse photos from Project Annie\'s nursery school, community meals, volunteer events, and celebrations.',
-    url: 'https://projectannie.org/gallery/',
+    url: 'https://projectannieinc.com/gallery/',
   },
 }
 
@@ -16,8 +16,8 @@ const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://projectannie.org' },
-    { '@type': 'ListItem', position: 2, name: 'Photo Gallery', item: 'https://projectannie.org/gallery' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://projectannieinc.com' },
+    { '@type': 'ListItem', position: 2, name: 'Photo Gallery', item: 'https://projectannieinc.com/gallery' },
   ],
 }
 
