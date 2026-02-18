@@ -22,9 +22,11 @@ const sections = [
       <p className="text-neutral-gray text-lg leading-relaxed">
         When you use our contact form, we collect the
         information you provide: your name, email address,
-        and message. We do not collect information
-        automatically through cookies, analytics, or
-        tracking technologies unless otherwise noted.
+        and message. We also use Vercel Analytics, which
+        collects anonymous, aggregated data such as page
+        views, referrer URLs, and browser/device
+        information. This data cannot be used to identify
+        individual visitors and does not use cookies.
       </p>
     ),
   },
@@ -48,8 +50,8 @@ const sections = [
     icon: Mail,
     content: (
       <p className="text-neutral-gray text-lg leading-relaxed">
-        Contact form submissions are sent via Resend, a
-        third-party email delivery service. Resend
+        Contact form submissions may be sent via Resend, a
+        third-party email delivery service. If used, Resend
         processes your information only to deliver the
         message and is bound by its own privacy policy.
       </p>
