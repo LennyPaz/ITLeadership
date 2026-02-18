@@ -283,6 +283,7 @@ export default function ContactPage() {
                           name="name"
                           required
                           maxLength={100}
+                          autoComplete="name"
                           aria-required="true"
                           aria-invalid={!!fieldErrors.name}
                           aria-describedby={fieldErrors.name ? 'name-error' : undefined}
@@ -306,6 +307,7 @@ export default function ContactPage() {
                           inputMode="email"
                           required
                           maxLength={254}
+                          autoComplete="email"
                           aria-required="true"
                           aria-invalid={!!fieldErrors.email}
                           aria-describedby={fieldErrors.email ? 'email-error' : undefined}
@@ -330,6 +332,7 @@ export default function ContactPage() {
                           id="phone"
                           name="phone"
                           inputMode="tel"
+                          autoComplete="tel"
                           value={formState.phone}
                           onChange={handleInputChange}
                           className="input"

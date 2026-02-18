@@ -460,6 +460,7 @@ export default function DonatePage() {
                   <button
                     onClick={() => setOpenFaq(openFaq === i ? null : i)}
                     aria-expanded={openFaq === i}
+                    aria-controls={`faq-panel-${i}`}
                     className="w-full flex items-center justify-between gap-4 p-5 text-left"
                   >
                     <span className="font-heading font-semibold text-neutral-charcoal">
@@ -473,7 +474,7 @@ export default function DonatePage() {
                     />
                   </button>
                   {openFaq === i && (
-                    <div className="px-5 pb-5 -mt-1 text-neutral-gray leading-relaxed">
+                    <div id={`faq-panel-${i}`} role="region" className="px-5 pb-5 -mt-1 text-neutral-gray leading-relaxed">
                       {item.a}
                     </div>
                   )}
@@ -518,6 +519,11 @@ export default function DonatePage() {
                     </div>
                     <div className="h-2 bg-neutral-light rounded-full overflow-hidden">
                       <div
+                        role="progressbar"
+                        aria-valuenow={item.percent}
+                        aria-valuemin={0}
+                        aria-valuemax={100}
+                        aria-label={`${item.label}: ${item.percent}%`}
                         className={cn('h-full rounded-full', item.color)}
                         style={{ width: `${item.percent}%` }}
                       />

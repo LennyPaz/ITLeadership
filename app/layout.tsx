@@ -78,6 +78,18 @@ export const metadata: Metadata = {
   },
 }
 
+const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Project Annie',
+  url: 'https://projectannieinc.com',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: 'https://projectannieinc.com/?s={search_term_string}',
+    'query-input': 'required name=search_term_string',
+  },
+}
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'NonprofitOrganization',
@@ -135,6 +147,10 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://www.google.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
