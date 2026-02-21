@@ -52,7 +52,7 @@ const donorTestimonials = testimonialsData.items.filter((t) =>
 const faqItems = [
   {
     q: 'Is my donation tax-deductible?',
-    a: 'Yes. Project Annie, Inc. is a registered 501(c)(3) nonprofit organization (EIN: 26-0638919). You will receive a receipt for your records, and your donation may be tax-deductible to the extent allowed by law.',
+    a: 'Yes. Project Annie, Inc. is a registered 501(c)(3) nonprofit organization (EIN: 52-2011801). You will receive a receipt for your records, and your donation may be tax-deductible to the extent allowed by law.',
   },
   {
     q: 'Where does my money go?',
@@ -305,7 +305,7 @@ export default function DonatePage() {
                 </p>
                 <p className="text-center text-sm text-neutral-gray mt-2 flex items-center justify-center gap-1.5">
                   <Shield className="w-4 h-4 text-primary shrink-0" />
-                  Your gift is tax-deductible. EIN: 26-0638919
+                  Your gift is tax-deductible. EIN: 52-2011801
                 </p>
               </AnimatedSection>
             </div>
@@ -542,7 +542,7 @@ export default function DonatePage() {
                     </h4>
                     <p className="text-sm text-neutral-gray">
                       Project Annie, Inc. is a registered 501(c)(3) nonprofit.
-                      EIN: 26-0638919. Your donation may be tax-deductible.
+                      EIN: 52-2011801. Your donation may be tax-deductible.
                     </p>
                   </div>
                 </div>

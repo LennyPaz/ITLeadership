@@ -167,7 +167,7 @@ export default function Footer() {
             {/* Trust badges */}
             <div className="flex items-center gap-6 flex-wrap">
               <a
-                href="https://apps.irs.gov/app/eos/"
+                href="https://projects.propublica.org/nonprofits/organizations/522011801"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-white/70 hover:text-white text-xs transition-colors"
@@ -177,7 +177,7 @@ export default function Footer() {
                 <ExternalLink className="w-3 h-3" />
               </a>
               <a
-                href="https://www.guidestar.org/profile/26-0638919"
+                href="https://app.candid.org/profile/7781007/project-annie-52-2011801"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-white/70 hover:text-white text-xs transition-colors"

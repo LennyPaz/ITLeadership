@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Donate',
   description:
-    'Support Project Annie with a tax-deductible donation. Your gift provides childcare, meals, and hope to families in Tallahassee\'s Frenchtown community. 501(c)(3) EIN: 26-0638919.',
+    'Support Project Annie with a tax-deductible donation. Your gift provides childcare, meals, and hope to families in Tallahassee\'s Frenchtown community. 501(c)(3) EIN: 52-2011801.',
   openGraph: {
     title: 'Donate | Project Annie',
     description:
@@ -23,7 +23,7 @@ const jsonLd = {
     '@type': 'NonprofitOrganization',
     name: 'Project Annie, Inc.',
     url: 'https://projectannieinc.com',
-    taxID: '26-0638919',
+    taxID: '52-2011801',
     nonprofitStatus: '501(c)(3)',
   },
 }

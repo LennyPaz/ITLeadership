@@ -123,7 +123,7 @@ const jsonLd = {
     },
   },
   nonprofitStatus: '501(c)(3)',
-  taxID: '26-0638919',
+  taxID: '52-2011801',
   sameAs: [
     'https://www.paypal.com/paypalme/ProjectAnnieInc',
   ],
