@@ -1,24 +1,44 @@
 import Link from 'next/link'
+import FocalImage from '@/components/FocalImage'
+import HeroSection from '@/components/HeroSection'
 
 export default function AccessibilityPage() {
   return (
-    <div className="bg-white">
-      {/* Header */}
-      <section className="bg-secondary text-white py-16 lg:py-20">
-        <div className="container-base">
-          <h1 className="font-heading text-3xl lg:text-4xl font-bold">
-            Accessibility Statement
-          </h1>
-          <p className="mt-4 text-white/90 max-w-2xl">
-            Project Annie is committed to ensuring our website is
-            accessible to everyone, including people with
-            disabilities.
-          </p>
+    <>
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 bg-secondary-dark overflow-hidden">
+        <div className="absolute inset-0">
+          <FocalImage
+            src="/images/Home/IMG7.webp"
+            alt="Project Annie community"
+            fill
+            sizes="100vw"
+            className="object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-secondary-dark via-secondary-dark/95 to-secondary-dark" />
+        </div>
+
+        <div className="absolute top-20 left-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-10 right-10 w-96 h-96 bg-accent-honey/10 rounded-full blur-3xl" />
+
+        <div className="container-base relative z-10">
+          <HeroSection className="max-w-3xl">
+            <span className="badge bg-white/10 text-white mb-6">Accessibility</span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6">
+              Accessibility{' '}
+              <span className="text-accent-honey">Statement</span>
+            </h1>
+            <p className="text-white/90 text-lg md:text-xl leading-relaxed max-w-2xl">
+              Project Annie is committed to ensuring our website is
+              accessible to everyone, including people with
+              disabilities.
+            </p>
+          </HeroSection>
         </div>
       </section>
 
       {/* Content */}
-      <section className="py-16 lg:py-20">
+      <section className="py-16 lg:py-20 bg-white">
         <div className="container-base max-w-3xl">
           <div className="prose prose-lg max-w-none space-y-10">
             <div>
@@ -104,6 +124,6 @@ export default function AccessibilityPage() {
           </div>
         </div>
       </section>
-    </div>
+    </>
   )
 }
