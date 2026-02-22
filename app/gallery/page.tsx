@@ -9,7 +9,7 @@ import Image from 'next/image'
 const MAX_STAGGER = 20
 
 function useInView() {
-  const ref = useRef<HTMLDivElement>(null)
+  const ref = useRef<HTMLButtonElement>(null)
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
@@ -79,25 +79,18 @@ function GalleryItem({
   const cappedDelay = Math.min(index, MAX_STAGGER) * 0.02
 
   return (
-    <motion.div
+    <motion.button
       ref={ref}
       key={image.src}
+      type="button"
       layout
       initial={{ opacity: 0, scale: 0.9 }}
       animate={isVisible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
       exit={{ opacity: 0, scale: 0.9 }}
       transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.3, delay: cappedDelay }}
-      className="relative group cursor-pointer overflow-hidden rounded-lg break-inside-avoid mb-4"
-      role="button"
-      tabIndex={0}
+      className="relative group cursor-pointer overflow-hidden rounded-lg break-inside-avoid mb-4 appearance-none bg-transparent border-none p-0 text-left"
       aria-label={`View ${image.alt}`}
       onClick={onOpen}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault()
-          onOpen()
-        }
-      }}
     >
       {isVisible ? (
         <div className="relative">
@@ -125,7 +118,7 @@ function GalleryItem({
       ) : (
         <div className="w-full" style={{ aspectRatio: '3/2' }} />
       )}
-    </motion.div>
+    </motion.button>
   )
 }
 
