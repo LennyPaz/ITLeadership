@@ -39,7 +39,14 @@
       "Bash(xargs:*)",
       "Bash(npx next build)",
       "Bash(git remote get-url:*)",
-      "Bash(git status:*)"
+      "Bash(git status:*)",
+      "mcp__claude_ai_Vercel__list_teams",
+      "mcp__claude_ai_Vercel__list_projects",
+      "mcp__claude_ai_Vercel__get_project",
+      "Bash(npx next lint:*)",
+      "WebFetch(domain:apps.irs.gov)",
+      "WebFetch(domain:www.guidestar.org)",
+      "WebFetch(domain:projects.propublica.org)"
     ],
     "deny": [],
     "ask": []

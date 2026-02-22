@@ -83,11 +83,6 @@ const websiteJsonLd = {
   '@type': 'WebSite',
   name: 'Project Annie',
   url: 'https://projectannieinc.com',
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: 'https://projectannieinc.com/?s={search_term_string}',
-    'query-input': 'required name=search_term_string',
-  },
 }
 
 const jsonLd = {
