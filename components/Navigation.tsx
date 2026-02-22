@@ -184,6 +184,7 @@ export default function Navigation() {
             )}
             aria-label={isOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isOpen}
+            aria-controls="mobile-menu"
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -210,6 +211,7 @@ export default function Navigation() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
+              id="mobile-menu"
               className="absolute top-full left-0 right-0 bg-white shadow-lg lg:hidden border-t border-neutral-light"
             >
               <div className="container-base py-6">

@@ -552,7 +552,7 @@ export default function ContactPage() {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="absolute inset-0"
+                className="absolute inset-0 focus:ring-2 focus:ring-primary focus:ring-offset-2"
                 title="Project Annie Location Map"
               />
             </div>
