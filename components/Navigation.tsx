@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { Menu, X, Phone, ChevronRight } from 'lucide-react'
 import { cn, getImagePath, BASE_PATH } from '@/lib/utils'
 
@@ -22,6 +22,7 @@ export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
   const menuButtonRef = useRef<HTMLButtonElement>(null)
   const mobileMenuRef = useRef<HTMLDivElement>(null)
+  const prefersReducedMotion = useReducedMotion()
   const rawPathname = usePathname()
   // Normalize pathname by removing basePath for active state comparison
   // Handle both production (with basePath) and development (without basePath)
@@ -253,7 +254,7 @@ export default function Navigation() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: prefersReducedMotion ? 0 : 0.2 }}
               className="fixed inset-0 bg-neutral-charcoal/20 backdrop-blur-sm lg:hidden"
               onClick={closeMenu}
             />
@@ -261,10 +262,10 @@ export default function Navigation() {
             {/* Menu panel */}
             <motion.div
               ref={mobileMenuRef}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
+              initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: -10 }}
+              animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+              exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: -10 }}
+              transition={{ duration: prefersReducedMotion ? 0 : 0.2 }}
               id="mobile-menu"
               role="dialog"
               aria-label="Mobile navigation menu"
@@ -277,9 +278,9 @@ export default function Navigation() {
                     return (
                       <motion.div
                         key={link.href}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.05 }}
+                        initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, x: -10 }}
+                        animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, x: 0 }}
+                        transition={prefersReducedMotion ? { duration: 0 } : { delay: index * 0.05 }}
                       >
                         <Link
                           href={link.href}
