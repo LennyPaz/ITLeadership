@@ -293,10 +293,11 @@ export default function DonatePage() {
                 ) : (
                   <button
                     disabled
+                    aria-disabled="true"
                     className="btn-primary w-full py-4 text-lg justify-center opacity-50 cursor-not-allowed"
                   >
                     <Heart className="w-5 h-5" />
-                    Donate $0
+                    Select an amount to donate
                   </button>
                 )}
 
@@ -319,7 +320,7 @@ export default function DonatePage() {
                   </h3>
 
                   {selectedAmount && (
-                    <div className="mb-6 pb-6 border-b border-neutral-light">
+                    <div className="mb-6 pb-6 border-b border-neutral-light" aria-live="polite" aria-atomic="true">
                       <div className="text-4xl font-heading font-bold text-primary mb-2">
                         ${selectedAmount}
                       </div>
@@ -656,6 +657,7 @@ export default function DonatePage() {
           ) : (
             <button
               disabled
+              aria-disabled="true"
               className="flex items-center gap-2 px-5 py-2.5 bg-primary/50 text-white/70 text-sm font-heading font-semibold rounded-full whitespace-nowrap cursor-not-allowed"
             >
               <Heart className="w-4 h-4" />

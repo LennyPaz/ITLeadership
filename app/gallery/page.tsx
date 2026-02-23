@@ -352,7 +352,7 @@ export default function GalleryPage() {
             </button>
 
             {/* Image counter */}
-            <div className="absolute top-4 left-4 text-white/90 text-sm font-medium bg-black/30 px-3 py-1 rounded-full">
+            <div className="absolute top-4 left-4 text-white/90 text-sm font-medium bg-black/30 px-3 py-1 rounded-full" aria-live="polite" aria-atomic="true">
               {lightboxIndex + 1} / {filteredImages.length}
             </div>
 
@@ -408,7 +408,7 @@ export default function GalleryPage() {
             </motion.div>
 
             {/* Keyboard hint */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/70 text-xs bg-black/30 px-3 py-1 rounded-full">
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/70 text-xs bg-black/30 px-3 py-1 rounded-full" role="note" aria-label="Keyboard navigation: use arrow keys to navigate, Escape to close">
               Use arrow keys to navigate, ESC to close
             </div>
           </motion.div>

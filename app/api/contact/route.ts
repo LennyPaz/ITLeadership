@@ -46,7 +46,7 @@ export async function POST(request: Request) {
     if (rateEntry && now < rateEntry.resetTime) {
       if (rateEntry.count >= RATE_LIMIT_MAX) {
         return NextResponse.json(
-          { error: 'Too many submissions. Please try again later.' },
+          { error: 'Too many submissions. Please wait 15 minutes before trying again.' },
           { status: 429 }
         )
       }
@@ -72,8 +72,9 @@ export async function POST(request: Request) {
 
     // Validate required fields
     if (!name || !email || !subject || !message) {
+      const missing = [!name && 'name', !email && 'email', !subject && 'subject', !message && 'message'].filter(Boolean)
       return NextResponse.json(
-        { error: 'Missing required fields' },
+        { error: `Please fill in: ${missing.join(', ')}.` },
         { status: 400 }
       )
     }

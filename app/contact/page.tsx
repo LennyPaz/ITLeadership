@@ -60,17 +60,44 @@ export default function ContactPage() {
   const [error, setError] = useState<string | null>(null)
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({})
 
+  // Format phone as (XXX) XXX-XXXX while typing
+  const formatPhone = (value: string): string => {
+    const digits = value.replace(/\D/g, '').slice(0, 10)
+    if (digits.length <= 3) return digits
+    if (digits.length <= 6) return `(${digits.slice(0, 3)}) ${digits.slice(3)}`
+    return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`
+  }
+
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target
-    setFormState((prev) => ({ ...prev, [name]: value }))
+    const formatted = name === 'phone' ? formatPhone(value) : value
+    setFormState((prev) => ({ ...prev, [name]: formatted }))
     if (fieldErrors[name]) {
       setFieldErrors((prev) => {
         const next = { ...prev }
         delete next[name]
         return next
       })
+    }
+  }
+
+  // Inline validation on blur
+  const handleBlur = (
+    e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target
+    const errors: Record<string, string> = {}
+    if (name === 'name' && !value.trim()) errors.name = 'Name is required.'
+    if (name === 'email') {
+      if (!value.trim()) errors.email = 'Email is required.'
+      else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) errors.email = 'Enter a valid email address.'
+    }
+    if (name === 'subject' && !value) errors.subject = 'Please select a subject.'
+    if (name === 'message' && !value.trim()) errors.message = 'Message is required.'
+    if (Object.keys(errors).length > 0) {
+      setFieldErrors((prev) => ({ ...prev, ...errors }))
     }
   }
 
@@ -289,6 +316,7 @@ export default function ContactPage() {
                           aria-describedby={fieldErrors.name ? 'name-error' : undefined}
                           value={formState.name}
                           onChange={handleInputChange}
+                          onBlur={handleBlur}
                           className={cn('input', fieldErrors.name && 'border-red-400')}
                           placeholder="John Smith"
                         />
@@ -313,6 +341,7 @@ export default function ContactPage() {
                           aria-describedby={fieldErrors.email ? 'email-error' : undefined}
                           value={formState.email}
                           onChange={handleInputChange}
+                          onBlur={handleBlur}
                           className={cn('input', fieldErrors.email && 'border-red-400')}
                           placeholder="john@example.com"
                         />
@@ -325,7 +354,7 @@ export default function ContactPage() {
                     <div className="grid sm:grid-cols-2 gap-6">
                       <div>
                         <label htmlFor="phone" className="input-label">
-                          Phone Number
+                          Phone Number <span className="text-neutral-gray font-normal">(optional)</span>
                         </label>
                         <input
                           type="tel"
@@ -352,6 +381,7 @@ export default function ContactPage() {
                           aria-describedby={fieldErrors.subject ? 'subject-error' : undefined}
                           value={formState.subject}
                           onChange={handleInputChange}
+                          onBlur={handleBlur}
                           className={cn('input', fieldErrors.subject && 'border-red-400')}
                         >
                           <option value="">Select a subject</option>
@@ -379,16 +409,22 @@ export default function ContactPage() {
                         maxLength={5000}
                         aria-required="true"
                         aria-invalid={!!fieldErrors.message}
-                        aria-describedby={fieldErrors.message ? 'message-error' : undefined}
+                        aria-describedby={fieldErrors.message ? 'message-error' : 'message-hint'}
                         rows={6}
                         value={formState.message}
                         onChange={handleInputChange}
+                        onBlur={handleBlur}
                         className={cn('input resize-none', fieldErrors.message && 'border-red-400')}
                         placeholder="How can we help you?"
                       />
-                      {fieldErrors.message && (
-                        <p id="message-error" role="alert" className="text-red-600 text-sm mt-1">{fieldErrors.message}</p>
-                      )}
+                      <div className="flex justify-between mt-1">
+                        {fieldErrors.message ? (
+                          <p id="message-error" role="alert" className="text-red-600 text-sm">{fieldErrors.message}</p>
+                        ) : <span />}
+                        <p id="message-hint" className="text-neutral-gray text-xs">
+                          {formState.message.length}/5000
+                        </p>
+                      </div>
                     </div>
 
                     {error && (
@@ -400,11 +436,12 @@ export default function ContactPage() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
+                      aria-busy={isSubmitting}
                       className="btn-primary w-full sm:w-auto"
                     >
                       {isSubmitting ? (
                         <>
-                          <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                          <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" role="status" aria-label="Sending message" />
                           Sending...
                         </>
                       ) : (
