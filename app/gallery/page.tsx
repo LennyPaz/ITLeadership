@@ -352,7 +352,7 @@ export default function GalleryPage() {
             </button>
 
             {/* Image counter */}
-            <div className="absolute top-4 left-4 text-white/90 text-sm font-medium bg-black/30 px-3 py-1 rounded-full" aria-live="polite" aria-atomic="true">
+            <div className="absolute top-4 left-4 text-white/90 text-sm font-medium bg-black/30 px-3 py-1 rounded-full" aria-live="polite" aria-atomic="true" aria-label={`Image ${lightboxIndex + 1} of ${filteredImages.length}`}>
               {lightboxIndex + 1} / {filteredImages.length}
             </div>
 
