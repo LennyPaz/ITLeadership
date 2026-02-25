@@ -240,6 +240,7 @@ export default function GalleryPage() {
             src="/images/Gallery/g5.webp"
             alt="Project Annie community"
             fill
+            priority
             sizes="100vw"
             className="object-cover opacity-20"
             style={{ objectPosition: 'center top' }}

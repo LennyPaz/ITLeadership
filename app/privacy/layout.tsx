@@ -9,6 +9,13 @@ export const metadata: Metadata = {
     description:
       'Privacy policy for Project Annie\'s website. Learn how we handle your personal information.',
     url: 'https://projectannieinc.com/privacy/',
+    images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, alt: 'Project Annie - Privacy Policy' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Privacy Policy | Project Annie',
+    description:
+      'Privacy policy for Project Annie\'s website. Learn how we handle your personal information.',
   },
 }
 

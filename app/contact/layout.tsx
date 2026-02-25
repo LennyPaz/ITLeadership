@@ -9,6 +9,13 @@ export const metadata: Metadata = {
     description:
       'Contact Project Annie in Tallahassee. Call (850) 222-6133 or visit us at 625 W. 4th Ave. in Frenchtown.',
     url: 'https://projectannieinc.com/contact/',
+    images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, alt: 'Project Annie - Contact Us' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contact Us | Project Annie',
+    description:
+      'Contact Project Annie in Tallahassee. Call (850) 222-6133 or visit us at 625 W. 4th Ave. in Frenchtown.',
   },
 }
 

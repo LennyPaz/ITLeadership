@@ -9,6 +9,13 @@ export const metadata: Metadata = {
     description:
       'Volunteer with Project Annie in Tallahassee. Join FSU and TCC students making a difference in Frenchtown.',
     url: 'https://projectannieinc.com/volunteer/',
+    images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, alt: 'Project Annie - Volunteer' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Volunteer | Project Annie',
+    description:
+      'Volunteer with Project Annie in Tallahassee. Join FSU and TCC students making a difference in Frenchtown.',
   },
 }
 

@@ -9,6 +9,13 @@ export const metadata: Metadata = {
     description:
       'Quality, affordable childcare for children ages 1-3 in Tallahassee. Licensed nursery school with small class sizes and structured learning.',
     url: 'https://projectannieinc.com/programs/',
+    images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, alt: 'Project Annie - Nursery School' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Annie\'s Nursery School | Project Annie',
+    description:
+      'Quality, affordable childcare for children ages 1-3 in Tallahassee. Licensed nursery school with small class sizes and structured learning.',
   },
 }
 

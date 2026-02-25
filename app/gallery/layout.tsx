@@ -9,6 +9,13 @@ export const metadata: Metadata = {
     description:
       'Browse photos from Project Annie\'s nursery school, community meals, volunteer events, and celebrations.',
     url: 'https://projectannieinc.com/gallery/',
+    images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, alt: 'Project Annie - Photo Gallery' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Photo Gallery | Project Annie',
+    description:
+      'Browse photos from Project Annie\'s nursery school, community meals, volunteer events, and celebrations.',
   },
 }
 

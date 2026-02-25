@@ -173,6 +173,7 @@ export default function ContactPage() {
             src={getImagePath('/images/Home/IMG7.webp')}
             alt="Project Annie community"
             fill
+            priority
             sizes="100vw"
             className="object-cover opacity-20"
           />

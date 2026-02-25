@@ -9,6 +9,13 @@ export const metadata: Metadata = {
     description:
       'Support Project Annie with a tax-deductible donation. Your gift provides childcare, meals, and hope to Frenchtown families.',
     url: 'https://projectannieinc.com/donate/',
+    images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, alt: 'Project Annie - Donate' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Donate | Project Annie',
+    description:
+      'Support Project Annie with a tax-deductible donation. Your gift provides childcare, meals, and hope to Frenchtown families.',
   },
 }
 
