@@ -1,7 +1,28 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Home, Search } from 'lucide-react'
 import { getImagePath } from '@/lib/utils'
+
+export const metadata: Metadata = {
+  title: 'Page Not Found | Project Annie',
+  description:
+    'The page you are looking for does not exist or has been moved.',
+  robots: { index: false },
+  openGraph: {
+    title: 'Page Not Found | Project Annie',
+    description:
+      'The page you are looking for does not exist or has been moved.',
+    images: [
+      {
+        url: '/images/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Project Annie - Annie\'s Nursery School',
+      },
+    ],
+  },
+}
 
 export default function NotFound() {
   return (

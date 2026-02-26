@@ -9,6 +9,14 @@ export const metadata: Metadata = {
     description:
       'Project Annie is committed to making our website accessible to all visitors.',
     url: 'https://projectannieinc.com/accessibility/',
+    images: [
+      {
+        url: '/images/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Project Annie - Annie\'s Nursery School',
+      },
+    ],
   },
 }
 
