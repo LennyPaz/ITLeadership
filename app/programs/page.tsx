@@ -358,6 +358,7 @@ export default function ProgramsPage() {
                   <a
                     href="/images/Nursery/Forms/Annie APPLICATION FOR ENROLLMENT.pdf"
                     download
+                    aria-label="Download Enrollment Application (PDF)"
                     className="btn-primary inline-flex items-center gap-2 px-6 py-3"
                   >
                     <Download className="w-5 h-5" />
@@ -421,6 +422,7 @@ export default function ProgramsPage() {
                   <a
                     href={`/images/Nursery/Forms/${form.file}`}
                     download
+                    aria-label={`Download ${form.title} (DOCX)`}
                     className="inline-flex items-center gap-2 text-primary font-medium hover:text-primary-dark transition-colors"
                   >
                     <Download className="w-4 h-4" />
