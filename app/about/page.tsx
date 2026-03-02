@@ -255,6 +255,7 @@ export default function AboutPage() {
                   </p>
                   <Link
                     href="/programs"
+                    aria-label="Learn more about our Nursery School program"
                     className="inline-flex items-center text-primary font-medium hover:gap-2 transition-all"
                   >
                     Learn More
@@ -290,6 +291,7 @@ export default function AboutPage() {
                   </p>
                   <Link
                     href="/donate"
+                    aria-label="Support the Community Meals program"
                     className="inline-flex items-center text-primary font-medium hover:gap-2 transition-all"
                   >
                     Support This Program
@@ -324,6 +326,7 @@ export default function AboutPage() {
                   </p>
                   <Link
                     href="/volunteer"
+                    aria-label="Get involved with volunteering"
                     className="inline-flex items-center text-primary font-medium hover:gap-2 transition-all"
                   >
                     Get Involved
