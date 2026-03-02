@@ -238,6 +238,7 @@ export default function ContactPage() {
               href="https://maps.google.com/?q=625+W+4th+Ave+Tallahassee+FL+32303"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="625 W. 4th Ave., Tallahassee — view on Google Maps (opens in new tab)"
               className="flex items-center gap-4 py-6 px-4 hover:bg-white transition-colors group"
             >
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
@@ -601,6 +602,7 @@ export default function ContactPage() {
               href="https://maps.google.com/?q=625+W+4th+Ave+Tallahassee+FL+32303"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Get directions on Google Maps (opens in new tab)"
               className="btn-outline"
             >
               <ExternalLink className="w-4 h-4" />

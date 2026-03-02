@@ -118,6 +118,7 @@ export default function Footer() {
                   href={mapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="View address on Google Maps (opens in new tab)"
                   className="flex items-start gap-3 text-white/90 hover:text-white transition-colors text-sm group"
                 >
                   <MapPin className="w-4 h-4 mt-0.5 shrink-0 text-accent-honey" />
@@ -170,6 +171,7 @@ export default function Footer() {
                 href="https://projects.propublica.org/nonprofits/organizations/522011801"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="501(c)(3) Verified on ProPublica (opens in new tab)"
                 className="flex items-center gap-2 text-white/70 hover:text-white text-xs transition-colors"
               >
                 <Shield className="w-5 h-5 text-accent-honey" />
@@ -180,6 +182,7 @@ export default function Footer() {
                 href="https://app.candid.org/profile/7781007/project-annie-52-2011801"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="GuideStar listing on Candid (opens in new tab)"
                 className="flex items-center gap-2 text-white/70 hover:text-white text-xs transition-colors"
               >
                 <Award className="w-5 h-5 text-accent-honey" />

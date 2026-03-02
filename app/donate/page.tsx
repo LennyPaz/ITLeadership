@@ -285,6 +285,7 @@ export default function DonatePage() {
                     href={`https://www.paypal.com/paypalme/ProjectAnnieInc/${donateAmount}`}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={`Donate $${donateAmount} via PayPal (opens in new tab)`}
                     className="btn-primary w-full py-4 text-lg justify-center"
                   >
                     <Heart className="w-5 h-5" />
@@ -649,6 +650,7 @@ export default function DonatePage() {
               href={`https://www.paypal.com/paypalme/ProjectAnnieInc/${donateAmount}`}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={`Donate $${donateAmount} via PayPal (opens in new tab)`}
               className="flex items-center gap-2 px-5 py-2.5 bg-primary hover:bg-primary-dark text-white text-sm font-heading font-semibold rounded-full whitespace-nowrap transition-colors"
             >
               <Heart className="w-4 h-4" />
