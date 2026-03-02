@@ -390,7 +390,7 @@ export default function ProgramsPage() {
               {
                 title: 'Items Needed Prior to Employment',
                 description: 'Review the requirements and documents needed before starting employment.',
-                file: '1. Items needed prior to emplyment.docx',
+                file: '1. Items needed prior to employment.docx',
               },
               {
                 title: 'Employment Application',
