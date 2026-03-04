@@ -24,8 +24,22 @@ const breadcrumbJsonLd = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://projectannieinc.com' },
-    { '@type': 'ListItem', position: 2, name: 'Photo Gallery', item: 'https://projectannieinc.com/gallery' },
+    { '@type': 'ListItem', position: 2, name: 'Photo Gallery', item: 'https://projectannieinc.com/gallery/' },
   ],
+}
+
+const galleryJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Photo Gallery',
+  description:
+    'Browse photos from Project Annie\'s nursery school, community meals, volunteer events, and celebrations in Tallahassee\'s Frenchtown neighborhood.',
+  url: 'https://projectannieinc.com/gallery/',
+  isPartOf: {
+    '@type': 'WebSite',
+    name: 'Project Annie',
+    url: 'https://projectannieinc.com',
+  },
 }
 
 export default function GalleryLayout({
@@ -38,6 +52,10 @@ export default function GalleryLayout({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(galleryJsonLd) }}
       />
       {children}
     </>

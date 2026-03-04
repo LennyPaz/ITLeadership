@@ -40,7 +40,7 @@ const breadcrumbJsonLd = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://projectannieinc.com' },
-    { '@type': 'ListItem', position: 2, name: 'Donate', item: 'https://projectannieinc.com/donate' },
+    { '@type': 'ListItem', position: 2, name: 'Donate', item: 'https://projectannieinc.com/donate/' },
   ],
 }
 

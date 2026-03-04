@@ -267,6 +267,7 @@ export default function DonatePage() {
                       inputMode="numeric"
                       min="1"
                       placeholder="Other amount"
+                      aria-label="Enter custom donation amount in dollars"
                       value={customAmount}
                       onChange={(e) => handleCustomAmount(e.target.value)}
                       aria-invalid={!!amountError}
