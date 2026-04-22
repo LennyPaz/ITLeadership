@@ -4,12 +4,13 @@ export const metadata: Metadata = {
   title: 'Annie\'s Nursery School',
   description:
     'Quality, affordable childcare for children ages 1-3 in Tallahassee\'s Frenchtown community. Licensed nursery school with small class sizes, structured learning, and a nurturing environment.',
+  alternates: { canonical: './' },
   openGraph: {
     title: 'Annie\'s Nursery School | Project Annie',
     description:
       'Quality, affordable childcare for children ages 1-3 in Tallahassee. Licensed nursery school with small class sizes and structured learning.',
     url: 'https://projectannieinc.com/programs/',
-    images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, alt: 'Project Annie - Nursery School' }],
+    images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, type: 'image/jpeg', alt: 'Project Annie - Nursery School' }],
   },
   twitter: {
     card: 'summary_large_image',

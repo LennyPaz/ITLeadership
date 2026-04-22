@@ -4,12 +4,13 @@ export const metadata: Metadata = {
   title: 'About Us',
   description:
     'Learn about Project Annie\'s mission, our founder Ms. Annie Johnson, and 15+ years of serving Tallahassee\'s Frenchtown community with childcare and community meals.',
+  alternates: { canonical: './' },
   openGraph: {
     title: 'About Us | Project Annie',
     description:
       'Learn about Project Annie\'s mission, our founder Ms. Annie Johnson, and 15+ years of serving Tallahassee\'s Frenchtown community.',
     url: 'https://projectannieinc.com/about/',
-    images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, alt: 'Project Annie - About Us' }],
+    images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, type: 'image/jpeg', alt: 'Project Annie - About Us' }],
   },
   twitter: {
     card: 'summary_large_image',

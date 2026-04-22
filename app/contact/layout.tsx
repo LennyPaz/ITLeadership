@@ -4,12 +4,13 @@ export const metadata: Metadata = {
   title: 'Contact Us',
   description:
     'Contact Project Annie in Tallahassee, FL. Call (850) 222-6133, email us, or visit Annie\'s Nursery School at 625 W. 4th Ave. in Frenchtown. Mon-Fri 9AM-3PM.',
+  alternates: { canonical: './' },
   openGraph: {
     title: 'Contact Us | Project Annie',
     description:
       'Contact Project Annie in Tallahassee. Call (850) 222-6133 or visit us at 625 W. 4th Ave. in Frenchtown.',
     url: 'https://projectannieinc.com/contact/',
-    images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, alt: 'Project Annie - Contact Us' }],
+    images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, type: 'image/jpeg', alt: 'Project Annie - Contact Us' }],
   },
   twitter: {
     card: 'summary_large_image',

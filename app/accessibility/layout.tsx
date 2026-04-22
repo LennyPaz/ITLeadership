@@ -4,6 +4,7 @@ export const metadata: Metadata = {
   title: 'Accessibility Statement',
   description:
     'Project Annie is committed to making our website accessible to all visitors. Learn about our accessibility practices and how to report issues.',
+  alternates: { canonical: './' },
   openGraph: {
     title: 'Accessibility Statement | Project Annie',
     description:
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
         url: '/images/og-image.jpg',
         width: 1200,
         height: 630,
+        type: 'image/jpeg',
         alt: 'Project Annie - Annie\'s Nursery School',
       },
     ],

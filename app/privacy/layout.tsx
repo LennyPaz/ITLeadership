@@ -4,12 +4,13 @@ export const metadata: Metadata = {
   title: 'Privacy Policy',
   description:
     'Privacy policy for Project Annie\'s website. Learn how we collect, use, and protect your personal information when you interact with our site.',
+  alternates: { canonical: './' },
   openGraph: {
     title: 'Privacy Policy | Project Annie',
     description:
       'Privacy policy for Project Annie\'s website. Learn how we handle your personal information.',
     url: 'https://projectannieinc.com/privacy/',
-    images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, alt: 'Project Annie - Privacy Policy' }],
+    images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, type: 'image/jpeg', alt: 'Project Annie - Privacy Policy' }],
   },
   twitter: {
     card: 'summary_large_image',

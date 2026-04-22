@@ -4,12 +4,13 @@ export const metadata: Metadata = {
   title: 'Volunteer',
   description:
     'Volunteer with Project Annie in Tallahassee. Join FSU and TCC students making a difference through childcare assistance, community meals, and special events in Frenchtown.',
+  alternates: { canonical: './' },
   openGraph: {
     title: 'Volunteer | Project Annie',
     description:
       'Volunteer with Project Annie in Tallahassee. Join FSU and TCC students making a difference in Frenchtown.',
     url: 'https://projectannieinc.com/volunteer/',
-    images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, alt: 'Project Annie - Volunteer' }],
+    images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, type: 'image/jpeg', alt: 'Project Annie - Volunteer' }],
   },
   twitter: {
     card: 'summary_large_image',

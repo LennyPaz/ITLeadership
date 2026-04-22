@@ -4,12 +4,13 @@ export const metadata: Metadata = {
   title: 'Photo Gallery',
   description:
     'Browse photos from Project Annie\'s nursery school, community meals, volunteer events, and celebrations in Tallahassee\'s Frenchtown neighborhood.',
+  alternates: { canonical: './' },
   openGraph: {
     title: 'Photo Gallery | Project Annie',
     description:
       'Browse photos from Project Annie\'s nursery school, community meals, volunteer events, and celebrations.',
     url: 'https://projectannieinc.com/gallery/',
-    images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, alt: 'Project Annie - Photo Gallery' }],
+    images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, type: 'image/jpeg', alt: 'Project Annie - Photo Gallery' }],
   },
   twitter: {
     card: 'summary_large_image',
