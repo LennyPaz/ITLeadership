@@ -340,7 +340,7 @@ export default function GalleryPage() {
             className="fixed inset-0 z-50 bg-neutral-charcoal/95 flex items-center justify-center"
             role="dialog"
             aria-modal="true"
-            aria-label={filteredImages[lightboxIndex].alt}
+            aria-label={`Image viewer: ${filteredImages[lightboxIndex].alt}`}
             onClick={closeLightbox}
           >
             {/* Close button */}

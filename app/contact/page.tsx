@@ -206,6 +206,7 @@ export default function ContactPage() {
           <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-neutral-light">
             <a
               href="tel:8502226133"
+              aria-label="Call us at (850) 222-6133"
               className="flex items-center gap-4 py-6 px-4 hover:bg-white transition-colors"
             >
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
@@ -221,6 +222,7 @@ export default function ContactPage() {
 
             <a
               href="mailto:anniejohnsont@gmail.com"
+              aria-label="Email us at anniejohnsont@gmail.com"
               className="flex items-center gap-4 py-6 px-4 hover:bg-white transition-colors"
             >
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
@@ -356,7 +358,7 @@ export default function ContactPage() {
                     <div className="grid sm:grid-cols-2 gap-6">
                       <div>
                         <label htmlFor="phone" className="input-label">
-                          Phone Number <span className="text-neutral-gray font-normal">(optional)</span>
+                          Phone Number <span id="phone-hint" className="text-neutral-gray font-normal">(optional)</span>
                         </label>
                         <input
                           type="tel"
@@ -364,6 +366,7 @@ export default function ContactPage() {
                           name="phone"
                           inputMode="tel"
                           autoComplete="tel"
+                          aria-describedby="phone-hint"
                           value={formState.phone}
                           onChange={handleInputChange}
                           className="input"
