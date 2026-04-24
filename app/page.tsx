@@ -462,7 +462,11 @@ export default function HomePage() {
           <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
             {pathways.map((pathway, index) => (
               <AnimatedSection key={pathway.title} delay={index * 0.1}>
-                <Link href={pathway.href} className="group block h-full">
+                <Link
+                  href={pathway.href}
+                  aria-label={`Learn more about ${pathway.title}`}
+                  className="group block h-full"
+                >
                   <div className="relative h-full bg-white rounded-lg overflow-hidden border border-neutral-light hover:border-primary/20 hover:shadow-md transition-all duration-300">
                     {/* Image */}
                     <div className="relative aspect-[16/10] overflow-hidden">
