@@ -166,6 +166,7 @@ export default function Navigation() {
                 src={getImagePath('/images/logo.webp')}
                 alt="Project Annie Logo"
                 fill
+                sizes="(min-width: 1024px) 64px, 56px"
                 className="object-contain"
                 priority
               />

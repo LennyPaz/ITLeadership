@@ -42,6 +42,7 @@ export default function Footer() {
                   src={getImagePath('/images/logo.webp')}
                   alt={`${settings.organizationName} Logo`}
                   fill
+                  sizes="64px"
                   className="object-contain"
                 />
               </div>

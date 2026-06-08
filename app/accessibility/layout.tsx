@@ -20,6 +20,12 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Accessibility Statement | Project Annie',
+    description:
+      'Project Annie is committed to making our website accessible to all visitors.',
+  },
 }
 
 const breadcrumbJsonLd = {
