@@ -315,7 +315,7 @@ export default function DonatePage() {
 
             {/* Impact Sidebar */}
             <div className="lg:col-span-2">
-              <AnimatedSection delay={0.2}>
+              <AnimatedSection delay={0.2} className="h-full">
                 <div className="bg-neutral-cream rounded-lg p-6 lg:p-8 sticky top-32">
                   <h3 className="font-heading font-bold text-xl text-neutral-charcoal mb-4">
                     Your Impact

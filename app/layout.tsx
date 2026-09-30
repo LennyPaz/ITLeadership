@@ -151,7 +151,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-screen flex flex-col overflow-x-hidden">
+      <body className="min-h-screen flex flex-col overflow-x-clip">
         <a
           href="#main-content"
           className="skip-link"
@@ -159,7 +159,7 @@ export default function RootLayout({
           Skip to main content
         </a>
         <Navigation />
-        <main id="main-content" className="flex-1 overflow-x-hidden">
+        <main id="main-content" className="flex-1 overflow-x-clip">
           {children}
         </main>
         <Footer />

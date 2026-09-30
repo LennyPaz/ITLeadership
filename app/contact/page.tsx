@@ -471,7 +471,7 @@ export default function ContactPage() {
 
             {/* Sidebar */}
             <div className="lg:col-span-2">
-              <AnimatedSection delay={0.2}>
+              <AnimatedSection delay={0.2} className="h-full">
                 <div className="sticky top-32 space-y-8">
                   {/* Hours & Info */}
                   <div className="bg-neutral-cream rounded-lg p-6 lg:p-8">
