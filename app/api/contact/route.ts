@@ -128,7 +128,7 @@ export async function POST(request: Request) {
 
     const resend = getResend()
     const { data, error } = await resend.emails.send({
-      from: 'Project Annie Contact Form <onboarding@resend.dev>',
+      from: 'Project Annie Contact Form <contact@lennypaz.com>',
       to: [
         process.env.CONTACT_EMAIL || 'lenny.paz123@gmail.com',
         'anniejohnsont@gmail.com',
